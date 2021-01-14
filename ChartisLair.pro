@@ -18,11 +18,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     gerarchia.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    modello.cpp
 
 HEADERS += \
+    DeepPtr.h \
+    GUI/controller.h \
+    container.h \
     gerarchia.h \
-    mainwindow.h
+    mainwindow.h \
+    modello.h
 
 FORMS += \
     mainwindow.ui

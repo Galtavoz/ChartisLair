@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<infusi nome="The allo zenzero" confezioneRegalo="No"  ingredienti="Foglie di the" peso="0,250" erba="Indica" produzione="Outdoor" aroma="Zenzero" sfuso="No"/> 
+	<infusi nome="The allo zenzero" confezioneRegalo="Si"  ingredienti="Foglie di the" peso="0,250" erba="Indica" produzione="Outdoor" aroma="Zenzero" sfuso="No"/> 
+	<infusi nome="The allo zenzero" confezioneRegalo="No"  ingredienti="Foglie di the" peso="0,250" erba="Indica" produzione="Outdoor" aroma="Zenzero" sfuso="Si"/> 
+	<infusi nome="The allo zenzero" confezioneRegalo="Si"  ingredienti="Foglie di the" peso="0,250" erba="Indica" produzione="Outdoor" aroma="Zenzero" sfuso="Si"/>
+</root>

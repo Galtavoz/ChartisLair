@@ -8,6 +8,8 @@ enum fondenza   {niente=1,bassa=2,media=3,alta=4};//1=0%, 2=50%, 3=75%, 4=90%
 enum granella   {cocco=1,noce=2,mandorla=3,nocciola=4};
 enum farina     {grano=1,riso=2,mandorle=3,castagne=4,amaranto=5};
 enum gocce      {latte=1,fondente=2,bianco=3,senza=4};
+enum altezze    {cm24=1,cm32=2,cm37=3,cm46=4,cm35=5,cm45=6};
+enum lvVelocitaEvaporazione {lv1=1,lv2=2,lv3=3};
 
 class catalogo{
 private:
@@ -29,7 +31,7 @@ public:
 class consumabile: public catalogo{
 private:
      std::vector<std::string> ingredienti;
-     double peso;
+     double peso;//prezzo al Kg
      bool erba;//True Indica ; False Sativa
      bool produzione;//True Indoor ; False Outdoor
 public:
@@ -54,7 +56,7 @@ private:
     int  tipoFarina = farina{};
     int  gocceCioccolata = gocce{};
 public:
-    biscotti(std::string,bool,std::vector<std::string>,double,bool,bool,int);
+    biscotti(std::string,bool,std::vector<std::string>,double,bool,bool,int,int);
     virtual ~biscotti() = default;
     //GET
     int   getTipoFarina() const;
@@ -99,7 +101,7 @@ public:
     std::vector<std::string> getAroma() const;
     bool getSfuso() const;
     //SET
-    std::vector<std::string> setAroma(std::string);
+    void setAroma(std::string);
     bool setSfuso(bool);
     //METODI
     virtual double prezzo() const override;
@@ -108,7 +110,7 @@ public:
 
 
 
-
+//NONCONSUMABILE
 class nonConsumabile: public catalogo{
 private:
     std::vector<std::string> colori;
@@ -118,15 +120,16 @@ public:
     //GET
     std::vector<std::string> getColori() const;
     //SET
-    std::vector<std::string> setColori(std::string);
+    void setColori(std::string);
     //METODI
     virtual double prezzo() const = 0;
 };
 
+//BONG
 class bong: public nonConsumabile{
 private:
     bool forma;//True backer, False dritto
-    int altezza;
+    int altezza = altezze{};
     double larghezza;
 public:
     bong(std::string,bool,std::vector<std::string>,bool,int,double);
@@ -143,26 +146,28 @@ public:
     virtual double prezzo() const override;
 };
 
+//VAPORIZZATORE
 class vaporizzatore: public nonConsumabile{
 private:
-    int  velocitaEvaporazione;//più è alta la velocita piu velocemnte vaporizza
-    int  capienza;//capienza dello sportello portaerba
+    int  velocitaEvaporazione = lvVelocitaEvaporazione{};//più è alta la velocita piu velocemnte vaporizza
+    double  capienza;//capienza dello sportello portaerba espressa in grammi
     bool schermo;
 public:
-    vaporizzatore(std::string,bool,std::vector<std::string>,int,int,bool);
+    vaporizzatore(std::string,bool,std::vector<std::string>,int,double,bool);
     virtual ~vaporizzatore() = default;
     //GET
     int  getVelocitaEvaporazione() const;
     int   getCapienza() const;
     bool  getSchermo() const;
     //SET
-    int  setVelocitaEvaporazione(bool);
-    int  setCapienza(int);
+    int  setVelocitaEvaporazione(int);
+    double  setCapienza(double);
     bool setSchermo(bool);
     //METODI
     virtual double prezzo() const override;
 };
 
+//GRINDER
 class grinder: public nonConsumabile{
 private:
     int  ndenti;
