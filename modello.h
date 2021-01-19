@@ -33,10 +33,17 @@ public:
         void Salva();
         void Carica();
 
-        //std::string toString(char);
+        std::string toString(char);
 
         void inserisci(catalogo*);
         void rimuovi(catalogo*);
+        int contaCatalogo();
+        int contaBiscotti();
+        int contaCioccolata();
+        int contaInfusi();
+        int contaBong();
+        int contaVapo();
+        int contaGrinder();
 };
 #endif // MODELLO_H
 

@@ -18,6 +18,11 @@ bool catalogo::setConfezioneRegalo(bool flag){
     return confezioneRegalo=flag;
 }
 
+
+
+
+
+
 //CONSUMABILI
 consumabile::consumabile(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod):
     catalogo(n,cr),ingredienti(ingr), peso(p),erba(erb),produzione(prod){}
@@ -52,6 +57,12 @@ bool consumabile::setProduzione(bool flag){
     return produzione=flag;
 }
 
+
+
+
+
+
+
 //BISCOTTI
 biscotti::biscotti(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod,int tf,int gc):
   consumabile(n,cr,ingr,p,erb,prod),tipoFarina(tf),gocceCioccolata(gc){}
@@ -69,6 +80,7 @@ int biscotti::setTipoFarina(int tf){
 int biscotti::setGocceCioccolata(int gc){
     return gocceCioccolata=gc;
 }
+//METODI
 double biscotti::prezzo() const{
     double conto=100*getPeso();
     if(tipoFarina==1) conto+=getPeso()*0.99;
@@ -83,6 +95,22 @@ double biscotti::prezzo() const{
 
     return conto;
 }
+
+double biscotti::ricavo() const{
+    return (prezzo()/100)*30;
+}
+
+std::string  biscotti::tipoElemento() const{
+    return "biscotti";
+}
+
+
+
+
+
+
+
+
 //CIOCCOLATA
 cioccolata::cioccolata(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod,int tg,int lvf,bool forma):
     consumabile(n,cr,ingr,p,erb,prod),tipoGranella(tg),livelloFondenza(lvf),forma(forma){}
@@ -106,6 +134,7 @@ int cioccolata::setLivelloFondenza(int lvf){
 bool cioccolata::setForma(bool frm){
     return forma=frm;
 }
+//METODI
 double cioccolata::prezzo() const{
     double conto=30*getPeso();
     if(livelloFondenza ==1) conto=conto+(getPeso()*9);
@@ -120,6 +149,19 @@ double cioccolata::prezzo() const{
 
     return conto;
 }
+
+double cioccolata::ricavo() const{
+    return (prezzo()/100)*25;
+}
+
+std::string  cioccolata::tipoElemento() const{
+    return "cioccolata";
+}
+
+
+
+
+
 
 //INFUSI
 infusi::infusi(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod,std::vector<std::string> ar,bool sf):
@@ -142,6 +184,7 @@ void infusi::setAroma(std::string arm){
 bool infusi::setSfuso(bool sf){
     return sfuso=sf;
 }
+//METODI
 double infusi::prezzo() const{
     double conto=10*getPeso();
     if(sfuso) conto=conto+(getPeso()*39.85);
@@ -149,6 +192,16 @@ double infusi::prezzo() const{
     if(aroma.size()==1) return conto;
     else return conto+3;
 }
+double infusi::ricavo() const{
+    return (prezzo()/100)*20;
+}
+std::string  infusi::tipoElemento() const{
+    return "infusi";
+}
+
+
+
+
 
 //NONCONSUMABILE
 nonConsumabile::nonConsumabile(std::string n,bool cr,std::vector<std::string> c):
@@ -165,6 +218,9 @@ void nonConsumabile::setColori(std::string c){
     colori.push_back(c);
     return;
 }
+
+
+
 
 //BONG
 bong::bong(std::string n,bool cr,std::vector<std::string> c,bool frm,int alt,double largh):
@@ -189,6 +245,7 @@ int bong::setAltezza(int alt){
 double bong::setLarghezza(double largh){
     return larghezza=largh;
 }
+//METODI
 double  bong::prezzo() const{
     double prezzo=0;
     if(forma){
@@ -204,6 +261,14 @@ double  bong::prezzo() const{
 
     return  prezzo;
 }
+double bong::ricavo() const{
+    return (prezzo()/100)*18;
+}
+std::string  bong::tipoElemento() const{
+    return "bong";
+}
+
+
 
 //VAPORIZZATORE
 vaporizzatore::vaporizzatore(std::string n,bool cr,std::vector<std::string> c,int ve,double cap,bool scher):
@@ -218,15 +283,7 @@ int vaporizzatore::getCapienza() const{
 bool vaporizzatore::getSchermo() const{
     return schermo;
 }
-double vaporizzatore::prezzo() const{
-    double prezzo=0;
-    if(schermo) prezzo+=450;
-    else prezzo+=350;
-    if(velocitaEvaporazione == 1) prezzo+=50;
-    else if(velocitaEvaporazione == 2) prezzo+=75;
-    else prezzo+=100;
-    return prezzo+=getCapienza()*0.25;
-}
+
 //SET
 int vaporizzatore::setVelocitaEvaporazione(int ve){
     return velocitaEvaporazione=ve;
@@ -237,6 +294,25 @@ double vaporizzatore::setCapienza(double cap){
 bool vaporizzatore::setSchermo(bool sch){
     return schermo=sch;
 }
+//METODI
+double vaporizzatore::prezzo() const{
+    double prezzo=0;
+    if(schermo) prezzo+=450;
+    else prezzo+=350;
+    if(velocitaEvaporazione == 1) prezzo+=50;
+    else if(velocitaEvaporazione == 2) prezzo+=75;
+    else prezzo+=100;
+    return prezzo+=getCapienza()*0.25;
+}
+double vaporizzatore::ricavo() const{
+    return (prezzo()/100)*12;
+}
+std::string  vaporizzatore::tipoElemento() const{
+    return "vaporizzatore";
+}
+
+
+
 
 //GRINDER
 grinder::grinder(std::string n,bool cr,std::vector<std::string> c,int nd,bool racp):
@@ -255,9 +331,16 @@ int grinder::setNdenti(int ndent){
 bool grinder::setRaccogliPolline(bool racp){
     return raccoglipolline=racp;
 }
+//METODI
 double grinder::prezzo() const{
     double prezzo=0;
     if(raccoglipolline) prezzo+=12;
     else prezzo+=10;
     return prezzo;
+}
+double grinder::ricavo() const{
+    return (prezzo()/100)*15;
+}
+std::string  grinder::tipoElemento() const{
+    return "grinder";
 }

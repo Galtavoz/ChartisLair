@@ -26,6 +26,8 @@ public:
     bool setConfezioneRegalo(bool);
     //METODI
     virtual double prezzo() const = 0;
+    virtual double ricavo() const = 0;
+    virtual std::string  tipoElemento() const =0;
 };
 
 class consumabile: public catalogo{
@@ -49,6 +51,8 @@ public:
      bool setProduzione(bool);
      //METODI
      virtual double prezzo() const = 0;
+     virtual double ricavo() const = 0;
+     virtual std::string  tipoElemento() const =0;
 };
 
 class biscotti: public consumabile{
@@ -66,6 +70,8 @@ public:
     int   setGocceCioccolata(int);
     //METODI
     virtual double prezzo() const override;
+    virtual double ricavo() const override;
+    virtual std::string  tipoElemento() const override;
 };
 
 class cioccolata: public consumabile{
@@ -87,6 +93,8 @@ public:
     bool  setProduzione(bool);
     //METODI
     virtual double prezzo() const override;
+    virtual double ricavo() const override;
+    virtual std::string  tipoElemento() const override;
 
 };
 
@@ -105,6 +113,8 @@ public:
     bool setSfuso(bool);
     //METODI
     virtual double prezzo() const override;
+    virtual double ricavo() const override;
+    virtual std::string  tipoElemento() const override;
 };
 
 
@@ -123,6 +133,8 @@ public:
     void setColori(std::string);
     //METODI
     virtual double prezzo() const = 0;
+    virtual double ricavo() const = 0;
+    virtual std::string  tipoElemento() const =0;
 };
 
 //BONG
@@ -144,6 +156,8 @@ public:
     double setLarghezza(double);
     //METODI
     virtual double prezzo() const override;
+    virtual double ricavo() const override;
+    virtual std::string  tipoElemento() const override;
 };
 
 //VAPORIZZATORE
@@ -165,6 +179,8 @@ public:
     bool setSchermo(bool);
     //METODI
     virtual double prezzo() const override;
+    virtual double ricavo() const override;
+    virtual std::string  tipoElemento() const override;
 };
 
 //GRINDER
@@ -183,5 +199,7 @@ public:
     bool setRaccogliPolline(bool);
     //METODI
     virtual double prezzo() const override;
+    virtual double ricavo() const override;
+    virtual std::string  tipoElemento() const override;
 };
 #endif // GERARCHIA_H
