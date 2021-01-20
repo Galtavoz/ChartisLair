@@ -3,6 +3,8 @@
 
 #include<iostream>
 #include<vector>
+#include<sstream>
+#include<iomanip>
 
 enum fondenza   {niente=1,bassa=2,media=3,alta=4};//1=0%, 2=50%, 3=75%, 4=90%
 enum granella   {cocco=1,noce=2,mandorla=3,nocciola=4};
@@ -28,6 +30,7 @@ public:
     virtual double prezzo() const = 0;
     virtual double ricavo() const = 0;
     virtual std::string  tipoElemento() const =0;
+    virtual std::string visualizzaInfo() const;
 };
 
 class consumabile: public catalogo{
@@ -53,6 +56,7 @@ public:
      virtual double prezzo() const = 0;
      virtual double ricavo() const = 0;
      virtual std::string  tipoElemento() const =0;
+     virtual std::string visualizzaInfo() const;
 };
 
 class biscotti: public consumabile{
@@ -72,6 +76,7 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
+    virtual std::string visualizzaInfo() const override;
 };
 
 class cioccolata: public consumabile{
@@ -95,6 +100,7 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
+    virtual std::string visualizzaInfo() const override;
 
 };
 
@@ -115,6 +121,7 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
+    virtual std::string visualizzaInfo() const override;
 };
 
 
@@ -135,6 +142,7 @@ public:
     virtual double prezzo() const = 0;
     virtual double ricavo() const = 0;
     virtual std::string  tipoElemento() const =0;
+    virtual std::string visualizzaInfo() const;
 };
 
 //BONG
@@ -158,6 +166,7 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
+     virtual std::string visualizzaInfo() const override;
 };
 
 //VAPORIZZATORE
@@ -181,6 +190,7 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
+     virtual std::string visualizzaInfo() const override;
 };
 
 //GRINDER
@@ -201,5 +211,6 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
+     virtual std::string visualizzaInfo() const override;
 };
 #endif // GERARCHIA_H

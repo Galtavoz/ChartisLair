@@ -16,7 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    GUI/catalogoCompleto.cpp \
+    GUI/catalogoLista.cpp \
     GUI/controller.cpp \
+    GUI/elementoWidget.cpp \
+    GUI/popup.cpp \
     gerarchia.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -24,7 +28,11 @@ SOURCES += \
 
 HEADERS += \
     DeepPtr.h \
+    GUI/catalogoCompleto.h \
+    GUI/catalogoLista.h \
     GUI/controller.h \
+    GUI/elementoWidget.h \
+    GUI/popup.h \
     container.h \
     gerarchia.h \
     mainwindow.h \

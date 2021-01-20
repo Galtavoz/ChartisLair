@@ -17,7 +17,12 @@ std::string catalogo::setNome(std::string n){
 bool catalogo::setConfezioneRegalo(bool flag){
     return confezioneRegalo=flag;
 }
-
+//METODI
+std::string catalogo::visualizzaInfo() const {
+    std::string frase;
+    return frase.append("\n Nome: "+getNome())
+           .append("\n Confezione regalo: ").append((getConfezioneRegalo() ? "Si" : "No"));
+}
 
 
 
@@ -56,7 +61,20 @@ bool consumabile::setErba(bool flag){
 bool consumabile::setProduzione(bool flag){
     return produzione=flag;
 }
-
+//METODI
+std::string consumabile::visualizzaInfo() const {
+    std::string frase = catalogo::visualizzaInfo();
+    std::string ingredienti="";
+    std::vector<std::string> vettore=getIngredienti();
+    for(std::vector<std::string>::const_iterator cit=vettore.cbegin();cit!=vettore.cend();++cit) {
+        if(cit!=vettore.cend()-1) ingredienti.append(*cit+",");
+        else ingredienti.append(*cit);
+    }
+    return frase.append("\n Ingredienti: "+ingredienti)
+           .append("\n Peso(in Kg): ")+std::to_string(getPeso())
+           .append("\n Tipologia di erba: ").append(getErba() ? "Indica" : "Sativa")
+           .append("\n Produzione :").append(getProduzione() ? "Indoor" : "Outdoor");
+}
 
 
 
@@ -94,6 +112,30 @@ double biscotti::prezzo() const{
     else if (gocceCioccolata==3)conto+=5.50;
 
     return conto;
+}
+
+std::string biscotti::visualizzaInfo() const {
+    std::string frase = consumabile::visualizzaInfo();
+    std::string farina;
+    std::string gocce;
+    std::stringstream Ricavo;
+    Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
+    std::stringstream Prezzo;
+    Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    if(getTipoFarina()==1) farina="Grano";
+    else if(getTipoFarina()==2) farina="Riso";
+    else if(getTipoFarina()==3) farina="Mandorle";
+    else if(getTipoFarina()==4) farina="Castagne";
+    else farina="Amaranto";
+    if(getGocceCioccolata()==1) gocce="Latte";
+    else if(getGocceCioccolata()==2) gocce="Fondente";
+    else if(getGocceCioccolata()==3) gocce="Bianco";
+    else gocce="No gocce";
+    return frase.append("\n Tipo di farina: "+farina)
+           .append("\n Gocce: "+gocce)
+           .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
+           .append("\n Ricavo: "+Ricavo.str()+("€"));
+
 }
 
 double biscotti::ricavo() const{
@@ -150,6 +192,29 @@ double cioccolata::prezzo() const{
     return conto;
 }
 
+std::string cioccolata::visualizzaInfo() const {
+    std::string frase = consumabile::visualizzaInfo();
+    std::string fondenza;
+    std::string granella;
+    std::stringstream Ricavo;
+    Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
+    std::stringstream Prezzo;
+    Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    if(getLivelloFondenza()==1) fondenza="0%";
+    else if(getLivelloFondenza()==2) fondenza="50%";
+    else if(getLivelloFondenza()==3) fondenza="75%";
+    else fondenza="90%";
+    if(getTipoGranella()==1) granella="Cocco";
+    else if(getTipoGranella()==2) granella="Noce";
+    else if(getTipoGranella()==3) granella="Mandorla";
+    else granella="Nocciola";
+    return frase.append("\n Percentuale di fondenza: "+fondenza)
+           .append("\n Tipo di granella: "+granella)
+           .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
+           .append("\n Ricavo: "+Ricavo.str()+("€"));
+
+}
+
 double cioccolata::ricavo() const{
     return (prezzo()/100)*25;
 }
@@ -192,6 +257,25 @@ double infusi::prezzo() const{
     if(aroma.size()==1) return conto;
     else return conto+3;
 }
+
+std::string infusi::visualizzaInfo() const {
+    std::string frase = consumabile::visualizzaInfo();
+    std::string aroma="";
+    std::stringstream Ricavo;
+    Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
+    std::stringstream Prezzo;
+    Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    std::vector<std::string> vettore=getAroma();
+    for(std::vector<std::string>::const_iterator cit=vettore.cbegin();cit!=vettore.cend();++cit) {
+        if(cit!=vettore.cend()-1) aroma.append(*cit+",");
+        else aroma.append(*cit);
+    }
+    return frase.append("\n Aroma: "+aroma)
+           .append("\n Sfuso :").append(getSfuso() ? "Si" : "No")
+           .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
+           .append("\n Ricavo: "+Ricavo.str()+("€"));
+}
+
 double infusi::ricavo() const{
     return (prezzo()/100)*20;
 }
@@ -218,6 +302,17 @@ void nonConsumabile::setColori(std::string c){
     colori.push_back(c);
     return;
 }
+//METODI
+std::string nonConsumabile::visualizzaInfo() const {
+    std::string frase = catalogo::visualizzaInfo();
+    std::string colori="";
+    std::vector<std::string> vettore=getColori();
+    for(std::vector<std::string>::const_iterator cit=vettore.cbegin();cit!=vettore.cend();++cit) {
+        if(cit!=vettore.cend()-1) colori.append(*cit+",");
+        else colori.append(*cit);
+    }
+    return frase.append("\n Colori: "+colori);
+}
 
 
 
@@ -229,19 +324,24 @@ bong::bong(std::string n,bool cr,std::vector<std::string> c,bool frm,int alt,dou
 bool bong::getForma() const{
     return forma;
 }
+
 int bong::getAltezza() const{
     return altezza;
 }
+
 double bong::getLarghezza() const{
     return larghezza;
 }
+
 //SET
 bool bong::setForma(bool frm){
     return forma=frm;
 }
+
 int bong::setAltezza(int alt){
     return altezza=alt;
 }
+
 double bong::setLarghezza(double largh){
     return larghezza=largh;
 }
@@ -261,9 +361,30 @@ double  bong::prezzo() const{
 
     return  prezzo;
 }
+
+std::string bong::visualizzaInfo() const {
+    std::string frase = nonConsumabile::visualizzaInfo();
+    std::string altezza;
+    std::stringstream Ricavo;
+    Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
+    std::stringstream Prezzo;
+    Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    if(getAltezza()==1) altezza="24";
+    else if(getAltezza()==2) altezza="32";
+    else if(getAltezza()==3) altezza="37";
+    else if(getAltezza()==4) altezza="46";
+    else if(getAltezza()==5) altezza="33";
+    else altezza="45";
+    return frase.append("\n Forma :").append(getForma() ? "Beaker" : "Dritto")
+           .append("\n Dimensioni(HxL): "+altezza).append("X")+std::to_string(getLarghezza()).append("cm")
+           .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
+           .append("\n Ricavo: "+Ricavo.str()+("€"));
+}
+
 double bong::ricavo() const{
     return (prezzo()/100)*18;
 }
+
 std::string  bong::tipoElemento() const{
     return "bong";
 }
@@ -304,6 +425,24 @@ double vaporizzatore::prezzo() const{
     else prezzo+=100;
     return prezzo+=getCapienza()*0.25;
 }
+
+std::string vaporizzatore::visualizzaInfo() const {
+    std::string frase = nonConsumabile::visualizzaInfo();
+    std::string velocita;
+    std::stringstream Ricavo;
+    Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
+    std::stringstream Prezzo;
+    Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    if(getVelocitaEvaporazione()==1) velocita="LV 1";
+    else if(getVelocitaEvaporazione()==2) velocita="LV 2";
+    else velocita="LV 3";
+    return frase.append("\n Velocità  avaporazione: "+velocita)
+            .append("\n Capienza sportello (in grammi): ")+std::to_string(getCapienza())
+            .append("\n Schermo :").append(getSchermo() ? "Si" : "No")
+            .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
+            .append("\n Ricavo: "+Ricavo.str()+("€"));
+}
+
 double vaporizzatore::ricavo() const{
     return (prezzo()/100)*12;
 }
@@ -337,6 +476,17 @@ double grinder::prezzo() const{
     if(raccoglipolline) prezzo+=12;
     else prezzo+=10;
     return prezzo;
+}
+std::string grinder::visualizzaInfo() const {
+    std::string frase = nonConsumabile::visualizzaInfo();
+    std::stringstream Ricavo;
+    Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
+    std::stringstream Prezzo;
+    Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    return frase.append("\n Numero di denti: ")+std::to_string(getNdenti())
+            .append("\n Raccogli Polline :").append(getRaccogliPolline() ? "Si" : "No")
+            .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
+            .append("\n Ricavo: "+Ricavo.str()+("€"));
 }
 double grinder::ricavo() const{
     return (prezzo()/100)*15;

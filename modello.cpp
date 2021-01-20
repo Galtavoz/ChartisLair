@@ -167,6 +167,7 @@ void Modello::Carica() {
     if(lettore.readNextStartElement()) {
         if(lettore.name()=="root") {
             while(lettore.readNextStartElement()) {
+
                 const QXmlStreamAttributes field = lettore.attributes();
 
                 std::string nome = field.value("nome").toString().toStdString();
