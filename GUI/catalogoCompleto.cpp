@@ -10,8 +10,8 @@ catalogoCompleto::catalogoCompleto(QWidget* p):
     QHBoxLayout* bottoni = new QHBoxLayout();
 
     listaCatalogo->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    modifica->setText("Modifica il piatto");
-    rimuovi->setText("Rimuovi il piatto");
+    modifica->setText("Modifica");
+    rimuovi->setText("Rimuovi");
 
     bottoni->addWidget(modifica);
     bottoni->addWidget(rimuovi);

@@ -20,6 +20,7 @@ SOURCES += \
     GUI/catalogoLista.cpp \
     GUI/controller.cpp \
     GUI/elementoWidget.cpp \
+    GUI/menu.cpp \
     GUI/popup.cpp \
     gerarchia.cpp \
     main.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     GUI/catalogoLista.h \
     GUI/controller.h \
     GUI/elementoWidget.h \
+    GUI/menu.h \
     GUI/popup.h \
     container.h \
     gerarchia.h \

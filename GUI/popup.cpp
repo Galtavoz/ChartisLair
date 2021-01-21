@@ -8,12 +8,12 @@ popup::popup(QString n,QString t):
     this->setText(testo);
     if(n == "Informazione") {
         setIcon(QMessageBox::Information);
-        setWindowIcon(QIcon(":/IMMAGINI/question.png"));
+        setWindowIcon(QIcon("../ChartisLair/IMMAGINI/logo.png"));
     } else if(n== "Warning") {
         setIcon(QMessageBox::Warning);
-        setWindowIcon(QIcon(":/IMMAGINI/exclamation.png"));
+        setWindowIcon(QIcon("../ChartisLair/IMMAGINI/logo.png"));
     } else {
         setIcon(QMessageBox::Critical);
-        setWindowIcon(QIcon(":/IMMAGINI/skull.jpg"));
+        setWindowIcon(QIcon("../ChartisLair/IMMAGINI/logo.png"));
     }
 }

@@ -66,12 +66,14 @@ std::string consumabile::visualizzaInfo() const {
     std::string frase = catalogo::visualizzaInfo();
     std::string ingredienti="";
     std::vector<std::string> vettore=getIngredienti();
+    std::stringstream Peso;
+    Peso<<std::fixed<<std::setprecision(3)<<getPeso();
     for(std::vector<std::string>::const_iterator cit=vettore.cbegin();cit!=vettore.cend();++cit) {
         if(cit!=vettore.cend()-1) ingredienti.append(*cit+",");
         else ingredienti.append(*cit);
     }
     return frase.append("\n Ingredienti: "+ingredienti)
-           .append("\n Peso(in Kg): ")+std::to_string(getPeso())
+           .append("\n Peso(in Kg): ")+Peso.str().append("Kg")
            .append("\n Tipologia di erba: ").append(getErba() ? "Indica" : "Sativa")
            .append("\n Produzione :").append(getProduzione() ? "Indoor" : "Outdoor");
 }
@@ -100,18 +102,18 @@ int biscotti::setGocceCioccolata(int gc){
 }
 //METODI
 double biscotti::prezzo() const{
-    double conto=100*getPeso();
-    if(tipoFarina==1) conto+=getPeso()*0.99;
-    else if (tipoFarina==2)conto+=getPeso()*5;
-    else if (tipoFarina==3)conto+=getPeso()*20;
-    else if (tipoFarina==4)conto+=getPeso()*24;
-    else conto+=getPeso()*9;
+    double prezzo=100*getPeso();
+    if(tipoFarina==1) prezzo+=getPeso()*0.99;
+    else if (tipoFarina==2)prezzo+=getPeso()*5;
+    else if (tipoFarina==3)prezzo+=getPeso()*20;
+    else if (tipoFarina==4)prezzo+=getPeso()*24;
+    else prezzo+=getPeso()*9;
 
-    if(gocceCioccolata==1) conto+=6.20;
-    else if (gocceCioccolata==2)conto+=5.99;
-    else if (gocceCioccolata==3)conto+=5.50;
+    if(gocceCioccolata==1) prezzo+=6.20;
+    else if (gocceCioccolata==2)prezzo+=5.99;
+    else if (gocceCioccolata==3)prezzo+=5.50;
 
-    return conto;
+    return prezzo;
 }
 
 std::string biscotti::visualizzaInfo() const {
@@ -178,18 +180,18 @@ bool cioccolata::setForma(bool frm){
 }
 //METODI
 double cioccolata::prezzo() const{
-    double conto=30*getPeso();
-    if(livelloFondenza ==1) conto=conto+(getPeso()*9);
-    else if (livelloFondenza ==2) conto=conto+(getPeso()*7);
-    else if (livelloFondenza ==3) conto=conto+(getPeso()*7.50);
-    else conto=conto+(getPeso()*8);
+    double prezzo=30*getPeso();
+    if(livelloFondenza ==1) prezzo+=(getPeso()*9);
+    else if (livelloFondenza ==2) prezzo+=(getPeso()*7);
+    else if (livelloFondenza ==3) prezzo+=(getPeso()*7.50);
+    else prezzo+=(getPeso()*8);
 
-    if(tipoGranella == 1) conto+=(getPeso()/2)*0.30;
-    else if(tipoGranella == 2) conto+=(getPeso()/2)*0.40;
-    else if(tipoGranella == 3)conto+=(getPeso()/2)*0.60;
-    else if(tipoGranella == 4) conto+=(getPeso()/2)*0.80;
+    if(tipoGranella == 1) prezzo+=(getPeso()/2)*0.30;
+    else if(tipoGranella == 2) prezzo+=(getPeso()/2)*0.40;
+    else if(tipoGranella == 3)prezzo+=(getPeso()/2)*0.60;
+    else if(tipoGranella == 4) prezzo+=(getPeso()/2)*0.80;
 
-    return conto;
+    return prezzo;
 }
 
 std::string cioccolata::visualizzaInfo() const {
@@ -251,11 +253,11 @@ bool infusi::setSfuso(bool sf){
 }
 //METODI
 double infusi::prezzo() const{
-    double conto=10*getPeso();
-    if(sfuso) conto=conto+(getPeso()*39.85);
-    else conto=conto+(getPeso()*29.98);
-    if(aroma.size()==1) return conto;
-    else return conto+3;
+    double prezzo=10*getPeso();
+    if(sfuso) prezzo+=getPeso()*39.85;
+    else prezzo+=getPeso()*29.98;
+    if(aroma.size()==1) return prezzo;
+    else return prezzo+3;
 }
 
 std::string infusi::visualizzaInfo() const {
@@ -369,6 +371,8 @@ std::string bong::visualizzaInfo() const {
     Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
     std::stringstream Prezzo;
     Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
+    std::stringstream Larghezza;
+    Larghezza<<std::fixed<<std::setprecision(2)<<getLarghezza();
     if(getAltezza()==1) altezza="24";
     else if(getAltezza()==2) altezza="32";
     else if(getAltezza()==3) altezza="37";
@@ -376,7 +380,7 @@ std::string bong::visualizzaInfo() const {
     else if(getAltezza()==5) altezza="33";
     else altezza="45";
     return frase.append("\n Forma :").append(getForma() ? "Beaker" : "Dritto")
-           .append("\n Dimensioni(HxL): "+altezza).append("X")+std::to_string(getLarghezza()).append("cm")
+           .append("\n Dimensioni(HxL): "+altezza+(" X "))+Larghezza.str().append("cm")
            .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
            .append("\n Ricavo: "+Ricavo.str()+("€"));
 }

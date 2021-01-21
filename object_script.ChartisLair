@@ -2,10 +2,12 @@ catalogoCompleto.o
 catalogoLista.o
 controller.o
 elementoWidget.o
+menu.o
 popup.o
 gerarchia.o
 main.o
 mainwindow.o
 modello.o
 moc_controller.o
+moc_menu.o
 moc_mainwindow.o

@@ -190,7 +190,7 @@ void Modello::Carica() {
                     listaIngredienti.push_back(ing);
                     ing.clear();
                     }
-                    double peso = field.value("peso").toUInt();
+                    double peso = field.value("peso").toDouble();
                     bool erba = field.value("erba").toString()=="Si" ? true : false;
                     bool produzione = field.value("produzione").toString()=="Si" ? true : false;
                     int tipoFarina = field.value("tipoFarina").toUInt();
@@ -214,7 +214,7 @@ void Modello::Carica() {
                     listaIngredienti.push_back(ing);
                     ing.clear();
                     }
-                    double peso = field.value("peso").toUInt();
+                    double peso = field.value("peso").toDouble();
                     bool erba = field.value("erba").toString()=="Si" ? true : false;
                     bool produzione = field.value("produzione").toString()=="Si" ? true : false;
                     int tipoGranella = field.value("tipoGranella").toUInt();
@@ -239,7 +239,7 @@ void Modello::Carica() {
                     listaIngredienti.push_back(ing);
                     ing.clear();
                     }
-                    double peso = field.value("peso").toUInt();
+                    double peso = field.value("peso").toDouble();
                     bool erba = field.value("erba").toString()=="Si" ? true : false;
                     bool produzione = field.value("produzione").toString()=="Si" ? true : false;
                     std::string aroma = field.value("aroma").toString().toStdString();
@@ -278,7 +278,7 @@ void Modello::Carica() {
                     }
                     bool forma = field.value("forma").toString()=="Si" ? true : false;
                     int altezza = field.value("altezza").toUInt();
-                    double larghezza = field.value("larghezza").toUInt();
+                    double larghezza = field.value("larghezza").toDouble();
 
 
                     inserisci = new bong(nome,confezioneRegalo,listaColori,forma,altezza,larghezza);

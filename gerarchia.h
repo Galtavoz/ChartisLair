@@ -166,7 +166,7 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
-     virtual std::string visualizzaInfo() const override;
+    virtual std::string visualizzaInfo() const override;
 };
 
 //VAPORIZZATORE

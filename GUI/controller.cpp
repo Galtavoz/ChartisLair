@@ -3,6 +3,7 @@
 Controller::Controller(Modello* m,QWidget* p):
     parent(p),
     modello(m),
+    menu(new Menu(this)),
     catCompleto(new catalogoCompleto(this)),
     file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ChartisLair/SALVATAGGIO","File XML(*.xml)")){
 
@@ -15,8 +16,16 @@ Controller::Controller(Modello* m,QWidget* p):
     QRect screenGeometry = QGuiApplication::screens()[0]->geometry();
     setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), screenGeometry));
 
+    controller->addWidget(menu);
     controller->addWidget(catCompleto);
     caricaDati();
+
+    menu->show();
+    catCompleto->show();
+
+    connect(menu->getEsci(),SIGNAL(triggered()),this,SLOT(esci()));
+    connect(menu->getCarica(),SIGNAL(triggered()),this,SLOT(carica()));
+    connect(menu->getHome(),SIGNAL(triggered()),this,SLOT(tornaHome()));
 }
 void Controller::caricaDati() {
     if(file!="") {
@@ -53,32 +62,6 @@ void Controller::caricaDatiXML() {
         } else {
             lista<catalogo*>::iteratoreConst inizioLista = modello->inizioCIter();
             lista<catalogo*>::iteratoreConst fineLista = modello->fineCIter();
-
-            /*if(menuSelezionato=="Menu Completo") {
-                for(;inizioLista!=fineLista;++inizioLista) {
-                    catCompleto->getLista()->aggiungiPiatto(*inizioLista);
-                }
-            } else if(menuSelezionato=="Sushi") {
-                for(;inizioLista!=fineLista;++inizioLista) {
-                   if(dynamic_cast<sushi*>(const_cast<catalogo*>(*inizioLista))) menuComp->getLista()->aggiungiPiatto(*inizioLista);
-                }
-            } else if(menuSelezionato=="Udon") {
-                for(;inizioLista!=fineLista;++inizioLista) {
-                   if(dynamic_cast<udon*>(const_cast<catalogo*>(*inizioLista))) menuComp->getLista()->aggiungiPiatto(*inizioLista);
-                }
-            } else if(menuSelezionato=="Ramen") {
-                for(;inizioLista!=fineLista;++inizioLista) {
-                   if(dynamic_cast<ramen*>(const_cast<piatto*>(*inizioLista))) menuComp->getLista()->aggiungiPiatto(*inizioLista);
-                }
-            } else if(menuSelezionato=="Riso Condito") {
-                for(;inizioLista!=fineLista;++inizioLista) {
-                   if(dynamic_cast<risoCondito*>(const_cast<piatto*>(*inizioLista))) menuComp->getLista()->aggiungiPiatto(*inizioLista);
-                }
-            } else {
-                for(;inizioLista!=fineLista;++inizioLista) {
-                    menuComp->getLista()->aggiungiPiatto(*inizioLista);
-                }
-            }*/
             for(;inizioLista!=fineLista;++inizioLista) {
                 catCompleto->getLista()->aggiungiElemento(*inizioLista);
             }
@@ -97,11 +80,56 @@ Modello* Controller::getModello() const {
 void Controller::disabilita() {
 
     catCompleto->hide();
+    menu->getSalva()->setEnabled(false);
+    menu->getRicerca()->setEnabled(false);
 
 }
 
 void Controller::abilita() {
 
     catCompleto->show();
+    menu->getSalva()->setEnabled(true);
+    menu->getRicerca()->setEnabled(true);
 
+}
+void Controller::esci() {
+    close();
+}
+void Controller::carica() {
+    caricaDatiXML();
+}
+void Controller::tornaHome(){
+    catCompleto->show();
+
+}
+void Controller::vediInfoSviluppatore() {
+    popup* informazioni = new popup("Informazione","Progetto realizzato da: Galtarossa Marco. Numero di matricola 1096393.\n Per qualsiasi necessità"
+                                                     " contattare tramite email: \n marco.galtarossa.2@studenti.unipd.it");
+    informazioni->exec();
+}
+
+void Controller::vediInfoCatalogo() {
+    int totale = modello->contaCatalogo();
+    int biscotti = modello->contaBiscotti();
+    int cioccolata = modello->contaCioccolata();
+    int infusi = modello->contaInfusi();
+    int bong = modello->contaBong();
+    int vapo = modello->contaVapo();
+    int grinder = modello->contaGrinder();
+    QString info = "Il numero totale dei prodotti in magazzino è ";
+    info.append(QString::number(totale));
+    info.append("\n Il numero di confezioni di biscotti disponibili è ");
+    info.append(QString::number(biscotti));
+    info.append("\n Il numero di confezioni di cioccolata disponibili è ");
+    info.append(QString::number(cioccolata));
+    info.append("\n Il numero di confezioni di infuso disponibili è ");
+    info.append(QString::number(infusi));
+    info.append("\n Il numero di bong disponibili è ");
+    info.append(QString::number(bong));
+    info.append("\n Il numero di vaporizzatori disponibili è ");
+    info.append(QString::number(vapo));
+    info.append("\n Il numero di grinder disponibili è ");
+    info.append(QString::number(grinder));
+    popup* informazioni = new popup("Informazione",info);
+    informazioni->exec();
 }

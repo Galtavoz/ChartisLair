@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<biscotti nome="Biscotti al cioccolato e cocco" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,cioccolato,cocco,erba" peso="0,450" erba="Sativa" produzione="Indoor" tipoFarina="2" gocceCioccolato="4"/>
-	<biscotti nome="Biscotti alla margehrita" confezioneRegalo="Si" ingredienti="farina,uova,burro,zucchero,erba" peso="0,750" erba="Indica" produzione="Indoor" tipoFarina="3" gocceCioccolato="2"/>
-	<cioccolata nome="Praline con nocciole" confezioneRegalo="No" ingredienti="Cioccolato, burro, zucchero" peso="0,250" erba="Sativa" produzione="Outdoor" livelloFondenza="2" tipoGranella="4" forma="No"/>
-	<cioccolata nome="Barretta con noci" confezioneRegalo="No" ingredienti="Cioccolato, burro, zucchero" peso="0,500" erba="Sativa" produzione="Indoor" livelloFondenza="3" tipoGranella="2" forma="Si"/>
-	<infusi nome="Infuso del pomeriggio" confezioneRegalo="Si" ingredienti="Foglie di the, melissa" peso="0,500" erba="Outdoor" produzione="Indica" aroma="karkade" sfuso="Si"/>
-	<infusi nome="Infuso digestivo" confezioneRegalo="Si" ingredienti="Foglie di the,salvia" peso="0,250" erba="Outdoor" produzione="Sativa" aroma="zenzero,limone" sfuso="No"/>
-	<bong nome="Margherita" confezioneRegalo="Si" colori="Blu" forma="Si" altezza="5" larghezza="4,6"/>
-	<bong nome="Daniele" confezioneRegalo="Si" colori="Verde" forma="No" altezza="4" larghezza="6,7"/>
+	<biscotti nome="Biscotti al cioccolato e cocco" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,cioccolato,cocco,erba" peso="0.450" erba="Sativa" produzione="Indoor" tipoFarina="2" gocceCioccolato="4"/>
+	<biscotti nome="Biscotti alla margehrita" confezioneRegalo="Si" ingredienti="farina,uova,burro,zucchero,erba" peso="0.750" erba="Indica" produzione="Indoor" tipoFarina="3" gocceCioccolato="2"/>
+	<cioccolata nome="Praline con nocciole" confezioneRegalo="No" ingredienti="Cioccolato, burro, zucchero" peso="0.250" erba="Sativa" produzione="Outdoor" livelloFondenza="2" tipoGranella="4" forma="No"/>
+	<cioccolata nome="Barretta con noci" confezioneRegalo="No" ingredienti="Cioccolato, burro, zucchero" peso="0.500" erba="Sativa" produzione="Indoor" livelloFondenza="3" tipoGranella="2" forma="Si"/>
+	<infusi nome="Infuso del pomeriggio" confezioneRegalo="Si" ingredienti="Foglie di the, melissa" peso="0.500" erba="Outdoor" produzione="Indica" aroma="karkade" sfuso="Si"/>
+	<infusi nome="Infuso digestivo" confezioneRegalo="Si" ingredienti="Foglie di the,salvia" peso="0.250" erba="Outdoor" produzione="Sativa" aroma="zenzero,limone" sfuso="No"/>
+	<bong nome="Margherita" confezioneRegalo="Si" colori="Blu" forma="Si" altezza="5" larghezza="4.6"/>
+	<bong nome="Daniele" confezioneRegalo="Si" colori="Verde" forma="No" altezza="4" larghezza="6.7"/>
 	<vaporizzatore nome="O'Vesuvio" confezioneRegalo="No" colori="Rosso" velocita="1" capienza="5" schermo="No"/>
 	<vaporizzatore nome="Krakatoa" confezioneRegalo="Si" colori="Verde" velocita="3" capienza="8" schermo="Si"/>
 	<grinder nome="Birello" confezioneRegalo="Si" colori="Giallo" ndenti="32" raccogliPolline="Si"/>

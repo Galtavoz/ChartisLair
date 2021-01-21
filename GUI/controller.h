@@ -16,6 +16,7 @@
 
 #include"modello.h"
 #include"GUI/popup.h"
+#include"GUI/menu.h"
 #include"GUI/catalogoCompleto.h"
 
 class Controller: public QWidget {
@@ -23,6 +24,7 @@ class Controller: public QWidget {
 private:
     QWidget* parent;
     Modello* modello;
+    Menu* menu;
     catalogoCompleto* catCompleto;
     QString file;
 public:
@@ -33,5 +35,11 @@ public:
     Modello* getModello() const;
     void disabilita();
     void abilita();
+public slots:
+        void esci();
+        void carica();
+        void tornaHome();
+        void vediInfoSviluppatore();
+        void vediInfoCatalogo();
 };
 #endif // CONTROLLER_H
