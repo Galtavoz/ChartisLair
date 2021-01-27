@@ -4,6 +4,7 @@ Controller::Controller(Modello* m,QWidget* p):
     parent(p),
     modello(m),
     menu(new Menu(this)),
+    ricerca(new Ricerca(this)),
     catCompleto(new catalogoCompleto(this)),
     file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ChartisLair/SALVATAGGIO","File XML(*.xml)")){
 
@@ -18,14 +19,17 @@ Controller::Controller(Modello* m,QWidget* p):
 
     controller->addWidget(menu);
     controller->addWidget(catCompleto);
+    controller->addWidget(ricerca);
     caricaDati();
 
     menu->show();
     catCompleto->show();
+    ricerca->hide();
 
     connect(menu->getEsci(),SIGNAL(triggered()),this,SLOT(esci()));
     connect(menu->getCarica(),SIGNAL(triggered()),this,SLOT(carica()));
     connect(menu->getHome(),SIGNAL(triggered()),this,SLOT(tornaHome()));
+    connect(menu->getRicerca(),SIGNAL(triggered()),this,SLOT(vediRicerca()));
 }
 void Controller::caricaDati() {
     if(file!="") {
@@ -68,6 +72,7 @@ void Controller::caricaDatiXML() {
             modello->setSalvaModifiche(true);
         }
     } else {
+        disabilita();
         modello->setPath(file.toStdString());
     }
 }
@@ -99,8 +104,13 @@ void Controller::carica() {
     caricaDatiXML();
 }
 void Controller::tornaHome(){
+    ricerca->hide();
     catCompleto->show();
+}
+void Controller::vediRicerca(){
 
+    catCompleto->hide();
+    ricerca->show();
 }
 void Controller::vediInfoSviluppatore() {
     popup* informazioni = new popup("Informazione","Progetto realizzato da: Galtarossa Marco. Numero di matricola 1096393.\n Per qualsiasi necessità"

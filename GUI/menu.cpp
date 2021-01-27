@@ -6,7 +6,8 @@ Menu::Menu(QWidget* p):
     carica(new QAction("Carica file",p)),
     salva(new QAction("Salva",p)),
     esci(new QAction("Esci",p)),
-    ricerca(new QMenu("Ricerca",p)),
+    inserisci(new QMenu("Inserisci",p)),
+    ricerca(new QAction("Ricerca",p)),
     informazioni(new QMenu("Informazioni",p)),
     infoCatalogo(new QAction("Informazioni Catalogo",p)),
     infoSviluppatore(new QAction("Informazioni Sviluppatore",p))
@@ -18,7 +19,8 @@ Menu::Menu(QWidget* p):
         file->addAction(salva);
         file->addAction(esci);
 
-    addMenu(ricerca);
+    addMenu(inserisci);
+    addAction(ricerca);
     addMenu(informazioni);
         informazioni->addAction(infoCatalogo);
         informazioni->addAction(infoSviluppatore);
@@ -26,7 +28,10 @@ Menu::Menu(QWidget* p):
         connect(infoCatalogo,SIGNAL(triggered()),parent,SLOT(vediInfoCatalogo()));
         connect(infoSviluppatore,SIGNAL(triggered()),parent,SLOT(vediInfoSviluppatore()));
 }
-QMenu* Menu::getRicerca() const {
+QMenu* Menu::getInserisci() const {
+    return inserisci;
+}
+QAction* Menu::getRicerca() const {
     return ricerca;
 }
 QAction* Menu::getHome() const {

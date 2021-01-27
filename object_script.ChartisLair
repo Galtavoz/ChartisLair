@@ -4,10 +4,12 @@ controller.o
 elementoWidget.o
 menu.o
 popup.o
+ricerca.o
 gerarchia.o
 main.o
 mainwindow.o
 modello.o
 moc_controller.o
 moc_menu.o
+moc_ricerca.o
 moc_mainwindow.o
