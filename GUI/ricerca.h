@@ -92,5 +92,30 @@ public slots:
 
     void resetDim();
 
+    //CHECKFARINE
+    void checkGrano(bool);
+    void checkRiso(bool);
+    void checkMandorle(bool);
+    void checkCastagne(bool);
+    void checkAmaranto(bool);
+    //CHECKGOCCE
+    void checkSenza(bool);
+    void checkLatte(bool);
+    void checkFondente(bool);
+    void checkBianco(bool);
+    //CHECKFONDENZA
+    void checkNessuna(bool);
+    void checkBassa(bool);
+    void checkMedia(bool);
+    void checkAlta(bool);
+    //CHECKGRANELLA
+    void checkCocco(bool);
+    void checkNoce(bool);
+    void checkMandorla(bool);
+    void checkNocciola(bool);
+    //CHECKFORMAC
+    void checkStecche(bool);
+    void checkPraline(bool);
+
 };
 #endif // RICERCA_H

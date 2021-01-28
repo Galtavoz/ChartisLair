@@ -310,6 +310,32 @@ Ricerca::Ricerca(QWidget* p):
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteFormaBong()));
       connect(backer,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniB(bool)));
       connect(dritto,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniD(bool)));
+
+      //CONNECT CHECKFARINE
+      connect(grano,SIGNAL(toggled(bool)),this,SLOT(checkGrano(bool)));
+      connect(riso,SIGNAL(toggled(bool)),this,SLOT(checkRiso(bool)));
+      connect(mandorle,SIGNAL(toggled(bool)),this,SLOT(checkMandorle(bool)));
+      connect(castagne,SIGNAL(toggled(bool)),this,SLOT(checkCastagne(bool)));
+      connect(amaranto,SIGNAL(toggled(bool)),this,SLOT(checkAmaranto(bool)));
+      //CONNECT CHECKGOCCE
+      connect(senza,SIGNAL(toggled(bool)),this,SLOT(checkSenza(bool)));
+      connect(latte,SIGNAL(toggled(bool)),this,SLOT(checkLatte(bool)));
+      connect(fondente,SIGNAL(toggled(bool)),this,SLOT(checkFondente(bool)));
+      connect(bianco,SIGNAL(toggled(bool)),this,SLOT(checkBianco(bool)));
+      //CONNECT CHECKFONDENZA
+      connect(nessuna,SIGNAL(toggled(bool)),this,SLOT(checkNessuna(bool)));
+      connect(bassa,SIGNAL(toggled(bool)),this,SLOT(checkBassa(bool)));
+      connect(media,SIGNAL(toggled(bool)),this,SLOT(checkMedia(bool)));
+      connect(alta,SIGNAL(toggled(bool)),this,SLOT(checkAlta(bool)));
+      //CONNECT CHECKGRANELLA
+      connect(cocco,SIGNAL(toggled(bool)),this,SLOT(checkCocco(bool)));
+      connect(noce,SIGNAL(toggled(bool)),this,SLOT(checkNoce(bool)));
+      connect(mandorla,SIGNAL(toggled(bool)),this,SLOT(checkMandorla(bool)));
+      connect(nocciola,SIGNAL(toggled(bool)),this,SLOT(checkNocciola(bool)));
+      //CONNECT CHECKFORMAC
+      connect(stecche,SIGNAL(toggled(bool)),this,SLOT(checkStecche(bool)));
+      connect(praline,SIGNAL(toggled(bool)),this,SLOT(checkPraline(bool)));
+
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteVapo()));
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteGrinder()));
 
@@ -318,18 +344,20 @@ Ricerca::Ricerca(QWidget* p):
 }
 void Ricerca::scelteBiscotti(){
     if(tipoProdotto->currentText()=="Biscotti"){
+        //FARINE
         lableTipoFarine->show();
         grano->show();
         riso->show();
         mandorle->show();
         castagne->show();
         amaranto->show();
-
+        //GOCCE
         lableTipoGocce->show();
         senza->show();
         latte->show();
         fondente->show();
         bianco->show();
+
     }
     else{
         lableTipoFarine->hide();
@@ -456,3 +484,230 @@ void Ricerca::resetDim(){
         dimDritto->hide();
     }
 }
+//CHECKFARINE
+void Ricerca::checkGrano(bool f){
+    if(f){
+        riso->setEnabled(false);
+        mandorle->setEnabled(false);
+        castagne->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Ricerca::checkRiso(bool f){
+    if(f){
+        grano->setEnabled(false);
+        mandorle->setEnabled(false);
+        castagne->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        grano->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Ricerca::checkMandorle(bool f){
+    if(f){
+        grano->setEnabled(false);
+        riso->setEnabled(false);
+        castagne->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Ricerca::checkCastagne(bool f){
+    if(f){
+        grano->setEnabled(false);
+        riso->setEnabled(false);
+        mandorle->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Ricerca::checkAmaranto(bool f){
+    if(f){
+        grano->setEnabled(false);
+        riso->setEnabled(false);
+        castagne->setEnabled(false);
+        mandorle->setEnabled(false);
+    }
+    else{
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        castagne->setEnabled(true);
+        mandorle->setEnabled(true);
+    }
+}
+//CHECKGOCCE
+void Ricerca::checkSenza(bool f){
+    if(f){
+        latte->setEnabled(false);
+        fondente->setEnabled(false);
+        bianco->setEnabled(false);
+    }
+    else{
+        latte->setEnabled(true);
+        fondente->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+}
+void Ricerca::checkLatte(bool f){
+    if(f){
+        senza->setEnabled(false);
+        fondente->setEnabled(false);
+        bianco->setEnabled(false);
+    }
+    else{
+        senza->setEnabled(true);
+        fondente->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+}
+void Ricerca::checkFondente(bool f){
+    if(f){
+        senza->setEnabled(false);
+        latte->setEnabled(false);
+        bianco->setEnabled(false);
+    }
+    else{
+        senza->setEnabled(true);
+        latte->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+}
+void Ricerca::checkBianco(bool f){
+    if(f){
+        senza->setEnabled(false);
+        latte->setEnabled(false);
+        fondente->setEnabled(false);
+    }
+    else{
+        senza->setEnabled(true);
+        latte->setEnabled(true);
+        fondente->setEnabled(true);
+    }
+}
+//CHECKFONDENZA
+void Ricerca::checkNessuna(bool f){
+    if(f){
+        bassa->setEnabled(false);
+        media->setEnabled(false);
+        alta->setEnabled(false);
+    }
+    else{
+        bassa->setEnabled(true);
+        media->setEnabled(true);
+        alta->setEnabled(true);
+    }
+}
+void Ricerca::checkBassa(bool f){
+    if(f){
+        nessuna->setEnabled(false);
+        media->setEnabled(false);
+        alta->setEnabled(false);
+    }
+    else{
+        nessuna->setEnabled(true);
+        media->setEnabled(true);
+        alta->setEnabled(true);
+    }
+}
+void Ricerca::checkMedia(bool f){
+    if(f){
+        nessuna->setEnabled(false);
+        bassa->setEnabled(false);
+        alta->setEnabled(false);
+    }
+    else{
+        nessuna->setEnabled(true);
+        bassa->setEnabled(true);
+        alta->setEnabled(true);
+    }
+}
+void Ricerca::checkAlta(bool f){
+    if(f){
+        nessuna->setEnabled(false);
+        bassa->setEnabled(false);
+        media->setEnabled(false);
+    }
+    else{
+        nessuna->setEnabled(true);
+        bassa->setEnabled(true);
+        media->setEnabled(true);
+    }
+}
+//CHECKGRANELLA
+void Ricerca::checkCocco(bool f){
+    if(f){
+        noce->setEnabled(false);
+        mandorla->setEnabled(false);
+        nocciola->setEnabled(false);
+    }
+    else{
+        noce->setEnabled(true);
+        mandorla->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+}
+void Ricerca::checkNoce(bool f){
+    if(f){
+        cocco->setEnabled(false);
+        mandorla->setEnabled(false);
+        nocciola->setEnabled(false);
+    }
+    else{
+        cocco->setEnabled(true);
+        mandorla->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+}
+void Ricerca::checkMandorla(bool f){
+    if(f){
+        cocco->setEnabled(false);
+        noce->setEnabled(false);
+        nocciola->setEnabled(false);
+    }
+    else{
+        cocco->setEnabled(true);
+        noce->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+}
+void Ricerca::checkNocciola(bool f){
+    if(f){
+        cocco->setEnabled(false);
+        noce->setEnabled(false);
+        mandorla->setEnabled(false);
+    }
+    else{
+        cocco->setEnabled(true);
+        noce->setEnabled(true);
+        mandorla->setEnabled(true);
+    }
+}
+void Ricerca::checkStecche(bool f){
+    if(f) praline->setEnabled(false);
+    else praline->setEnabled(true);
+}
+void Ricerca::checkPraline(bool f){
+    if(f) stecche->setEnabled(false);
+    else stecche->setEnabled(true);
+}
+
