@@ -10,6 +10,7 @@
 #include<QLabel>
 #include<QScrollBar>
 #include<QComboBox>
+#include<vector>
 
 
 
@@ -18,6 +19,7 @@ class Ricerca: public QWidget {
     Q_OBJECT
 private:
     QWidget*        parent;
+
 
     //CONSUMABILI
     QLabel*         lableTipoProdotto;
@@ -50,7 +52,7 @@ private:
 
     QLabel*         lableFormaC;
     QCheckBox*      stecche;
-    QCheckBox*      praline;
+    //QCheckBox*      praline;
 
     QLabel*         lableTipoAroma;
     QComboBox*      aroma1;
@@ -61,6 +63,7 @@ private:
     QLabel*         lableTipoBong;
     QCheckBox*      backer;
     QCheckBox*      dritto;
+    QCheckBox*      qualsiasi;
     QLabel*         lableTipoDimensioni;
     QComboBox*      dimBacker;
     QComboBox*      dimDritto;
@@ -77,8 +80,31 @@ private:
 
     QPushButton*    cerca;
     elementoWidget* catalogo;
+    QPushButton*    modifica;
+    QPushButton*    rimuovi;
 public:
     Ricerca(QWidget* = nullptr);
+    QPushButton* getCercaBut() const;
+    //QPushButton* getModificaRic() const;
+    //QPushButton* getRimuoviRic() const;
+    std::string getTipoProdotto() const;
+    int getTipoFarina() const;
+    int getTipoGocce() const;
+    int getLvFondenza() const;
+    int getTipoGranella() const;
+    bool getFormaC() const;
+    std::vector<std::string> getAroma() const;
+    bool getSfuso() const;
+    int getFormaB() const;
+    int getAltezza() const;
+    double getLarghezza() const;
+    int getVelocita() const;
+    int getCapienza() const;
+    bool getSchermo() const;
+    int getNDenti() const;
+    bool getRaccogliP() const;
+
+    elementoWidget* getListaRicerca() const;
 public slots:
     void scelteBiscotti();
     void scelteCioccolato();
@@ -91,6 +117,7 @@ public slots:
     void scelteGrinder();
 
     void resetDim();
+
 
     //CHECKFARINE
     void checkGrano(bool);
@@ -113,9 +140,11 @@ public slots:
     void checkNoce(bool);
     void checkMandorla(bool);
     void checkNocciola(bool);
-    //CHECKFORMAC
+    //CHECKQUALSIASI
+    void checkQualsiasi(bool);
+/*    //CHECKFORMAC
     void checkStecche(bool);
-    void checkPraline(bool);
+    void checkPraline(bool);*/
 
 };
 #endif // RICERCA_H

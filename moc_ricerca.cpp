@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Ricerca_t {
-    QByteArrayData data[30];
-    char stringdata0[371];
+    QByteArrayData data[29];
+    char stringdata0[360];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -60,8 +60,7 @@ QT_MOC_LITERAL(24, 296, 10), // "checkCocco"
 QT_MOC_LITERAL(25, 307, 9), // "checkNoce"
 QT_MOC_LITERAL(26, 317, 13), // "checkMandorla"
 QT_MOC_LITERAL(27, 331, 13), // "checkNocciola"
-QT_MOC_LITERAL(28, 345, 12), // "checkStecche"
-QT_MOC_LITERAL(29, 358, 12) // "checkPraline"
+QT_MOC_LITERAL(28, 345, 14) // "checkQualsiasi"
 
     },
     "Ricerca\0scelteBiscotti\0\0scelteCioccolato\0"
@@ -73,8 +72,7 @@ QT_MOC_LITERAL(29, 358, 12) // "checkPraline"
     "checkLatte\0checkFondente\0checkBianco\0"
     "checkNessuna\0checkBassa\0checkMedia\0"
     "checkAlta\0checkCocco\0checkNoce\0"
-    "checkMandorla\0checkNocciola\0checkStecche\0"
-    "checkPraline"
+    "checkMandorla\0checkNocciola\0checkQualsiasi"
 };
 #undef QT_MOC_LITERAL
 
@@ -84,7 +82,7 @@ static const uint qt_meta_data_Ricerca[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      28,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -92,34 +90,33 @@ static const uint qt_meta_data_Ricerca[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  154,    2, 0x0a /* Public */,
-       3,    0,  155,    2, 0x0a /* Public */,
-       4,    0,  156,    2, 0x0a /* Public */,
-       5,    0,  157,    2, 0x0a /* Public */,
-       6,    1,  158,    2, 0x0a /* Public */,
-       7,    1,  161,    2, 0x0a /* Public */,
-       8,    0,  164,    2, 0x0a /* Public */,
-       9,    0,  165,    2, 0x0a /* Public */,
-      10,    0,  166,    2, 0x0a /* Public */,
-      11,    1,  167,    2, 0x0a /* Public */,
-      12,    1,  170,    2, 0x0a /* Public */,
-      13,    1,  173,    2, 0x0a /* Public */,
-      14,    1,  176,    2, 0x0a /* Public */,
-      15,    1,  179,    2, 0x0a /* Public */,
-      16,    1,  182,    2, 0x0a /* Public */,
-      17,    1,  185,    2, 0x0a /* Public */,
-      18,    1,  188,    2, 0x0a /* Public */,
-      19,    1,  191,    2, 0x0a /* Public */,
-      20,    1,  194,    2, 0x0a /* Public */,
-      21,    1,  197,    2, 0x0a /* Public */,
-      22,    1,  200,    2, 0x0a /* Public */,
-      23,    1,  203,    2, 0x0a /* Public */,
-      24,    1,  206,    2, 0x0a /* Public */,
-      25,    1,  209,    2, 0x0a /* Public */,
-      26,    1,  212,    2, 0x0a /* Public */,
-      27,    1,  215,    2, 0x0a /* Public */,
-      28,    1,  218,    2, 0x0a /* Public */,
-      29,    1,  221,    2, 0x0a /* Public */,
+       1,    0,  149,    2, 0x0a /* Public */,
+       3,    0,  150,    2, 0x0a /* Public */,
+       4,    0,  151,    2, 0x0a /* Public */,
+       5,    0,  152,    2, 0x0a /* Public */,
+       6,    1,  153,    2, 0x0a /* Public */,
+       7,    1,  156,    2, 0x0a /* Public */,
+       8,    0,  159,    2, 0x0a /* Public */,
+       9,    0,  160,    2, 0x0a /* Public */,
+      10,    0,  161,    2, 0x0a /* Public */,
+      11,    1,  162,    2, 0x0a /* Public */,
+      12,    1,  165,    2, 0x0a /* Public */,
+      13,    1,  168,    2, 0x0a /* Public */,
+      14,    1,  171,    2, 0x0a /* Public */,
+      15,    1,  174,    2, 0x0a /* Public */,
+      16,    1,  177,    2, 0x0a /* Public */,
+      17,    1,  180,    2, 0x0a /* Public */,
+      18,    1,  183,    2, 0x0a /* Public */,
+      19,    1,  186,    2, 0x0a /* Public */,
+      20,    1,  189,    2, 0x0a /* Public */,
+      21,    1,  192,    2, 0x0a /* Public */,
+      22,    1,  195,    2, 0x0a /* Public */,
+      23,    1,  198,    2, 0x0a /* Public */,
+      24,    1,  201,    2, 0x0a /* Public */,
+      25,    1,  204,    2, 0x0a /* Public */,
+      26,    1,  207,    2, 0x0a /* Public */,
+      27,    1,  210,    2, 0x0a /* Public */,
+      28,    1,  213,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -131,7 +128,6 @@ static const uint qt_meta_data_Ricerca[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
@@ -186,8 +182,7 @@ void Ricerca::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 23: _t->checkNoce((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 24: _t->checkMandorla((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 25: _t->checkNocciola((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 26: _t->checkStecche((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 27: _t->checkPraline((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 26: _t->checkQualsiasi((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -222,13 +217,13 @@ int Ricerca::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 28)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 28;
+        _id -= 27;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 28)
+        if (_id < 27)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 28;
+        _id -= 27;
     }
     return _id;
 }

@@ -30,6 +30,8 @@ Controller::Controller(Modello* m,QWidget* p):
     connect(menu->getCarica(),SIGNAL(triggered()),this,SLOT(carica()));
     connect(menu->getHome(),SIGNAL(triggered()),this,SLOT(tornaHome()));
     connect(menu->getRicerca(),SIGNAL(triggered()),this,SLOT(vediRicerca()));
+
+    connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
 }
 void Controller::caricaDati() {
     if(file!="") {
@@ -97,6 +99,37 @@ void Controller::abilita() {
     menu->getRicerca()->setEnabled(true);
 
 }
+void Controller::ricercaProdotti(){
+    ricerca->getListaRicerca()->clear();
+    qDebug()<<QString::fromUtf8(ricerca->getTipoProdotto().c_str());
+    if(ricerca->getTipoProdotto()=="Seleziona prodotto...") {
+        popup* avvisoRicerca = new popup("Critical","Seleziona una tipologia di prodotto da cercare");
+        avvisoRicerca->exec();
+        ricerca->getListaRicerca()->clear();
+        return;
+    }
+    lista<catalogo*>::iteratoreConst inizio = modello->inizioCIter();
+    lista<catalogo*>::iteratoreConst fine = modello->fineCIter();
+
+    if(ricerca->getTipoProdotto()=="Grinder"){
+        for(;inizio!=fine;++inizio) {
+            qDebug()<<QString::fromUtf8((*inizio)->getNome().c_str());
+
+           if(dynamic_cast<grinder*>(*inizio) && (dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti() && (dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==ricerca->getRaccogliP()){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           if(dynamic_cast<grinder*>(*inizio) &&(dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti()){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           if(dynamic_cast<grinder*>(*inizio) &&(dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==ricerca->getRaccogliP() && ricerca->getNDenti()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+        }
+    }
+}
+
+
+//SLOTS
 void Controller::esci() {
     close();
 }
@@ -104,11 +137,12 @@ void Controller::carica() {
     caricaDatiXML();
 }
 void Controller::tornaHome(){
+    ricerca->getListaRicerca()->clear();
     ricerca->hide();
     catCompleto->show();
 }
 void Controller::vediRicerca(){
-
+    ricerca->getListaRicerca()->clear();
     catCompleto->hide();
     ricerca->show();
 }

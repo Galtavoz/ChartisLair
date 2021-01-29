@@ -44,5 +44,6 @@ public slots:
         void vediRicerca();
         void vediInfoSviluppatore();
         void vediInfoCatalogo();
+        void ricercaProdotti();
 };
 #endif // CONTROLLER_H
