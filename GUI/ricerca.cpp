@@ -32,13 +32,14 @@ Ricerca::Ricerca(QWidget* p):
     nocciola(new QCheckBox(this)),
 
     lableFormaC(new QLabel(this)),
-    stecche(new QCheckBox(this)),
-    //praline(new QCheckBox(this)),
+    formaC(new QComboBox(this)),
 
-    lableTipoAroma(new QLabel(this)),
+    lableTipoAroma1(new QLabel(this)),
     aroma1(new QComboBox(this)),
+    lableTipoAroma2(new QLabel(this)),
     aroma2(new QComboBox(this)),
-    sfuso(new QCheckBox(this)),
+    lableSfuso(new QLabel(this)),
+    sfuso(new QComboBox(this)),
 //NON CONSUMABILI
     lableTipoBong(new QLabel(this)),
     backer(new QCheckBox(this)),
@@ -48,14 +49,17 @@ Ricerca::Ricerca(QWidget* p):
     dimBacker(new QComboBox(this)),
     dimDritto(new QComboBox(this)),
 
-    lableTipoVapo(new QLabel(this)),
-    schermo(new QCheckBox(this)),
+    lableSchermo(new QLabel(this)),
+    schermo(new QComboBox(this)),
+    lableCapienza(new QLabel(this)),
     capienza(new QComboBox(this)),
+    lableVelocita(new QLabel(this)),
     velocita(new QComboBox(this)),
 
-    lableTipoGrinder(new QLabel(this)),
+    lableNDenti(new QLabel(this)),
     ndenti(new QComboBox(this)),
-    raccoglipoll(new QCheckBox(this)),
+    lableRaccPoll(new QLabel(this)),
+    raccoglipoll(new QComboBox(this)),
 
     cerca(new QPushButton(this)),
     catalogo(new elementoWidget(this)),
@@ -69,11 +73,16 @@ Ricerca::Ricerca(QWidget* p):
      QHBoxLayout* layoutFondenza    = new QHBoxLayout();
      QHBoxLayout* layoutGranella    = new QHBoxLayout();
      QHBoxLayout* layoutFormaC      = new QHBoxLayout();
-     QHBoxLayout* layoutAroma       = new QHBoxLayout();
+     QHBoxLayout* layoutAroma1      = new QHBoxLayout();
+     QHBoxLayout* layoutAroma2      = new QHBoxLayout();
+     QHBoxLayout* layoutSfuso       = new QHBoxLayout();
      QHBoxLayout* layoutFormaB      = new QHBoxLayout();
      QHBoxLayout* layoutDimensioni  = new QHBoxLayout();
-     QHBoxLayout* layoutVapo        = new QHBoxLayout();
-     QHBoxLayout* layoutGrinder     = new QHBoxLayout();
+     QHBoxLayout* layoutSchermo     = new QHBoxLayout();
+     QHBoxLayout* layoutCapienza    = new QHBoxLayout();
+     QHBoxLayout* layoutVelocita    = new QHBoxLayout();
+     QHBoxLayout* layoutNDenti      = new QHBoxLayout();
+     QHBoxLayout* layoutRaccpolline = new QHBoxLayout();
      QHBoxLayout* layoutBottoni     = new QHBoxLayout();
 
      catalogo->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -85,11 +94,16 @@ Ricerca::Ricerca(QWidget* p):
      layoutRic->addLayout(layoutFondenza);
      layoutRic->addLayout(layoutGranella);
      layoutRic->addLayout(layoutFormaC);
-     layoutRic->addLayout(layoutAroma);
+     layoutRic->addLayout(layoutAroma1);
+     layoutRic->addLayout(layoutAroma2);
+     layoutRic->addLayout(layoutSfuso);
      layoutRic->addLayout(layoutFormaB);
      layoutRic->addLayout(layoutDimensioni);
-     layoutRic->addLayout(layoutVapo);
-     layoutRic->addLayout(layoutGrinder);
+     layoutRic->addLayout(layoutSchermo);
+     layoutRic->addLayout(layoutCapienza);
+     layoutRic->addLayout(layoutVelocita);
+     layoutRic->addLayout(layoutNDenti);
+     layoutRic->addLayout(layoutRaccpolline);
      layoutRic->addWidget(cerca);
      layoutRic->addWidget(catalogo);
      layoutRic->addLayout(layoutBottoni);
@@ -120,13 +134,14 @@ Ricerca::Ricerca(QWidget* p):
      layoutGranella->addWidget(nocciola);
 
      layoutFormaC->addWidget(lableFormaC);
-     layoutFormaC->addWidget(stecche);
-     //layoutFormaC->addWidget(praline);
+     layoutFormaC->addWidget(formaC);
 
-     layoutAroma->addWidget(lableTipoAroma);
-     layoutAroma->addWidget(aroma1);
-     layoutAroma->addWidget(aroma2);
-     layoutAroma->addWidget(sfuso);
+     layoutAroma1->addWidget(lableTipoAroma1);
+     layoutAroma1->addWidget(aroma1);
+     layoutAroma2->addWidget(lableTipoAroma2);
+     layoutAroma2->addWidget(aroma2);
+     layoutSfuso->addWidget(lableSfuso);
+     layoutSfuso->addWidget(sfuso);
 
      layoutFormaB->addWidget(lableTipoBong);
      layoutFormaB->addWidget(backer);
@@ -137,14 +152,17 @@ Ricerca::Ricerca(QWidget* p):
      layoutDimensioni->addWidget(dimBacker);
      layoutDimensioni->addWidget(dimDritto);
 
-     layoutVapo->addWidget(lableTipoVapo);
-     layoutVapo->addWidget(schermo);
-     layoutVapo->addWidget(capienza);
-     layoutVapo->addWidget(velocita);
+     layoutSchermo->addWidget(lableSchermo);
+     layoutSchermo->addWidget(schermo);
+     layoutCapienza->addWidget(lableCapienza);
+     layoutCapienza->addWidget(capienza);
+     layoutVelocita->addWidget(lableVelocita);
+     layoutVelocita->addWidget(velocita);
 
-     layoutGrinder->addWidget(lableTipoGrinder);
-     layoutGrinder->addWidget(ndenti);
-     layoutGrinder->addWidget(raccoglipoll);
+     layoutNDenti->addWidget(lableNDenti);
+     layoutNDenti->addWidget(ndenti);
+     layoutRaccpolline->addWidget(lableRaccPoll);
+     layoutRaccpolline->addWidget(raccoglipoll);
 
      layoutBottoni->addWidget(modifica);
      layoutBottoni->addWidget(rimuovi);
@@ -187,12 +205,13 @@ Ricerca::Ricerca(QWidget* p):
       nocciola->hide();
 
       lableFormaC->hide();
-      stecche->hide();
-      //praline->hide();
+      formaC->hide();
 
-      lableTipoAroma->hide();
+      lableTipoAroma1->hide();
       aroma1->hide();
+      lableTipoAroma2->hide();
       aroma2->hide();
+      lableSfuso->hide();
       sfuso->hide();
 
       lableTipoBong->hide();
@@ -203,13 +222,16 @@ Ricerca::Ricerca(QWidget* p):
       dimBacker->hide();
       dimDritto->hide();
 
-      lableTipoVapo->hide();
+      lableSchermo->hide();
       schermo->hide();
+      lableCapienza->hide();
       capienza->hide();
+      lableVelocita->hide();
       velocita->hide();
 
-      lableTipoGrinder->hide();
+      lableNDenti->hide();
       ndenti->hide();
+      lableRaccPoll->hide();
       raccoglipoll->hide();
 
 
@@ -228,9 +250,9 @@ Ricerca::Ricerca(QWidget* p):
 
       lableLvFondenza->setText("Seleziona il livello di fondenza :");
       nessuna->setText("0%");
-      bassa->setText("30%");
-      media->setText("50%");
-      alta->setText("75%");
+      bassa->setText("50%");
+      media->setText("75%");
+      alta->setText("90%");
 
       lableTipoGranella->setText("Seleziona la tipologia di granella :");
       cocco->setText("Cocco");
@@ -238,27 +260,34 @@ Ricerca::Ricerca(QWidget* p):
       mandorla->setText("Mandorla");
       nocciola->setText("Nocciola");
 
-      lableFormaC->setText("Seleziona la tipologia di forma(se spuntato sono stecche, senno praline) :");
-      stecche->setText("Stecche");
-      //praline->setText("Praline");
+      lableFormaC->setText("Seleziona la tipologia di forma :");
+      QList<QString> listaFormaC={"Qualsiasi","Stecche","Praline"};
+      for(int i=0;i<listaFormaC.length();++i)
+          formaC->addItem(listaFormaC[i]);
+      formaC->setCurrentIndex(0);
 
-      lableTipoAroma->setText("Seleziona gli aromi(se si vuole solo un aroma , lasciare 'Nessun aroma' sul secondo spazio): ");
-      QList<QString> listaaromi={"Albicocca","Limone","Liquirizia","Menta","Zenzero"};
+      lableTipoAroma1->setText("Seleziona l'aroma da ricercare: ");
+      QList<QString> listaaromi={"Qualsiasi","Albicocca","Limone","Liquirizia","Menta","Zenzero"};
       for(int i=0;i<listaaromi.length();++i)
           aroma1->addItem(listaaromi[i]);
       aroma1->setCurrentIndex(0);
+      lableTipoAroma2->setText("Seleziona il secondo aroma da ricercare, se desiderato, senno lasciare 'Nessun aroma': ");
       QList<QString> listaaromi1={"Nessun aroma","Albicocca","Limone","Liquirizia","Menta","Zenzero"};
       for(int i=0;i<listaaromi1.length();++i)
           aroma2->addItem(listaaromi1[i]);
       aroma2->setCurrentIndex(0);
-      sfuso->setText("Sfuso?");
+      lableSfuso->setText("Seleziona se vuoi ricercare un aroma sfuso oppure no.");
+      QList<QString> listaSfuso={"Qualsiasi","Sfuso","Non sfuso"};
+      for(int i=0;i<listaSfuso.length();++i)
+          sfuso->addItem(listaSfuso[i]);
+      sfuso->setCurrentIndex(0);
 
 
       lableTipoBong->setText("Seleziona la forma del bong");
       backer->setText("Backer");
       dritto->setText("Dritto");
       qualsiasi->setText("Qualsiasi");
-      lableTipoBong->setText("Seleziona le dimensioni del bong");
+      lableTipoDimensioni->setText("Seleziona le dimensioni del bong");
       QList<QString> listaDimB={"Qualsiasi","33X4.6 cm","45X4.6 cm"};
       for(int i=0;i<listaDimB.length();++i)
           dimBacker->addItem(listaDimB[i]);
@@ -266,20 +295,29 @@ Ricerca::Ricerca(QWidget* p):
       for(int i=0;i<listaDimD.length();++i)
           dimDritto->addItem(listaDimD[i]);
 
-      lableTipoVapo->setText("Seleziona le caratteristiche del vaporizzatore; primo campo se ha o no lo schermo, secondo campo la capienza della macchina, terzo la velocita di evaporazione");
-      schermo->setText("Schermo?");
+      lableSchermo->setText("Selezionare se il vaporizzatore ha ricercare ha schermo o meno");
+      QList<QString> listaSchermo={"Qualsiasi","Schermo","Non schermo"};
+      for(int i=0;i<listaSchermo.length();++i)
+          schermo->addItem(listaSchermo[i]);
+      schermo->setCurrentIndex(0);
+      lableCapienza->setText("Selezionare la quantita massima di carico del vaporizzatore");
       QList<QString> listaCapienza={"Qualsiasi","1 gr","2 gr","3 gr","4 gr"};
       for(int i=0;i<listaCapienza.length();++i)
           capienza->addItem(listaCapienza[i]);
+      lableVelocita->setText("Selezionare il livello di velocita il cui il prodotto fa evaporare l'erba");
       QList<QString> listaVelocita={"Qualsiasi","Lv 1","Lv 2","Lv 3"};
       for(int i=0;i<listaVelocita.length();++i)
           velocita->addItem(listaVelocita[i]);
 
-      lableTipoGrinder->setText("Seleziona le caratteristiche del grinder;primo capo il numero dei denti, il secondo se ha o no il raccogli polline");
+      lableNDenti->setText("Seleziona il numero di denti presenti nel grider :");
       QList<QString> listaDenti={"Qualsiasi","6","12","24","30","36"};
       for(int i=0;i<listaDenti.length();++i)
           ndenti->addItem(listaDenti[i]);
-      raccoglipoll->setText("Raccogli polline?");
+      lableRaccPoll->setText("Seleziona se il grinder ha o no il raccogli polline");
+      QList<QString> raccogliP={"Qualsiasi","Con raccogli polline","Senza raccogli polline"};
+      for(int i=0;i<raccogliP.length();++i)
+          raccoglipoll->addItem(raccogliP[i]);
+      raccoglipoll->setCurrentIndex(0);;
 
       modifica->setText("Modifica");
       rimuovi->setText("Rimuovi");
@@ -303,8 +341,12 @@ Ricerca::Ricerca(QWidget* p):
       lableFormaC->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
       lableFormaC->setWordWrap(true);
 
-      lableTipoAroma->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
-      lableTipoAroma->setWordWrap(true);
+      lableTipoAroma1->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableTipoAroma1->setWordWrap(true);
+      lableTipoAroma2->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableTipoAroma2->setWordWrap(true);
+      lableSfuso->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableSfuso->setWordWrap(true);
 
       lableTipoBong->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
       lableTipoBong->setWordWrap(true);
@@ -312,11 +354,17 @@ Ricerca::Ricerca(QWidget* p):
       lableTipoDimensioni->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
       lableTipoDimensioni->setWordWrap(true);
 
-      lableTipoVapo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
-      lableTipoVapo->setWordWrap(true);
+      lableSchermo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableSchermo->setWordWrap(true);
+      lableCapienza->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableCapienza->setWordWrap(true);
+      lableVelocita->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableVelocita->setWordWrap(true);
 
-      lableTipoGrinder->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
-      lableTipoGrinder->setWordWrap(true);
+      lableNDenti->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableNDenti->setWordWrap(true);
+      lableRaccPoll->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      lableRaccPoll->setWordWrap(true);
 
 
 
@@ -407,8 +455,7 @@ void Ricerca::scelteCioccolato(){
         nocciola->show();
 
         lableFormaC->show();
-        stecche->show();
-        //praline->show();
+        formaC->show();
     }
     else{
         lableLvFondenza->hide();
@@ -424,22 +471,25 @@ void Ricerca::scelteCioccolato(){
         nocciola->hide();
 
         lableFormaC->hide();
-        stecche->hide();
-        //praline->hide();
+        formaC->hide();
     }
 }
 
 void Ricerca::scelteInfusi(){
     if(tipoProdotto->currentText()=="Infusi"){
-        lableTipoAroma->show();
+        lableTipoAroma1->show();
         aroma1->show();
+        lableTipoAroma2->show();
         aroma2->show();
+        lableSfuso->show();
         sfuso->show();
     }
     else{
-        lableTipoAroma->hide();
+        lableTipoAroma1->hide();
         aroma1->hide();
+        lableTipoAroma2->hide();
         aroma2->hide();
+        lableSfuso->hide();
         sfuso->hide();
     }
 }
@@ -456,16 +506,22 @@ void Ricerca::scelteFormaBong(){
         backer->hide();
         dritto->hide();
         qualsiasi->hide();
+        lableTipoDimensioni->hide();
+        dimBacker->hide();
+        dimDritto->hide();
     }
 }
 
 void Ricerca::scelteDimensioniB(bool flag){
+    lableTipoDimensioni->show();
     if(flag) dritto->setEnabled(false);
     else dritto->setEnabled(true);
     dimBacker->show();
     dimDritto->hide();
+
 }
 void Ricerca::scelteDimensioniD(bool flag){
+    lableTipoDimensioni->show();
     if(flag) backer->setEnabled(false);
     else backer->setEnabled(true);
     dimBacker->hide();
@@ -473,27 +529,33 @@ void Ricerca::scelteDimensioniD(bool flag){
 }
 void Ricerca::scelteVapo(){
     if(tipoProdotto->currentText()=="Vaporizzatore"){
-        lableTipoVapo->show();
+        lableSchermo->show();
         schermo->show();
+        lableCapienza->show();
         capienza->show();
+        lableVelocita->show();
         velocita->show();
     }
     else{
-        lableTipoVapo->hide();
+        lableSchermo->hide();
         schermo->hide();
+        lableCapienza->hide();
         capienza->hide();
+        lableVelocita->hide();
         velocita->hide();
     }
 }
 void Ricerca::scelteGrinder(){
     if(tipoProdotto->currentText()=="Grinder"){
-        lableTipoGrinder->show();
+        lableNDenti->show();
         ndenti->show();
+        lableRaccPoll->show();
         raccoglipoll->show();
     }
     else{
-        lableTipoGrinder->hide();
+        lableNDenti->hide();
         ndenti->hide();
+        lableRaccPoll->hide();
         raccoglipoll->hide();
     }
 }
@@ -731,14 +793,6 @@ void Ricerca::checkQualsiasi(bool f){
         backer->setEnabled(true);
     }
 }
-/*void Ricerca::checkStecche(bool f){
-    if(f) praline->setEnabled(false);
-    else praline->setEnabled(true);
-}
-void Ricerca::checkPraline(bool f){
-    if(f) stecche->setEnabled(false);
-    else stecche->setEnabled(true);
-}*/
 
 //GET
 QPushButton* Ricerca::getCercaBut() const {
@@ -827,20 +881,26 @@ int Ricerca::getTipoGranella() const{
     }
     else return 0;
 }
-bool Ricerca::getFormaC() const{
-    if(stecche->isChecked()==true) return true;
-    else return false;
+int Ricerca::getFormaC() const{
+    if(formaC->currentText()=="Stecche") return 1;
+    else if(formaC->currentText()=="Praline") return 2;
+    else return 0;
 }
 std::vector<std::string> Ricerca::getAroma() const{
     std::vector<std::string> aromaFinale;
-    aromaFinale.push_back(aroma1->currentText().toStdString());
-    if(aroma2->currentText().toStdString()!="Nessun aroma")
-        aromaFinale.push_back(aroma2->currentText().toStdString());
+    if(aroma1->currentText().toStdString()!="Qualsiasi"){
+        aromaFinale.push_back(aroma1->currentText().toStdString());
+        if(aroma2->currentText().toStdString()!="Nessun aroma" && aroma2->currentText()!=aroma1->currentText())
+            aromaFinale.push_back(aroma2->currentText().toStdString());
+    }
+    else aromaFinale.push_back("0");
     return aromaFinale;
+
 }
-bool Ricerca::getSfuso() const{
-    if(sfuso->isChecked()==true) return true;
-    else return false;
+int Ricerca::getSfuso() const{
+    if(sfuso->currentText()=="Sfuso") return 1;
+    else if(sfuso->currentText()=="Non sfuso") return 2;
+    else return 0;
 }
 int Ricerca::getFormaB() const{
     if(backer->isChecked()==true){
@@ -917,9 +977,10 @@ int Ricerca::getCapienza() const{
     }
     return 0;
 }
-bool Ricerca::getSchermo() const{
-    if(schermo->isChecked()==true) return true;
-    else return false;
+int Ricerca::getSchermo() const{
+    if(schermo->currentText()=="Schermo") return 1;
+    else if(schermo->currentText()=="No schermo") return 2;
+    else return 0;
 }
 int Ricerca::getNDenti() const{
     if(ndenti->currentText()=="6"){
@@ -935,13 +996,14 @@ int Ricerca::getNDenti() const{
         return 30;
     }
     else if(ndenti->currentText()=="36"){
-        return 30;
+        return 36;
     }
     else return 0;
 }
-bool Ricerca::getRaccogliP() const{
-    if(raccoglipoll->isChecked()==true) return true;
-    else return false;
+int Ricerca::getRaccogliP() const{
+    if(raccoglipoll->currentText()=="Con raccogli polline") return 1;
+    else if(raccoglipoll->currentText()=="Senza raccogli polline") return 2;
+    else return 0;
 }
 elementoWidget* Ricerca::getListaRicerca() const{
     return catalogo;

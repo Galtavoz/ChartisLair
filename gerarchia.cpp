@@ -212,6 +212,7 @@ std::string cioccolata::visualizzaInfo() const {
     else granella="Nocciola";
     return frase.append("\n Percentuale di fondenza: "+fondenza)
            .append("\n Tipo di granella: "+granella)
+           .append("\n Forma :").append(getForma() ? "Stecche" : "Praline")
            .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
            .append("\n Ricavo: "+Ricavo.str()+("€"));
 

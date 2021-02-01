@@ -51,13 +51,14 @@ private:
     QCheckBox*      nocciola;
 
     QLabel*         lableFormaC;
-    QCheckBox*      stecche;
-    //QCheckBox*      praline;
+    QComboBox*      formaC;
 
-    QLabel*         lableTipoAroma;
+    QLabel*         lableTipoAroma1;
     QComboBox*      aroma1;
+    QLabel*         lableTipoAroma2;
     QComboBox*      aroma2;
-    QCheckBox*      sfuso;
+    QLabel*         lableSfuso;
+    QComboBox*      sfuso;
 
     //NON CONSUMABILI
     QLabel*         lableTipoBong;
@@ -68,14 +69,17 @@ private:
     QComboBox*      dimBacker;
     QComboBox*      dimDritto;
 
-    QLabel*         lableTipoVapo;
-    QCheckBox*      schermo;
+    QLabel*         lableSchermo;
+    QComboBox*      schermo;
+    QLabel*         lableCapienza;
     QComboBox*      capienza;
+    QLabel*         lableVelocita;
     QComboBox*      velocita;
 
-    QLabel*         lableTipoGrinder;
+    QLabel*         lableNDenti;
     QComboBox*      ndenti;
-    QCheckBox*      raccoglipoll;
+    QLabel*         lableRaccPoll;
+    QComboBox*      raccoglipoll;
 
 
     QPushButton*    cerca;
@@ -92,17 +96,17 @@ public:
     int getTipoGocce() const;
     int getLvFondenza() const;
     int getTipoGranella() const;
-    bool getFormaC() const;
+    int getFormaC() const;
     std::vector<std::string> getAroma() const;
-    bool getSfuso() const;
+    int getSfuso() const;
     int getFormaB() const;
     int getAltezza() const;
     double getLarghezza() const;
     int getVelocita() const;
     int getCapienza() const;
-    bool getSchermo() const;
+    int getSchermo() const;
     int getNDenti() const;
-    bool getRaccogliP() const;
+    int getRaccogliP() const;
 
     elementoWidget* getListaRicerca() const;
 public slots:
@@ -142,9 +146,6 @@ public slots:
     void checkNocciola(bool);
     //CHECKQUALSIASI
     void checkQualsiasi(bool);
-/*    //CHECKFORMAC
-    void checkStecche(bool);
-    void checkPraline(bool);*/
 
 };
 #endif // RICERCA_H

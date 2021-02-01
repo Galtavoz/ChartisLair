@@ -248,8 +248,8 @@ void Modello::Carica() {
                     std::string ing1="";
                     int lung1=aroma.length();
                     for(int i=0;i<lung1;++i) {
-                        while(ingredienti[i]!=*v1 && i<lung1) {
-                            std::string lettera=toString(ingredienti[i]);
+                        while(aroma[i]!=*v1 && i<lung1) {
+                            std::string lettera=toString(aroma[i]);
                             ing1.append(lettera);
                             ++i;
                         }

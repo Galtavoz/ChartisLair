@@ -101,7 +101,7 @@ void Controller::abilita() {
 }
 void Controller::ricercaProdotti(){
     ricerca->getListaRicerca()->clear();
-    qDebug()<<QString::fromUtf8(ricerca->getTipoProdotto().c_str());
+    //qDebug()<<QString::fromUtf8(ricerca->getTipoProdotto().c_str());
     if(ricerca->getTipoProdotto()=="Seleziona prodotto...") {
         popup* avvisoRicerca = new popup("Critical","Seleziona una tipologia di prodotto da cercare");
         avvisoRicerca->exec();
@@ -111,17 +111,157 @@ void Controller::ricercaProdotti(){
     lista<catalogo*>::iteratoreConst inizio = modello->inizioCIter();
     lista<catalogo*>::iteratoreConst fine = modello->fineCIter();
 
+
+    if(ricerca->getTipoProdotto()=="Biscotti"){
+        for(;inizio!=fine;++inizio) {
+           if(dynamic_cast<biscotti*>(*inizio) && (dynamic_cast<biscotti*>(*inizio))->getTipoFarina()==ricerca->getTipoFarina() && (dynamic_cast<biscotti*>(*inizio))->getGocceCioccolata()==ricerca->getTipoGocce()){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<biscotti*>(*inizio) && ricerca->getTipoFarina()==0 && (dynamic_cast<biscotti*>(*inizio))->getGocceCioccolata()==ricerca->getTipoGocce()){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<biscotti*>(*inizio) && ricerca->getTipoGocce()==0 && (dynamic_cast<biscotti*>(*inizio))->getTipoFarina()==ricerca->getTipoFarina()){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<biscotti*>(*inizio) && ricerca->getTipoFarina()==0 && ricerca->getTipoGocce()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+        }
+    }
+    if(ricerca->getTipoProdotto()=="Cioccolata"){
+        for(;inizio!=fine;++inizio) {
+           //TUTTI SELEZIONATI
+           if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"1";
+           }
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==false && ricerca->getFormaC()==2)){
+               (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"2";
+           }
+           //SELEZIONATO GRANELLA, SELEZIONATO FONDENZA
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() ){
+               (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"3";
+           }
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() ){
+               (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"4";
+           }
+           //SELEZIONATO GRANELLA, SELEZIONATO FORMA
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getLvFondenza()==0 && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"5";
+           }
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getLvFondenza()==0 && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==false && ricerca->getFormaC()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"6";
+           }
+
+           //SELEZIONATO FONDENZA, SELEZIONATO FORMA
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getTipoGranella()==0 && dynamic_cast<cioccolata*>(*inizio)->getLivelloFondenza()==ricerca->getLvFondenza() && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"7";
+           }
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getTipoGranella()==0 && dynamic_cast<cioccolata*>(*inizio)->getLivelloFondenza()==ricerca->getLvFondenza() && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==false && ricerca->getFormaC()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"8";
+           }
+           //SELEZIONATO SOLO GRANELLA
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getLvFondenza()==0 && ricerca->getFormaC()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"9";
+           }
+           //SELEZIONATO SOLO FONDENZA
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && ricerca->getTipoGranella()==0 && ricerca->getFormaC()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"10";
+           }
+           //SELEZIONATO SOLO FORMA
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getLvFondenza()==0 && ricerca->getTipoGranella()==0 && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"11";
+           }
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getLvFondenza()==0 && ricerca->getTipoGranella()==0 && ((dynamic_cast<cioccolata*>(*inizio))->getForma()==false && ricerca->getFormaC()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"12";
+           }
+           //NESSUN SELEZIONATO
+           else if(dynamic_cast<cioccolata*>(*inizio) && ricerca->getTipoGranella()==0 && ricerca->getLvFondenza()==0 && ricerca->getFormaC()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+               qDebug()<<"13";
+           }
+        }
+    }
+
+    if(ricerca->getTipoProdotto()=="Infusi"){
+        for(;inizio!=fine;++inizio) {
+           //TUTTI SELEZIONATI
+           if(dynamic_cast<infusi*>(*inizio) && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==true && ricerca->getSfuso()==1)){
+               std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
+               std::vector<std::string> stringRicerca= ricerca->getAroma();
+               for (unsigned int i=0;i<stringAroma.size();++i) {
+                    for (unsigned int j=0;j<stringRicerca.size();++j) {
+                        if(stringAroma[i]==stringRicerca[j]){
+                            (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                        }
+                    }
+               }
+           }
+           else if(dynamic_cast<infusi*>(*inizio) && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==false && ricerca->getSfuso()==2)){
+               std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
+               std::vector<std::string> stringRicerca= ricerca->getAroma();
+               for (unsigned int i=0;i<stringAroma.size();++i) {
+                    for (unsigned int j=0;j<stringRicerca.size();++j) {
+                        if(stringAroma[i]==stringRicerca[j]){
+                            (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                        }
+                    }
+               }
+           }
+           //SELEZIONATO PRIMO AROMA, SELEZIONATO SECONDO AROMA
+           else if(dynamic_cast<infusi*>(*inizio) && ricerca->getSfuso()==0){
+               std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
+               std::vector<std::string> stringRicerca= ricerca->getAroma();
+               for (unsigned int i=0;i<stringAroma.size();++i) {
+                    for (unsigned int j=0;j<stringRicerca.size();++j) {
+                        if(stringAroma[i]==stringRicerca[j]){
+                            (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                        }
+                    }
+               }
+           }
+           //SELEZIONATO SOLO SFUSO
+           else if(dynamic_cast<infusi*>(*inizio) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==true && ricerca->getSfuso()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<infusi*>(*inizio) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==false && ricerca->getSfuso()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           //NESSUN SELEZIONATO
+           else if(dynamic_cast<infusi*>(*inizio) && ricerca->getAroma()[0]=="0" && ricerca->getSfuso()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+        }
+    }
     if(ricerca->getTipoProdotto()=="Grinder"){
         for(;inizio!=fine;++inizio) {
-            qDebug()<<QString::fromUtf8((*inizio)->getNome().c_str());
-
-           if(dynamic_cast<grinder*>(*inizio) && (dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti() && (dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==ricerca->getRaccogliP()){
+           if(dynamic_cast<grinder*>(*inizio) && (dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
            }
-           if(dynamic_cast<grinder*>(*inizio) &&(dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti()){
+           else if(dynamic_cast<grinder*>(*inizio) && (dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==false && ricerca->getRaccogliP()==2)){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
            }
-           if(dynamic_cast<grinder*>(*inizio) &&(dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==ricerca->getRaccogliP() && ricerca->getNDenti()==0){
+           else if(dynamic_cast<grinder*>(*inizio) && ricerca->getNDenti() ==0 && ((dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<grinder*>(*inizio) && ricerca->getNDenti() ==0 && ((dynamic_cast<grinder*>(*inizio))->getRaccogliPolline()==false && ricerca->getRaccogliP()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<grinder*>(*inizio) && (dynamic_cast<grinder*>(*inizio))->getNdenti()==ricerca->getNDenti() && ricerca->getRaccogliP()==0){
+               (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+           }
+           else if(dynamic_cast<grinder*>(*inizio) && ricerca->getRaccogliP() ==0 && ricerca->getNDenti()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
            }
         }
