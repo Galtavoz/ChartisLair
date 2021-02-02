@@ -254,7 +254,7 @@ void Modello::Carica() {
                             ++i;
                         }
                     listaAromi.push_back(ing1);
-                    ing.clear();
+                    ing1.clear();
                     }
                     bool sfuso = field.value("sfuso").toString()=="Si" ? true : false;
 
@@ -299,7 +299,7 @@ void Modello::Carica() {
                     listaColori.push_back(ing);
                     ing.clear();
                     }
-                    int velocitaEvaporazione = field.value("velocitaEvaporazione").toUInt();
+                    int velocitaEvaporazione = field.value("velocita").toUInt();
                     double capienza = field.value("capienza").toUInt();
                     bool schermo = field.value("schermo").toString()=="Si" ? true : false;
 

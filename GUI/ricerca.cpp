@@ -296,7 +296,7 @@ Ricerca::Ricerca(QWidget* p):
           dimDritto->addItem(listaDimD[i]);
 
       lableSchermo->setText("Selezionare se il vaporizzatore ha ricercare ha schermo o meno");
-      QList<QString> listaSchermo={"Qualsiasi","Schermo","Non schermo"};
+      QList<QString> listaSchermo={"Qualsiasi","Schermo","No schermo"};
       for(int i=0;i<listaSchermo.length();++i)
           schermo->addItem(listaSchermo[i]);
       schermo->setCurrentIndex(0);
@@ -304,10 +304,12 @@ Ricerca::Ricerca(QWidget* p):
       QList<QString> listaCapienza={"Qualsiasi","1 gr","2 gr","3 gr","4 gr"};
       for(int i=0;i<listaCapienza.length();++i)
           capienza->addItem(listaCapienza[i]);
+      capienza->setCurrentIndex(0);
       lableVelocita->setText("Selezionare il livello di velocita il cui il prodotto fa evaporare l'erba");
       QList<QString> listaVelocita={"Qualsiasi","Lv 1","Lv 2","Lv 3"};
       for(int i=0;i<listaVelocita.length();++i)
           velocita->addItem(listaVelocita[i]);
+      velocita->setCurrentIndex(0);
 
       lableNDenti->setText("Seleziona il numero di denti presenti nel grider :");
       QList<QString> listaDenti={"Qualsiasi","6","12","24","30","36"};
@@ -375,6 +377,7 @@ Ricerca::Ricerca(QWidget* p):
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteFormaBong()));
       connect(backer,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniB(bool)));
       connect(dritto,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniD(bool)));
+      connect(qualsiasi,SIGNAL(toggled(bool)),this,SLOT(checkQualsiasi(bool)));
 
       //CONNECT CHECKFARINE
       connect(grano,SIGNAL(toggled(bool)),this,SLOT(checkGrano(bool)));
@@ -397,9 +400,6 @@ Ricerca::Ricerca(QWidget* p):
       connect(noce,SIGNAL(toggled(bool)),this,SLOT(checkNoce(bool)));
       connect(mandorla,SIGNAL(toggled(bool)),this,SLOT(checkMandorla(bool)));
       connect(nocciola,SIGNAL(toggled(bool)),this,SLOT(checkNocciola(bool)));
-      //CONNECT CHECKFORMAC
-      //connect(stecche,SIGNAL(toggled(bool)),this,SLOT(checkStecche(bool)));
-      //connect(praline,SIGNAL(toggled(bool)),this,SLOT(checkPraline(bool)));
 
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteVapo()));
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteGrinder()));
@@ -514,16 +514,28 @@ void Ricerca::scelteFormaBong(){
 
 void Ricerca::scelteDimensioniB(bool flag){
     lableTipoDimensioni->show();
-    if(flag) dritto->setEnabled(false);
-    else dritto->setEnabled(true);
+    if(flag){
+        dritto->setEnabled(false);
+        qualsiasi->setEnabled(false);
+    }
+    else{
+        dritto->setEnabled(true);
+        qualsiasi->setEnabled(true);
+    }
     dimBacker->show();
     dimDritto->hide();
 
 }
 void Ricerca::scelteDimensioniD(bool flag){
     lableTipoDimensioni->show();
-    if(flag) backer->setEnabled(false);
-    else backer->setEnabled(true);
+    if(flag){
+        backer->setEnabled(false);
+        qualsiasi->setEnabled(false);
+    }
+    else {
+        backer->setEnabled(true);
+        qualsiasi->setEnabled(true);
+    }
     dimBacker->hide();
     dimDritto->show();
 }
@@ -563,6 +575,7 @@ void Ricerca::resetDim(){
     if(backer->isEnabled()==true && dritto->isEnabled()==true){
         dimBacker->hide();
         dimDritto->hide();
+        lableTipoDimensioni->hide();
     }
 }
 //CHECKFARINE
@@ -909,44 +922,44 @@ int Ricerca::getFormaB() const{
     else if(dritto->isChecked()==true){
         return 2;
     }
-    else return 3;
+    else return 0;
 }
 int Ricerca::getAltezza() const{
     if(dimBacker->currentText()=="33X4.6 cm"){
-        return 33;
+        return 5;
     }
     else if(dimBacker->currentText()=="45X4.6 cm"){
-        return 45;
+        return 6;
     }
     else if(dimDritto->currentText()=="24X3.1 cm"){
-        return 24;
+        return 1;
     }
     else if(dimDritto->currentText()=="32X4.1 cm"){
-        return 32;
+        return 2;
     }
     else if(dimDritto->currentText()=="37X5.3 cm"){
-        return 37;
+        return 3;
     }
     else if(dimDritto->currentText()=="46X6.7 cm"){
-        return 46;
+        return 4;
     }
     else return 0;
 }
 double Ricerca::getLarghezza() const{
     if(dimBacker->currentText()=="33X4.6 cm" || dimBacker->currentText()=="45X4.6 cm"){
-        return 4.6;
+        return 5;
     }
     else if(dimDritto->currentText()=="24X3.1 cm"){
-        return 3.1;
+        return 1;
     }
     else if(dimDritto->currentText()=="32X4.1 cm"){
-        return 4.1;
+        return 2;
     }
     else if(dimDritto->currentText()=="37X5.3 cm"){
-        return 5.3;
+        return 3;
     }
     else if(dimDritto->currentText()=="46X6.7 cm"){
-        return 6.7;
+        return 4;
     }
     else return 0;
 }

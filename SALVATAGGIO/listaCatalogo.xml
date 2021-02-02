@@ -8,8 +8,8 @@
 	<infusi nome="Infuso digestivo" confezioneRegalo="Si" ingredienti="Foglie di the,salvia" peso="0.250" erba="Outdoor" produzione="Sativa" aroma="Zenzero,Limone" sfuso="No"/>
 	<bong nome="Margherita" confezioneRegalo="Si" colori="Blu" forma="Si" altezza="5" larghezza="4.6"/>
 	<bong nome="Daniele" confezioneRegalo="Si" colori="Verde" forma="No" altezza="4" larghezza="6.7"/>
-	<vaporizzatore nome="O'Vesuvio" confezioneRegalo="No" colori="Rosso" velocita="1" capienza="5" schermo="No"/>
-	<vaporizzatore nome="Krakatoa" confezioneRegalo="Si" colori="Verde" velocita="3" capienza="8" schermo="Si"/>
+	<vaporizzatore nome="O'Vesuvio" confezioneRegalo="No" colori="Rosso" velocita="1" capienza="2" schermo="No"/>
+	<vaporizzatore nome="Krakatoa" confezioneRegalo="Si" colori="Verde" velocita="3" capienza="4" schermo="Si"/>
 	<grinder nome="Birello" confezioneRegalo="Si" colori="Giallo" ndenti="36" raccogliPolline="Si"/>
 	<grinder nome="Giralo" confezioneRegalo="No" colori="Fucsia" ndenti="24" raccogliPolline="Si"/>
 </root>

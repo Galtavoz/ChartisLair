@@ -373,7 +373,7 @@ std::string bong::visualizzaInfo() const {
     std::stringstream Prezzo;
     Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
     std::stringstream Larghezza;
-    Larghezza<<std::fixed<<std::setprecision(2)<<getLarghezza();
+    Larghezza<<std::fixed<<std::setprecision(1)<<getLarghezza();
     if(getAltezza()==1) altezza="24";
     else if(getAltezza()==2) altezza="32";
     else if(getAltezza()==3) altezza="37";
@@ -438,10 +438,10 @@ std::string vaporizzatore::visualizzaInfo() const {
     Ricavo<<std::fixed<<std::setprecision(2)<<ricavo();
     std::stringstream Prezzo;
     Prezzo<<std::fixed<<std::setprecision(2)<<prezzo();
-    if(getVelocitaEvaporazione()==1) velocita="LV 1";
-    else if(getVelocitaEvaporazione()==2) velocita="LV 2";
-    else velocita="LV 3";
-    return frase.append("\n Velocità  avaporazione: "+velocita)
+    if(getVelocitaEvaporazione()==1) velocita="Lv 1";
+    else if(getVelocitaEvaporazione()==2) velocita="Lv 2";
+    else velocita="Lv 3";
+    return frase.append("\n Velocità evaporazione: "+velocita)
             .append("\n Capienza sportello (in grammi): ")+std::to_string(getCapienza())
             .append("\n Schermo :").append(getSchermo() ? "Si" : "No")
             .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
