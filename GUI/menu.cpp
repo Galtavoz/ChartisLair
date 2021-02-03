@@ -6,29 +6,31 @@ Menu::Menu(QWidget* p):
     carica(new QAction("Carica file",p)),
     salva(new QAction("Salva",p)),
     esci(new QAction("Esci",p)),
-    inserisci(new QMenu("Inserisci",p)),
+    inserisci(new QAction("Inserisci",p)),
     ricerca(new QAction("Ricerca",p)),
     informazioni(new QMenu("Informazioni",p)),
     infoCatalogo(new QAction("Informazioni Catalogo",p)),
     infoSviluppatore(new QAction("Informazioni Sviluppatore",p))
 {
+
     addMenu(file);
+    file->addAction(home);
+    file->addAction(carica);
+    file->addAction(salva);
+    file->addAction(esci);
 
-        file->addAction(home);
-        file->addAction(carica);
-        file->addAction(salva);
-        file->addAction(esci);
+    addAction(inserisci);
 
-    addMenu(inserisci);
     addAction(ricerca);
-    addMenu(informazioni);
-        informazioni->addAction(infoCatalogo);
-        informazioni->addAction(infoSviluppatore);
 
-        connect(infoCatalogo,SIGNAL(triggered()),parent,SLOT(vediInfoCatalogo()));
-        connect(infoSviluppatore,SIGNAL(triggered()),parent,SLOT(vediInfoSviluppatore()));
+    addMenu(informazioni);
+    informazioni->addAction(infoCatalogo);
+    informazioni->addAction(infoSviluppatore);
+
+    connect(infoCatalogo,SIGNAL(triggered()),parent,SLOT(vediInfoCatalogo()));
+    connect(infoSviluppatore,SIGNAL(triggered()),parent,SLOT(vediInfoSviluppatore()));
 }
-QMenu* Menu::getInserisci() const {
+QAction* Menu::getInserisci() const {
     return inserisci;
 }
 QAction* Menu::getRicerca() const {

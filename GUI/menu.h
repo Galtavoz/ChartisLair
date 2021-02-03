@@ -13,14 +13,14 @@ private:
     QAction*   carica;
     QAction*   salva;
     QAction*   esci;
-    QMenu*     inserisci;
+    QAction*     inserisci;
     QAction*     ricerca;
     QMenu*     informazioni;
     QAction*   infoCatalogo;
     QAction*   infoSviluppatore;
 public:
     Menu(QWidget* = nullptr);
-    QMenu* getInserisci() const;
+    QAction* getInserisci() const;
     QAction* getRicerca() const;
     QAction* getHome() const;
     QAction* getSalva() const;

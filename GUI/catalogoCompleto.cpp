@@ -6,18 +6,19 @@ catalogoCompleto::catalogoCompleto(QWidget* p):
     modifica(new QPushButton(this)),
     rimuovi(new QPushButton(this))
 {
-    QVBoxLayout* menuPiatti = new QVBoxLayout(this);
+    QVBoxLayout* vistaCatalogo = new QVBoxLayout(this);
     QHBoxLayout* bottoni = new QHBoxLayout();
 
     listaCatalogo->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    listaCatalogo->QAbstractScrollArea::setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
     modifica->setText("Modifica");
     rimuovi->setText("Rimuovi");
 
     bottoni->addWidget(modifica);
     bottoni->addWidget(rimuovi);
 
-    menuPiatti->addWidget(listaCatalogo);
-    menuPiatti->addLayout(bottoni);
+    vistaCatalogo->addWidget(listaCatalogo);
+    vistaCatalogo->addLayout(bottoni);
 }
 
 elementoWidget* catalogoCompleto::getLista() const {

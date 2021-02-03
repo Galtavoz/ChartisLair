@@ -20,6 +20,7 @@ SOURCES += \
     GUI/catalogoLista.cpp \
     GUI/controller.cpp \
     GUI/elementoWidget.cpp \
+    GUI/inserisci.cpp \
     GUI/menu.cpp \
     GUI/popup.cpp \
     GUI/ricerca.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     GUI/catalogoLista.h \
     GUI/controller.h \
     GUI/elementoWidget.h \
+    GUI/inserisci.h \
     GUI/menu.h \
     GUI/popup.h \
     GUI/ricerca.h \

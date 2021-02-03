@@ -130,12 +130,12 @@ public:
 //NONCONSUMABILE
 class nonConsumabile: public catalogo{
 private:
-    std::vector<std::string> colori;
+    std::string colori;
 public:
-    nonConsumabile(std::string,bool,std::vector<std::string>);
+    nonConsumabile(std::string,bool,std::string);
     virtual ~nonConsumabile() = default;
     //GET
-    std::vector<std::string> getColori() const;
+    std::string getColori() const;
     //SET
     void setColori(std::string);
     //METODI
@@ -152,7 +152,7 @@ private:
     int altezza = altezze{};
     double larghezza;
 public:
-    bong(std::string,bool,std::vector<std::string>,bool,int,double);
+    bong(std::string,bool,std::string,bool,int,double);
     virtual ~bong() = default;
     //GET
     bool  getForma() const;
@@ -176,7 +176,7 @@ private:
     double  capienza;//capienza dello sportello portaerba espressa in grammi
     bool schermo;
 public:
-    vaporizzatore(std::string,bool,std::vector<std::string>,int,double,bool);
+    vaporizzatore(std::string,bool,std::string,int,double,bool);
     virtual ~vaporizzatore() = default;
     //GET
     int  getVelocitaEvaporazione() const;
@@ -199,7 +199,7 @@ private:
     int  ndenti;
     bool raccoglipolline;
 public:
-    grinder(std::string,bool,std::vector<std::string>,int,bool);
+    grinder(std::string,bool,std::string,int,bool);
     virtual ~grinder() = default;
     //GET
     int   getNdenti() const;

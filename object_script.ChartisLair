@@ -2,6 +2,7 @@ catalogoCompleto.o
 catalogoLista.o
 controller.o
 elementoWidget.o
+inserisci.o
 menu.o
 popup.o
 ricerca.o
@@ -10,6 +11,7 @@ main.o
 mainwindow.o
 modello.o
 moc_controller.o
+moc_inserisci.o
 moc_menu.o
 moc_ricerca.o
 moc_mainwindow.o

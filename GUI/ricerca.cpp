@@ -86,6 +86,7 @@ Ricerca::Ricerca(QWidget* p):
      QHBoxLayout* layoutBottoni     = new QHBoxLayout();
 
      catalogo->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+     catalogo->QAbstractScrollArea::setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
 
      layoutRic->addWidget(lableTipoProdotto);
      layoutRic->addWidget(tipoProdotto);
@@ -851,16 +852,16 @@ int Ricerca::getTipoFarina() const{
 }
 int Ricerca::getTipoGocce() const{
     if(senza->isChecked()==true){
-        return 1;
+        return 4;
     }
     else if(latte->isChecked()==true){
-        return 2;
+        return 1;
     }
     else if(fondente->isChecked()==true){
-        return 3;
+        return 2;
     }
     else if(bianco->isChecked()==true){
-        return 4;
+        return 3;
     }
     else return 0;
 }

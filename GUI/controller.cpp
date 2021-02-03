@@ -5,6 +5,7 @@ Controller::Controller(Modello* m,QWidget* p):
     modello(m),
     menu(new Menu(this)),
     ricerca(new Ricerca(this)),
+    inserisci(new Inserisci(this)),
     catCompleto(new catalogoCompleto(this)),
     file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ChartisLair/SALVATAGGIO","File XML(*.xml)")){
 
@@ -20,16 +21,19 @@ Controller::Controller(Modello* m,QWidget* p):
     controller->addWidget(menu);
     controller->addWidget(catCompleto);
     controller->addWidget(ricerca);
+    controller->addWidget(inserisci);
     caricaDati();
 
     menu->show();
     catCompleto->show();
     ricerca->hide();
+    inserisci->hide();
 
     connect(menu->getEsci(),SIGNAL(triggered()),this,SLOT(esci()));
     connect(menu->getCarica(),SIGNAL(triggered()),this,SLOT(carica()));
     connect(menu->getHome(),SIGNAL(triggered()),this,SLOT(tornaHome()));
     connect(menu->getRicerca(),SIGNAL(triggered()),this,SLOT(vediRicerca()));
+    connect(menu->getInserisci(),SIGNAL(triggered()),this,SLOT(vediInserisci()));
 
     connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
 }
@@ -186,20 +190,17 @@ void Controller::ricercaProdotti(){
             //SELEZIONATO SOLO SFUSO
             if(dynamic_cast<infusi*>(*inizio) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==true && ricerca->getSfuso()==1)){
                  (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"primo";
             }
             else if(dynamic_cast<infusi*>(*inizio) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==false && ricerca->getSfuso()==2)){
                  (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"secondo";
             }
 
 
            //NESSUN SELEZIONATO
            else if(dynamic_cast<infusi*>(*inizio) && ricerca->getAroma()[0]=="0" && ricerca->getSfuso()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-               qDebug()<<"terzo";
            }
-            //TUTTI SELEZIONATI(BUG: SE SELEZIONATO ALBICOCCA E QUALCOSA ALTRO DA RISULTATO)
+            //TUTTI SELEZIONATI
             else  if(dynamic_cast<infusi*>(*inizio) && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==true && ricerca->getSfuso()==1)){
                 std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
                 std::vector<std::string> stringRicerca= ricerca->getAroma();
@@ -210,7 +211,6 @@ void Controller::ricercaProdotti(){
                          }
                      }
                 }
-                qDebug()<<"quarto";
             }
             else if(dynamic_cast<infusi*>(*inizio) && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==false && ricerca->getSfuso()==2)){
                 std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
@@ -222,7 +222,6 @@ void Controller::ricercaProdotti(){
                          }
                      }
                 }
-                qDebug()<<"quinto";
             }
            //SELEZIONATO PRIMO AROMA, SELEZIONATO SECONDO AROMA
            else if(dynamic_cast<infusi*>(*inizio) && ricerca->getSfuso()==0){
@@ -230,22 +229,21 @@ void Controller::ricercaProdotti(){
                std::vector<std::string> stringRicerca= ricerca->getAroma();
                for (unsigned int i=0;i<stringAroma.size();++i) {
                    if(stringRicerca.size()<=1){
-                       for (unsigned int j=0;j<stringRicerca.size();++j)
-                            if(stringAroma[i]==stringRicerca[j]){
-                                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                            }
+                       if(stringAroma.size()==stringRicerca.size()){
+                           for (unsigned int j=0;j<stringRicerca.size();++j)
+                                if(stringAroma[i]==stringRicerca[j])
+                                    (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                       }
                    }
                    else{
-                       for (unsigned int j=0;j<stringRicerca.size()-1;++j)
-                            if(stringAroma[i]==stringRicerca[j]){
-                                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                            }
+                       if(stringAroma.size()==stringRicerca.size()){
+                           for (unsigned int j=0;j<stringRicerca.size()-1;++j)
+                                if(stringAroma[i]==stringRicerca[j])
+                                    (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                       }
                    }
                }
-               qDebug()<<"sesto";
            }
-
-
         }
     }
     if(ricerca->getTipoProdotto()=="Bong"){
@@ -253,28 +251,23 @@ void Controller::ricercaProdotti(){
             //SELEZIONATO QUALSIASI
             if(dynamic_cast<bong*>(*inizio) && ricerca->getFormaB()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"Qualsiasi";
             }
             //SELEZIONATO BACKER E QUALSIASI DIMENSIONE
             else if(dynamic_cast<bong*>(*inizio) && ((dynamic_cast<bong*>(*inizio))->getForma()==true && ricerca->getFormaB()==1) && ricerca->getAltezza()==0 && ricerca->getLarghezza()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"Backer e qualsiasi dimensione";
             }
             //SELEZIONATO DRITTO E QUALSIASI DIMENSIONE
             else if(dynamic_cast<bong*>(*inizio) && ((dynamic_cast<bong*>(*inizio))->getForma()==false && ricerca->getFormaB()==2) && ricerca->getAltezza()==0 && ricerca->getLarghezza()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"Dritto e qualsiasi dimensione";
             }
             //SELEZIONATO BACKER E DIMENSIONE
             else if(dynamic_cast<bong*>(*inizio) && ((dynamic_cast<bong*>(*inizio))->getForma()==true && ricerca->getFormaB()==1) && (dynamic_cast<bong*>(*inizio))->getAltezza()==ricerca->getAltezza() && ricerca->getAltezza()!=0 && ricerca->getLarghezza()!=0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"Backer e dimensione";
             }
 
             //SELEZIONATO DRITTO E DIMENSIONE
             else if(dynamic_cast<bong*>(*inizio) && ((dynamic_cast<bong*>(*inizio))->getForma()==false && ricerca->getFormaB()==2) && (dynamic_cast<bong*>(*inizio))->getAltezza()==ricerca->getAltezza() && ricerca->getAltezza()!=0 && ricerca->getLarghezza()!=0){
                 (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                qDebug()<<"Dritto e dimensione";
             }
         }
     }
@@ -362,11 +355,19 @@ void Controller::tornaHome(){
     ricerca->getListaRicerca()->clear();
     ricerca->hide();
     catCompleto->show();
+    inserisci->hide();
 }
 void Controller::vediRicerca(){
     ricerca->getListaRicerca()->clear();
     catCompleto->hide();
     ricerca->show();
+    inserisci->hide();
+}
+void Controller::vediInserisci(){
+    ricerca->getListaRicerca()->clear();
+    catCompleto->hide();
+    ricerca->hide();
+    inserisci->show();
 }
 void Controller::vediInfoSviluppatore() {
     popup* informazioni = new popup("Informazione","Progetto realizzato da: Galtarossa Marco. Numero di matricola 1096393.\n Per qualsiasi necessità"

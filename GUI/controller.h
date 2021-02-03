@@ -19,6 +19,7 @@
 #include"GUI/menu.h"
 #include"GUI/catalogoCompleto.h"
 #include"GUI/ricerca.h"
+#include"GUI/inserisci.h"
 
 class Controller: public QWidget {
     Q_OBJECT
@@ -27,6 +28,7 @@ private:
     Modello* modello;
     Menu* menu;
     Ricerca* ricerca;
+    Inserisci* inserisci;
     catalogoCompleto* catCompleto;
     QString file;
 public:
@@ -42,6 +44,7 @@ public slots:
         void carica();
         void tornaHome();
         void vediRicerca();
+        void vediInserisci();
         void vediInfoSviluppatore();
         void vediInfoCatalogo();
         void ricercaProdotti();

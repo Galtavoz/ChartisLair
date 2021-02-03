@@ -291,29 +291,21 @@ std::string  infusi::tipoElemento() const{
 
 
 //NONCONSUMABILE
-nonConsumabile::nonConsumabile(std::string n,bool cr,std::vector<std::string> c):
+nonConsumabile::nonConsumabile(std::string n,bool cr,std::string c):
     catalogo(n,cr),colori(c){}
 //GET
-std::vector<std::string> nonConsumabile::getColori() const{
+std::string nonConsumabile::getColori() const{
     return colori;
 }
 //SET
 void nonConsumabile::setColori(std::string c){
-    for(unsigned int i=0;i<colori.size();++i){
-        if(c==colori[i]) return;
-    }
-    colori.push_back(c);
+    colori=c;
     return;
 }
 //METODI
 std::string nonConsumabile::visualizzaInfo() const {
     std::string frase = catalogo::visualizzaInfo();
-    std::string colori="";
-    std::vector<std::string> vettore=getColori();
-    for(std::vector<std::string>::const_iterator cit=vettore.cbegin();cit!=vettore.cend();++cit) {
-        if(cit!=vettore.cend()-1) colori.append(*cit+",");
-        else colori.append(*cit);
-    }
+    std::string colori=getColori();
     return frase.append("\n Colori: "+colori);
 }
 
@@ -321,7 +313,7 @@ std::string nonConsumabile::visualizzaInfo() const {
 
 
 //BONG
-bong::bong(std::string n,bool cr,std::vector<std::string> c,bool frm,int alt,double largh):
+bong::bong(std::string n,bool cr,std::string c,bool frm,int alt,double largh):
     nonConsumabile(n,cr,c),forma(frm),altezza(alt),larghezza(largh){}
 //GET
 bool bong::getForma() const{
@@ -397,7 +389,7 @@ std::string  bong::tipoElemento() const{
 
 
 //VAPORIZZATORE
-vaporizzatore::vaporizzatore(std::string n,bool cr,std::vector<std::string> c,int ve,double cap,bool scher):
+vaporizzatore::vaporizzatore(std::string n,bool cr,std::string c,int ve,double cap,bool scher):
     nonConsumabile(n,cr,c),velocitaEvaporazione(ve),capienza(cap),schermo(scher){}
 //GET
 int vaporizzatore::getVelocitaEvaporazione() const{
@@ -459,7 +451,7 @@ std::string  vaporizzatore::tipoElemento() const{
 
 
 //GRINDER
-grinder::grinder(std::string n,bool cr,std::vector<std::string> c,int nd,bool racp):
+grinder::grinder(std::string n,bool cr,std::string c,int nd,bool racp):
     nonConsumabile(n,cr,c),ndenti(nd),raccoglipolline(racp){}
 //GET
 int grinder::getNdenti() const{

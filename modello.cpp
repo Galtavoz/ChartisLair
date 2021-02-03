@@ -116,11 +116,7 @@ void Modello::Salva(){
         if(elementoCatalogo=="bong"){
             QString ing;
             const bong* Bong = dynamic_cast<const bong*>(nuovoCatalogo);
-            std::vector<std::string> colori = Bong->getColori();
-            for(std::vector<std::string>::iterator scorri=colori.begin(); scorri!=colori.end();++scorri){
-                if(scorri!=colori.cend()-1) ing.append(QString::fromStdString(*scorri)).append(",");
-                else ing.append(QString::fromStdString(*scorri));
-            }
+            scrivi.writeAttribute("colori",QString::fromStdString(Bong->getColori()));
             scrivi.writeAttribute("forma",Bong->getForma()==true ? "Si" : "No");
             scrivi.writeAttribute("altezza",QString("%1").arg((Bong->getAltezza())));
             scrivi.writeAttribute("larghezza",QString("%1").arg((Bong->getLarghezza())));
@@ -128,11 +124,7 @@ void Modello::Salva(){
         if(elementoCatalogo=="vaporizzatore"){
             QString ing;
             const vaporizzatore* Vaporizzatore = dynamic_cast<const vaporizzatore*>(nuovoCatalogo);
-            std::vector<std::string> colori = Vaporizzatore->getColori();
-            for(std::vector<std::string>::iterator scorri=colori.begin(); scorri!=colori.end();++scorri){
-                if(scorri!=colori.cend()-1) ing.append(QString::fromStdString(*scorri)).append(",");
-                else ing.append(QString::fromStdString(*scorri));
-            }
+            scrivi.writeAttribute("colori",QString::fromStdString(Vaporizzatore->getColori()));
             scrivi.writeAttribute("velocitaEvaporazione",QString("%1").arg((Vaporizzatore->getVelocitaEvaporazione())));
             scrivi.writeAttribute("capienza",QString("%1").arg((Vaporizzatore->getCapienza())));
             scrivi.writeAttribute("schermo",Vaporizzatore->getSchermo()==true ? "Si" : "No");
@@ -140,11 +132,7 @@ void Modello::Salva(){
         if(elementoCatalogo=="grinder"){
             QString ing;
             const grinder* Grinder = dynamic_cast<const grinder*>(nuovoCatalogo);
-            std::vector<std::string> colori = Grinder->getColori();
-            for(std::vector<std::string>::iterator scorri=colori.begin(); scorri!=colori.end();++scorri){
-                if(scorri!=colori.cend()-1) ing.append(QString::fromStdString(*scorri)).append(",");
-                else ing.append(QString::fromStdString(*scorri));
-            }
+            scrivi.writeAttribute("colori",QString::fromStdString(Grinder->getColori()));
             scrivi.writeAttribute("ndenti",QString("%1").arg((Grinder->getNdenti())));
             scrivi.writeAttribute("raccoglipolline",Grinder->getRaccogliPolline()==true ? "Si" : "No");
         }
@@ -263,70 +251,31 @@ void Modello::Carica() {
 
                 if(lettore.name()=="bong") {
                     std::string colori = field.value("colori").toString().toStdString();
-                    std::vector<std::string> listaColori;
-                    const char* v=",";
-                    std::string ing="";
-                    int lung=colori.length();
-                    for(int i=0;i<lung;++i) {
-                        while(colori[i]!=*v && i<lung) {
-                            std::string lettera=toString(colori[i]);
-                            ing.append(lettera);
-                            ++i;
-                        }
-                    listaColori.push_back(ing);
-                    ing.clear();
-                    }
                     bool forma = field.value("forma").toString()=="Si" ? true : false;
                     int altezza = field.value("altezza").toUInt();
                     double larghezza = field.value("larghezza").toDouble();
 
 
-                    inserisci = new bong(nome,confezioneRegalo,listaColori,forma,altezza,larghezza);
+                    inserisci = new bong(nome,confezioneRegalo,colori,forma,altezza,larghezza);
                 }
 
                 if(lettore.name()=="vaporizzatore") {
                     std::string colori = field.value("colori").toString().toStdString();
-                    std::vector<std::string> listaColori;
-                    const char* v=",";
-                    std::string ing="";
-                    int lung=colori.length();
-                    for(int i=0;i<lung;++i) {
-                        while(colori[i]!=*v && i<lung) {
-                            std::string lettera=toString(colori[i]);
-                            ing.append(lettera);
-                            ++i;
-                        }
-                    listaColori.push_back(ing);
-                    ing.clear();
-                    }
                     int velocitaEvaporazione = field.value("velocita").toUInt();
                     double capienza = field.value("capienza").toUInt();
                     bool schermo = field.value("schermo").toString()=="Si" ? true : false;
 
 
-                    inserisci = new vaporizzatore(nome,confezioneRegalo,listaColori,velocitaEvaporazione,capienza,schermo);
+                    inserisci = new vaporizzatore(nome,confezioneRegalo,colori,velocitaEvaporazione,capienza,schermo);
                 }
 
                 if(lettore.name()=="grinder") {
                     std::string colori = field.value("colori").toString().toStdString();
-                    std::vector<std::string> listaColori;
-                    const char* v=",";
-                    std::string ing="";
-                    int lung=colori.length();
-                    for(int i=0;i<lung;++i) {
-                        while(colori[i]!=*v && i<lung) {
-                            std::string lettera=toString(colori[i]);
-                            ing.append(lettera);
-                            ++i;
-                        }
-                    listaColori.push_back(ing);
-                    ing.clear();
-                    }
                     int ndenti = field.value("ndenti").toUInt();
                     bool raccoglipolline = field.value("raccoglipolline").toString()=="Si" ? true : false;
 
 
-                    inserisci = new grinder(nome,confezioneRegalo,listaColori,ndenti,raccoglipolline);
+                    inserisci = new grinder(nome,confezioneRegalo,colori,ndenti,raccoglipolline);
                 }
                 if(inserisci!=nullptr) Catalogo->aggiungiCoda(inserisci);
 
