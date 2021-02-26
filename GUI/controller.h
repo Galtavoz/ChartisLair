@@ -39,6 +39,7 @@ public:
     Modello* getModello() const;
     void disabilita();
     void abilita();
+    bool controlloDoppione(catalogo*) const;
 public slots:
         void esci();
         void carica();
@@ -48,5 +49,6 @@ public slots:
         void vediInfoSviluppatore();
         void vediInfoCatalogo();
         void ricercaProdotti();
+        void inserisciNuovoProdotto();
 };
 #endif // CONTROLLER_H

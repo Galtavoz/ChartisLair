@@ -35,7 +35,9 @@ Controller::Controller(Modello* m,QWidget* p):
     connect(menu->getRicerca(),SIGNAL(triggered()),this,SLOT(vediRicerca()));
     connect(menu->getInserisci(),SIGNAL(triggered()),this,SLOT(vediInserisci()));
 
+
     connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
+    connect(inserisci->getInserisciBut(),SIGNAL(clicked()),this,SLOT(inserisciNuovoProdotto()));
 }
 void Controller::caricaDati() {
     if(file!="") {
@@ -103,6 +105,19 @@ void Controller::abilita() {
     menu->getRicerca()->setEnabled(true);
 
 }
+bool Controller::controlloDoppione(catalogo* p) const {
+    bool controlloDoppio=false;
+    lista<catalogo*>* listaMenu = modello->getListaCatalogo();
+    for(lista<catalogo*>::iteratore cit=listaMenu->inizio();cit!=listaMenu->fine();++cit) {
+        if(*p==(**cit)) {
+            controlloDoppio=true;
+            return controlloDoppio;
+        }
+        else controlloDoppio=false;
+    }
+    return controlloDoppio;
+}
+
 void Controller::ricercaProdotti(){
     ricerca->getListaRicerca()->clear();
     //qDebug()<<QString::fromUtf8(ricerca->getTipoProdotto().c_str());
@@ -399,4 +414,19 @@ void Controller::vediInfoCatalogo() {
     info.append(QString::number(grinder));
     popup* informazioni = new popup("Informazione",info);
     informazioni->exec();
+}
+void Controller::inserisciNuovoProdotto(){
+    catalogo* daInserire = inserisci->nuovoProdotto();
+    if (controlloDoppione(daInserire)) {
+            popup* prodottoDoppione = new popup("Warning","Piatto doppione,hai già creato un piatto così!");
+            prodottoDoppione->exec();
+    }
+    else{
+        modello->inserisci(daInserire);
+        modello->Salva();
+        catCompleto->getLista()->clear();
+        caricaDati();
+        inserisci->hide();
+        catCompleto->show();
+    }
 }

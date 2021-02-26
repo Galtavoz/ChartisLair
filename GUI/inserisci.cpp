@@ -289,7 +289,7 @@ Inserisci::Inserisci(QWidget* p):
       prodO->setText("Outdoor");
       labelProd->setText("Tipo di produzione:");
       labelColori->setText("Colore:");
-      QList<QString> listaColori={"Seleziona colore...","Bianco","Blu","Verde","Arancione","Viola","Fucsia","Oro","Giallo"};
+      QList<QString> listaColori={"Bianco","Blu","Verde","Arancione","Viola","Fucsia","Oro","Giallo"};
       for(int i=0;i<listaColori.length();++i)
               colori->addItem(listaColori[i]);
        colori->setCurrentIndex(0);
@@ -370,7 +370,7 @@ Inserisci::Inserisci(QWidget* p):
       velocita->setCurrentIndex(0);
 
       lableNDenti->setText("Seleziona il numero di denti presenti nel grider :");
-      QList<QString> listaDenti={"Qualsiasi","6","12","24","30","36"};
+      QList<QString> listaDenti={"6","12","24","30","36"};
       for(int i=0;i<listaDenti.length();++i)
           ndenti->addItem(listaDenti[i]);
       lableRaccPoll->setText("Seleziona se il grinder ha o no il raccogli polline");
@@ -1062,7 +1062,7 @@ catalogo* Inserisci::nuovoProdotto(){
         else if(media->isChecked()==true){
             nuovoFondenza= 3;
         }
-        else if(alta->isChecked()==true){
+        else{
             nuovoFondenza= 4;
         }
         if(cocco->isChecked()==true){
@@ -1074,7 +1074,7 @@ catalogo* Inserisci::nuovoProdotto(){
         else if(mandorla->isChecked()==true){
             nuovoGranella= 3;
         }
-        else if(nocciola->isChecked()==true){
+        else {
             nuovoGranella= 4;
         }
         if(formaC->currentText()=="Stecche") nuovoFormaC=true;

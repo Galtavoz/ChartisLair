@@ -31,6 +31,8 @@ public:
     virtual double ricavo() const = 0;
     virtual std::string  tipoElemento() const =0;
     virtual std::string visualizzaInfo() const;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const;
 };
 
 class consumabile: public catalogo{
@@ -57,6 +59,8 @@ public:
      virtual double ricavo() const = 0;
      virtual std::string  tipoElemento() const =0;
      virtual std::string visualizzaInfo() const;
+     //OPERATORI
+     virtual bool operator==(const catalogo&) const;
 };
 
 class biscotti: public consumabile{
@@ -77,6 +81,8 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const override;
 };
 
 class cioccolata: public consumabile{
@@ -101,6 +107,8 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const override;
 
 };
 
@@ -122,6 +130,8 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const override;
 };
 
 
@@ -143,6 +153,8 @@ public:
     virtual double ricavo() const = 0;
     virtual std::string  tipoElemento() const =0;
     virtual std::string visualizzaInfo() const;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const;
 };
 
 //BONG
@@ -167,6 +179,8 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const override;
 };
 
 //VAPORIZZATORE
@@ -190,7 +204,9 @@ public:
     virtual double prezzo() const override;
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
-     virtual std::string visualizzaInfo() const override;
+    virtual std::string visualizzaInfo() const override;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const override;
 };
 
 //GRINDER
@@ -212,5 +228,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
      virtual std::string visualizzaInfo() const override;
+    //OPERATORI
+    virtual bool operator==(const catalogo&) const override;
 };
 #endif // GERARCHIA_H

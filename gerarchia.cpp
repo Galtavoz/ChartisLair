@@ -23,7 +23,10 @@ std::string catalogo::visualizzaInfo() const {
     return frase.append("\n Nome: "+getNome())
            .append("\n Confezione regalo: ").append((getConfezioneRegalo() ? "Si" : "No"));
 }
-
+//OPERATORI
+bool catalogo::operator==(const catalogo& p) const {
+    return nome==p.nome && confezioneRegalo==p.confezioneRegalo;
+}
 
 
 
@@ -77,7 +80,11 @@ std::string consumabile::visualizzaInfo() const {
            .append("\n Tipologia di erba: ").append(getErba() ? "Indica" : "Sativa")
            .append("\n Produzione :").append(getProduzione() ? "Indoor" : "Outdoor");
 }
-
+//OPERATORI
+bool consumabile::operator==(const catalogo &p) const {
+    const consumabile* con = dynamic_cast<const consumabile*>(&p);
+    return catalogo::operator==(p) && peso==con->peso && erba==con->erba && produzione==con->produzione;
+}
 
 
 
@@ -148,7 +155,11 @@ std::string  biscotti::tipoElemento() const{
     return "biscotti";
 }
 
-
+//OPERATORI
+bool biscotti::operator==(const catalogo &p) const {
+    const biscotti* bis = dynamic_cast<const biscotti*>(&p);
+    return consumabile::operator==(p) && tipoFarina==bis->tipoFarina && gocceCioccolata==bis->gocceCioccolata;
+}
 
 
 
@@ -225,7 +236,11 @@ double cioccolata::ricavo() const{
 std::string  cioccolata::tipoElemento() const{
     return "cioccolata";
 }
-
+//OPERATORI
+bool cioccolata::operator==(const catalogo &p) const {
+    const cioccolata* ciocc = dynamic_cast<const cioccolata*>(&p);
+    return consumabile::operator==(p) && tipoGranella==ciocc->tipoGranella && livelloFondenza==ciocc->livelloFondenza && forma==ciocc->forma;
+}
 
 
 
@@ -285,7 +300,22 @@ double infusi::ricavo() const{
 std::string  infusi::tipoElemento() const{
     return "infusi";
 }
-
+//OPERATORI
+bool infusi::operator==(const catalogo &p) const {
+    bool flag=false;
+    const infusi* inf = dynamic_cast<const infusi*>(&p);
+    std::vector<std::string> stringAroma=inf->getAroma();
+    std::vector<std::string> stringRicerca=getAroma();
+    for (unsigned int i=0;i<stringAroma.size();++i) {
+        if(stringAroma.size()==stringRicerca.size()){
+            for (unsigned int j=0;j<stringRicerca.size();++j){
+                if(stringAroma[i]==stringRicerca[j])
+                   flag=true;
+            }
+        }
+    }
+    return consumabile::operator==(p) && sfuso==inf->sfuso && flag;
+}
 
 
 
@@ -308,7 +338,11 @@ std::string nonConsumabile::visualizzaInfo() const {
     std::string colori=getColori();
     return frase.append("\n Colori: "+colori);
 }
-
+//OPERATORI
+bool nonConsumabile::operator==(const catalogo &p) const {
+    const nonConsumabile* nc = dynamic_cast<const nonConsumabile*>(&p);
+    return catalogo::operator==(p) && colori==nc->colori;
+}
 
 
 
@@ -385,7 +419,11 @@ double bong::ricavo() const{
 std::string  bong::tipoElemento() const{
     return "bong";
 }
-
+//OPERATORI
+bool bong::operator==(const catalogo &p) const {
+    const bong* bon = dynamic_cast<const bong*>(&p);
+    return nonConsumabile::operator==(p) && forma==bon->forma && altezza==bon->altezza && larghezza==bon->larghezza;
+}
 
 
 //VAPORIZZATORE
@@ -446,7 +484,11 @@ double vaporizzatore::ricavo() const{
 std::string  vaporizzatore::tipoElemento() const{
     return "vaporizzatore";
 }
-
+//OPERATORI
+bool vaporizzatore::operator==(const catalogo &p) const {
+    const vaporizzatore* vap = dynamic_cast<const vaporizzatore*>(&p);
+    return nonConsumabile::operator==(p) && velocitaEvaporazione==vap->velocitaEvaporazione && capienza==vap->capienza && schermo==vap->schermo;
+}
 
 
 
@@ -490,4 +532,9 @@ double grinder::ricavo() const{
 }
 std::string  grinder::tipoElemento() const{
     return "grinder";
+}
+//OPERATORI
+bool grinder::operator==(const catalogo &p) const {
+    const grinder* grd = dynamic_cast<const grinder*>(&p);
+    return nonConsumabile::operator==(p) && ndenti==grd->ndenti && raccoglipolline==grd->raccoglipolline;
 }
