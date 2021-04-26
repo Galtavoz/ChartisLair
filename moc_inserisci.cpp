@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Inserisci_t {
-    QByteArrayData data[28];
-    char stringdata0[347];
+    QByteArrayData data[32];
+    char stringdata0[396];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -59,7 +59,11 @@ QT_MOC_LITERAL(23, 288, 9), // "checkAlta"
 QT_MOC_LITERAL(24, 298, 10), // "checkCocco"
 QT_MOC_LITERAL(25, 309, 9), // "checkNoce"
 QT_MOC_LITERAL(26, 319, 13), // "checkMandorla"
-QT_MOC_LITERAL(27, 333, 13) // "checkNocciola"
+QT_MOC_LITERAL(27, 333, 13), // "checkNocciola"
+QT_MOC_LITERAL(28, 347, 11), // "checkIndica"
+QT_MOC_LITERAL(29, 359, 11), // "checkSativa"
+QT_MOC_LITERAL(30, 371, 11), // "checkIndoor"
+QT_MOC_LITERAL(31, 383, 12) // "checkOutdoor"
 
     },
     "Inserisci\0scelteBiscotti\0\0scelteCioccolato\0"
@@ -71,7 +75,8 @@ QT_MOC_LITERAL(27, 333, 13) // "checkNocciola"
     "checkLatte\0checkFondente\0checkBianco\0"
     "checkNessuna\0checkBassa\0checkMedia\0"
     "checkAlta\0checkCocco\0checkNoce\0"
-    "checkMandorla\0checkNocciola"
+    "checkMandorla\0checkNocciola\0checkIndica\0"
+    "checkSativa\0checkIndoor\0checkOutdoor"
 };
 #undef QT_MOC_LITERAL
 
@@ -81,7 +86,7 @@ static const uint qt_meta_data_Inserisci[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      26,   14, // methods
+      30,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -89,32 +94,36 @@ static const uint qt_meta_data_Inserisci[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  144,    2, 0x0a /* Public */,
-       3,    0,  145,    2, 0x0a /* Public */,
-       4,    0,  146,    2, 0x0a /* Public */,
-       5,    0,  147,    2, 0x0a /* Public */,
-       6,    1,  148,    2, 0x0a /* Public */,
-       7,    1,  151,    2, 0x0a /* Public */,
-       8,    0,  154,    2, 0x0a /* Public */,
-       9,    0,  155,    2, 0x0a /* Public */,
-      10,    0,  156,    2, 0x0a /* Public */,
-      11,    1,  157,    2, 0x0a /* Public */,
-      12,    1,  160,    2, 0x0a /* Public */,
-      13,    1,  163,    2, 0x0a /* Public */,
-      14,    1,  166,    2, 0x0a /* Public */,
-      15,    1,  169,    2, 0x0a /* Public */,
-      16,    1,  172,    2, 0x0a /* Public */,
-      17,    1,  175,    2, 0x0a /* Public */,
-      18,    1,  178,    2, 0x0a /* Public */,
-      19,    1,  181,    2, 0x0a /* Public */,
-      20,    1,  184,    2, 0x0a /* Public */,
-      21,    1,  187,    2, 0x0a /* Public */,
-      22,    1,  190,    2, 0x0a /* Public */,
-      23,    1,  193,    2, 0x0a /* Public */,
-      24,    1,  196,    2, 0x0a /* Public */,
-      25,    1,  199,    2, 0x0a /* Public */,
-      26,    1,  202,    2, 0x0a /* Public */,
-      27,    1,  205,    2, 0x0a /* Public */,
+       1,    0,  164,    2, 0x0a /* Public */,
+       3,    0,  165,    2, 0x0a /* Public */,
+       4,    0,  166,    2, 0x0a /* Public */,
+       5,    0,  167,    2, 0x0a /* Public */,
+       6,    1,  168,    2, 0x0a /* Public */,
+       7,    1,  171,    2, 0x0a /* Public */,
+       8,    0,  174,    2, 0x0a /* Public */,
+       9,    0,  175,    2, 0x0a /* Public */,
+      10,    0,  176,    2, 0x0a /* Public */,
+      11,    1,  177,    2, 0x0a /* Public */,
+      12,    1,  180,    2, 0x0a /* Public */,
+      13,    1,  183,    2, 0x0a /* Public */,
+      14,    1,  186,    2, 0x0a /* Public */,
+      15,    1,  189,    2, 0x0a /* Public */,
+      16,    1,  192,    2, 0x0a /* Public */,
+      17,    1,  195,    2, 0x0a /* Public */,
+      18,    1,  198,    2, 0x0a /* Public */,
+      19,    1,  201,    2, 0x0a /* Public */,
+      20,    1,  204,    2, 0x0a /* Public */,
+      21,    1,  207,    2, 0x0a /* Public */,
+      22,    1,  210,    2, 0x0a /* Public */,
+      23,    1,  213,    2, 0x0a /* Public */,
+      24,    1,  216,    2, 0x0a /* Public */,
+      25,    1,  219,    2, 0x0a /* Public */,
+      26,    1,  222,    2, 0x0a /* Public */,
+      27,    1,  225,    2, 0x0a /* Public */,
+      28,    1,  228,    2, 0x0a /* Public */,
+      29,    1,  231,    2, 0x0a /* Public */,
+      30,    1,  234,    2, 0x0a /* Public */,
+      31,    1,  237,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -126,6 +135,10 @@ static const uint qt_meta_data_Inserisci[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
@@ -179,6 +192,10 @@ void Inserisci::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 23: _t->checkNoce((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 24: _t->checkMandorla((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 25: _t->checkNocciola((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 26: _t->checkIndica((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 27: _t->checkSativa((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 28: _t->checkIndoor((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 29: _t->checkOutdoor((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -213,13 +230,13 @@ int Inserisci::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 26)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 26;
+        _id -= 30;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 26)
+        if (_id < 30)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 26;
+        _id -= 30;
     }
     return _id;
 }

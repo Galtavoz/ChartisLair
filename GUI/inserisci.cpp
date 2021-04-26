@@ -473,13 +473,168 @@ Inserisci::Inserisci(QWidget* p):
       connect(noce,SIGNAL(toggled(bool)),this,SLOT(checkNoce(bool)));
       connect(mandorla,SIGNAL(toggled(bool)),this,SLOT(checkMandorla(bool)));
       connect(nocciola,SIGNAL(toggled(bool)),this,SLOT(checkNocciola(bool)));
-
+      //CONNECT CHECKHEMP
+      connect(hempI,SIGNAL(toggled(bool)),this,SLOT(checkIndica(bool)));
+      connect(hempS,SIGNAL(toggled(bool)),this,SLOT(checkSativa(bool)));
+      //CONNECT CHECKPRODUZIONE
+      connect(prodI,SIGNAL(toggled(bool)),this,SLOT(checkIndoor(bool)));
+      connect(prodO,SIGNAL(toggled(bool)),this,SLOT(checkOutdoor(bool)));
+      //CONNECT CHECKGRANELLA
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteVapo()));
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteGrinder()));
 
       connect(backer,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
       connect(dritto,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
 }
+void Inserisci::resetCambioProdotto(){
+    regalo->setChecked(false);
+    hempI->setChecked(false);
+    hempS->setChecked(false);
+    prodI->setChecked(false);
+    prodO->setChecked(false);
+    grano->setChecked(false);
+    riso->setChecked(false);
+    mandorle->setChecked(false);
+    castagne->setChecked(false);
+    amaranto->setChecked(false);
+    senza->setChecked(false);
+    latte->setChecked(false);
+    fondente->setChecked(false);
+    bianco->setChecked(false);
+    nessuna->setChecked(false);
+    bassa->setChecked(false);
+    media->setChecked(false);
+    alta->setChecked(false);
+    cocco->setChecked(false);
+    noce->setChecked(false);
+    mandorla->setChecked(false);
+    nocciola->setChecked(false);
+    backer->setChecked(false);
+    dritto->setChecked(false);
+
+
+    regalo->setEnabled(true);
+    hempI->setEnabled(true);
+    hempS->setEnabled(true);
+    prodI->setEnabled(true);
+    prodO->setEnabled(true);
+    grano->setEnabled(true);
+    riso->setEnabled(true);
+    mandorle->setEnabled(true);
+    castagne->setEnabled(true);
+    amaranto->setEnabled(true);
+    senza->setEnabled(true);
+    latte->setEnabled(true);
+    fondente->setEnabled(true);
+    bianco->setEnabled(true);
+    nessuna->setEnabled(true);
+    bassa->setEnabled(true);
+    media->setEnabled(true);
+    alta->setEnabled(true);
+    cocco->setEnabled(true);
+    noce->setEnabled(true);
+    mandorla->setEnabled(true);
+    nocciola->setEnabled(true);
+    backer->setEnabled(true);
+    dritto->setEnabled(true);
+
+    colori->setCurrentIndex(0);
+    formaC->setCurrentIndex(0);
+    aroma1->setCurrentIndex(0);
+    aroma2->setCurrentIndex(0);
+    sfuso->setCurrentIndex(0);
+    dimBacker->setCurrentIndex(0);
+    dimDritto->setCurrentIndex(0);
+    schermo->setCurrentIndex(0);
+    capienza->setCurrentIndex(0);
+    velocita->setCurrentIndex(0);
+    ndenti->setCurrentIndex(0);
+    raccoglipoll->setCurrentIndex(0);
+
+    nome->setText("");
+    peso->setText("");
+
+
+    nome->hide();
+    labelNomeRegalo->hide();
+    regalo->hide();
+}
+void Inserisci::resetInserisci(){
+    regalo->setChecked(false);
+    hempI->setChecked(false);
+    hempS->setChecked(false);
+    prodI->setChecked(false);
+    prodO->setChecked(false);
+    grano->setChecked(false);
+    riso->setChecked(false);
+    mandorle->setChecked(false);
+    castagne->setChecked(false);
+    amaranto->setChecked(false);
+    senza->setChecked(false);
+    latte->setChecked(false);
+    fondente->setChecked(false);
+    bianco->setChecked(false);
+    nessuna->setChecked(false);
+    bassa->setChecked(false);
+    media->setChecked(false);
+    alta->setChecked(false);
+    cocco->setChecked(false);
+    noce->setChecked(false);
+    mandorla->setChecked(false);
+    nocciola->setChecked(false);
+    backer->setChecked(false);
+    dritto->setChecked(false);
+
+
+    regalo->setEnabled(true);
+    hempI->setEnabled(true);
+    hempS->setEnabled(true);
+    prodI->setEnabled(true);
+    prodO->setEnabled(true);
+    grano->setEnabled(true);
+    riso->setEnabled(true);
+    mandorle->setEnabled(true);
+    castagne->setEnabled(true);
+    amaranto->setEnabled(true);
+    senza->setEnabled(true);
+    latte->setEnabled(true);
+    fondente->setEnabled(true);
+    bianco->setEnabled(true);
+    nessuna->setEnabled(true);
+    bassa->setEnabled(true);
+    media->setEnabled(true);
+    alta->setEnabled(true);
+    cocco->setEnabled(true);
+    noce->setEnabled(true);
+    mandorla->setEnabled(true);
+    nocciola->setEnabled(true);
+    backer->setEnabled(true);
+    dritto->setEnabled(true);
+
+    colori->setCurrentIndex(0);
+    tipoProdotto->setCurrentIndex(0);
+    formaC->setCurrentIndex(0);
+    aroma1->setCurrentIndex(0);
+    aroma2->setCurrentIndex(0);
+    sfuso->setCurrentIndex(0);
+    dimBacker->setCurrentIndex(0);
+    dimDritto->setCurrentIndex(0);
+    schermo->setCurrentIndex(0);
+    capienza->setCurrentIndex(0);
+    velocita->setCurrentIndex(0);
+    ndenti->setCurrentIndex(0);
+    raccoglipoll->setCurrentIndex(0);
+
+    nome->setText("");
+    peso->setText("");
+
+
+    nome->hide();
+    labelNomeRegalo->hide();
+    regalo->hide();
+
+}
+
 void Inserisci::scelteBiscotti(){
     if(tipoProdotto->currentText()=="Biscotti"){
         //GENERALI
@@ -533,6 +688,8 @@ void Inserisci::scelteBiscotti(){
         fondente->hide();
         bianco->hide();
     }
+
+    resetCambioProdotto();
 }
 
 void Inserisci::scelteCioccolato(){
@@ -590,6 +747,8 @@ void Inserisci::scelteCioccolato(){
         lableFormaC->hide();
         formaC->hide();
     }
+
+    resetCambioProdotto();
 }
 
 void Inserisci::scelteInfusi(){
@@ -631,6 +790,8 @@ void Inserisci::scelteInfusi(){
         lableSfuso->hide();
         sfuso->hide();
     }
+
+    resetCambioProdotto();
 }
 
 void Inserisci::scelteFormaBong(){
@@ -671,6 +832,8 @@ void Inserisci::scelteFormaBong(){
         dimBacker->hide();
         dimDritto->hide();
     }
+
+    resetCambioProdotto();
 }
 
 void Inserisci::scelteDimensioniB(bool flag){
@@ -726,6 +889,8 @@ void Inserisci::scelteVapo(){
         lableVelocita->hide();
         velocita->hide();
     }
+
+    resetCambioProdotto();
 }
 void Inserisci::scelteGrinder(){
     if(tipoProdotto->currentText()=="Grinder"){
@@ -761,6 +926,8 @@ void Inserisci::scelteGrinder(){
         lableRaccPoll->hide();
         raccoglipoll->hide();
     }
+
+    resetCambioProdotto();
 }
 void Inserisci::resetDim(){
     if(backer->isEnabled()==true && dritto->isEnabled()==true){
@@ -987,7 +1154,24 @@ void Inserisci::checkNocciola(bool f){
         mandorla->setEnabled(true);
     }
 }
-
+//CHECKHEMP
+void Inserisci::checkIndica(bool f){
+    if(f) hempS->setEnabled(false);
+    else hempS->setEnabled(true);
+}
+void Inserisci::checkSativa(bool f){
+    if(f) hempI->setEnabled(false);
+    else hempI->setEnabled(true);
+}
+//CHECKPRODUZIONE
+void Inserisci::checkIndoor(bool f){
+    if(f) prodO->setEnabled(false);
+    else prodO->setEnabled(true);
+}
+void Inserisci::checkOutdoor(bool f){
+    if(f) prodI->setEnabled(false);
+    else prodI->setEnabled(true);
+}
 //GET
 QPushButton* Inserisci::getInserisciBut() const {
     return  inserisci;
@@ -1096,7 +1280,7 @@ catalogo* Inserisci::nuovoProdotto(){
         nuoviAromi.push_back(aroma1->currentText().toStdString());
         if(aroma2->currentText().toStdString()!="Nessun aroma")
             nuoviAromi.push_back(aroma2->currentText().toStdString());
-        if(formaC->currentText()=="Stecche") nuovoSfuso=true;
+        if(sfuso->currentText()=="Sfuso") nuovoSfuso=true;
         else nuovoSfuso=false;
 
         ritorno= new infusi(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuoviAromi,nuovoSfuso);

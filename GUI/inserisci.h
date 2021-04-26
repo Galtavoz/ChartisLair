@@ -101,6 +101,9 @@ public:
     QPushButton* getInserisciBut() const;
     catalogo* nuovoProdotto();
 
+    void resetInserisci();
+    void resetCambioProdotto();
+
 public slots:
     void scelteBiscotti();
     void scelteCioccolato();
@@ -136,6 +139,12 @@ public slots:
     void checkNoce(bool);
     void checkMandorla(bool);
     void checkNocciola(bool);
+    //CHECKHEMP
+    void checkIndica(bool);
+    void checkSativa(bool);
+    //CHECKPRODUZIONE
+    void checkIndoor(bool);
+    void checkOutdoor(bool);
 
 
 };

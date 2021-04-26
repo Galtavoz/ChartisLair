@@ -20,6 +20,7 @@
 #include"GUI/catalogoCompleto.h"
 #include"GUI/ricerca.h"
 #include"GUI/inserisci.h"
+#include"GUI/modifica.h"
 
 class Controller: public QWidget {
     Q_OBJECT
@@ -31,6 +32,7 @@ private:
     Inserisci* inserisci;
     catalogoCompleto* catCompleto;
     QString file;
+    Modifica* layoutModifica;
 public:
     Controller(Modello*, QWidget* = nullptr);
     ~Controller();
@@ -39,7 +41,10 @@ public:
     Modello* getModello() const;
     void disabilita();
     void abilita();
+
+
     bool controlloDoppione(catalogo*) const;
+
 public slots:
         void esci();
         void carica();
@@ -50,5 +55,6 @@ public slots:
         void vediInfoCatalogo();
         void ricercaProdotti();
         void inserisciNuovoProdotto();
+        void modifica();
 };
 #endif // CONTROLLER_H

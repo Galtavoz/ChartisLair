@@ -7,7 +7,10 @@ Controller::Controller(Modello* m,QWidget* p):
     ricerca(new Ricerca(this)),
     inserisci(new Inserisci(this)),
     catCompleto(new catalogoCompleto(this)),
-    file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ChartisLair/SALVATAGGIO","File XML(*.xml)")){
+    file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ChartisLair/SALVATAGGIO","File XML(*.xml)")),
+    layoutModifica(new Modifica(this))
+{
+
 
     QVBoxLayout* controller = new QVBoxLayout(this);
 
@@ -35,7 +38,7 @@ Controller::Controller(Modello* m,QWidget* p):
     connect(menu->getRicerca(),SIGNAL(triggered()),this,SLOT(vediRicerca()));
     connect(menu->getInserisci(),SIGNAL(triggered()),this,SLOT(vediInserisci()));
 
-
+    connect(catCompleto->getModifica(),SIGNAL(clicked()),this,SLOT(modifica()));
     connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
     connect(inserisci->getInserisciBut(),SIGNAL(clicked()),this,SLOT(inserisciNuovoProdotto()));
 }
@@ -45,7 +48,7 @@ void Controller::caricaDati() {
         modello->Carica();
         abilita();
         if(modello->contaCatalogo()==0) {
-            popup* avvisoCarica = new popup("Warning","Attenzione,non sono presenti piatti.");
+            popup* avvisoCarica = new popup("Warning","Attenzione,non sono presenti prodotti.");
             avvisoCarica->exec();
         } else {
             lista<catalogo*>::iteratoreConst inizioLista = modello->inizioCIter();
@@ -107,8 +110,8 @@ void Controller::abilita() {
 }
 bool Controller::controlloDoppione(catalogo* p) const {
     bool controlloDoppio=false;
-    lista<catalogo*>* listaMenu = modello->getListaCatalogo();
-    for(lista<catalogo*>::iteratore cit=listaMenu->inizio();cit!=listaMenu->fine();++cit) {
+    lista<catalogo*>* listaCatalogo = modello->getListaCatalogo();
+    for(lista<catalogo*>::iteratore cit=listaCatalogo->inizio();cit!=listaCatalogo->fine();++cit) {
         if(*p==(**cit)) {
             controlloDoppio=true;
             return controlloDoppio;
@@ -358,7 +361,16 @@ void Controller::ricercaProdotti(){
     }
 }
 
-
+void Controller::modifica(){
+    if(catCompleto->getLista()->currentItem()==nullptr){
+        popup* nessunProdottoSelezionato= new popup("Warning","Nessun prodotto selezioanto, seleziona un prodotto da modificare");
+        nessunProdottoSelezionato->exec();
+    }
+    else{
+        layoutModifica->setProdotto(catCompleto->getLista()->currentItem()->getSelezionato());
+        layoutModifica->exec();
+    }
+}
 //SLOTS
 void Controller::esci() {
     close();
@@ -371,18 +383,22 @@ void Controller::tornaHome(){
     ricerca->hide();
     catCompleto->show();
     inserisci->hide();
+    ricerca->resetRicerca();
+    inserisci->resetInserisci();
 }
 void Controller::vediRicerca(){
     ricerca->getListaRicerca()->clear();
     catCompleto->hide();
     ricerca->show();
     inserisci->hide();
+    inserisci->resetInserisci();
 }
 void Controller::vediInserisci(){
     ricerca->getListaRicerca()->clear();
     catCompleto->hide();
     ricerca->hide();
     inserisci->show();
+    ricerca->resetRicerca();
 }
 void Controller::vediInfoSviluppatore() {
     popup* informazioni = new popup("Informazione","Progetto realizzato da: Galtarossa Marco. Numero di matricola 1096393.\n Per qualsiasi necessità"
@@ -418,7 +434,7 @@ void Controller::vediInfoCatalogo() {
 void Controller::inserisciNuovoProdotto(){
     catalogo* daInserire = inserisci->nuovoProdotto();
     if (controlloDoppione(daInserire)) {
-            popup* prodottoDoppione = new popup("Warning","Piatto doppione,hai già creato un piatto così!");
+            popup* prodottoDoppione = new popup("Warning","Prodotto doppione,hai già creato un prodotto così!");
             prodottoDoppione->exec();
     }
     else{

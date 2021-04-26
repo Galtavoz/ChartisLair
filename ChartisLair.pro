@@ -22,6 +22,7 @@ SOURCES += \
     GUI/elementoWidget.cpp \
     GUI/inserisci.cpp \
     GUI/menu.cpp \
+    GUI/modifica.cpp \
     GUI/popup.cpp \
     GUI/ricerca.cpp \
     gerarchia.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     GUI/elementoWidget.h \
     GUI/inserisci.h \
     GUI/menu.h \
+    GUI/modifica.h \
     GUI/popup.h \
     GUI/ricerca.h \
     container.h \

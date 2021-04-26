@@ -109,6 +109,8 @@ public:
     int getRaccogliP() const;
 
     elementoWidget* getListaRicerca() const;
+
+    void resetRicerca();
 public slots:
     void scelteBiscotti();
     void scelteCioccolato();

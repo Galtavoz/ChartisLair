@@ -303,8 +303,11 @@ std::string  infusi::tipoElemento() const{
 //OPERATORI
 bool infusi::operator==(const catalogo &p) const {
     bool flag=false;
+    std::vector<std::string> stringAroma;
     const infusi* inf = dynamic_cast<const infusi*>(&p);
-    std::vector<std::string> stringAroma=inf->getAroma();
+    if(inf!=nullptr){
+        stringAroma=inf->getAroma();
+    }
     std::vector<std::string> stringRicerca=getAroma();
     for (unsigned int i=0;i<stringAroma.size();++i) {
         if(stringAroma.size()==stringRicerca.size()){

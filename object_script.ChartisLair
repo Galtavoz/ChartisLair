@@ -4,6 +4,7 @@ controller.o
 elementoWidget.o
 inserisci.o
 menu.o
+modifica.o
 popup.o
 ricerca.o
 gerarchia.o
@@ -13,5 +14,6 @@ modello.o
 moc_controller.o
 moc_inserisci.o
 moc_menu.o
+moc_modifica.o
 moc_ricerca.o
 moc_mainwindow.o

@@ -408,6 +408,66 @@ Ricerca::Ricerca(QWidget* p):
       connect(backer,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
       connect(dritto,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
 }
+void Ricerca::resetRicerca(){
+    grano->setChecked(false);
+    riso->setChecked(false);
+    mandorle->setChecked(false);
+    castagne->setChecked(false);
+    amaranto->setChecked(false);
+    senza->setChecked(false);
+    latte->setChecked(false);
+    fondente->setChecked(false);
+    bianco->setChecked(false);
+    nessuna->setChecked(false);
+    bassa->setChecked(false);
+    media->setChecked(false);
+    alta->setChecked(false);
+    cocco->setChecked(false);
+    noce->setChecked(false);
+    mandorla->setChecked(false);
+    nocciola->setChecked(false);
+    backer->setChecked(false);
+    dritto->setChecked(false);
+    qualsiasi->setChecked(false);
+
+
+    grano->setEnabled(true);
+    riso->setEnabled(true);
+    mandorle->setEnabled(true);
+    castagne->setEnabled(true);
+    amaranto->setEnabled(true);
+    senza->setEnabled(true);
+    latte->setEnabled(true);
+    fondente->setEnabled(true);
+    bianco->setEnabled(true);
+    nessuna->setEnabled(true);
+    bassa->setEnabled(true);
+    media->setEnabled(true);
+    alta->setEnabled(true);;
+    cocco->setEnabled(true);
+    noce->setEnabled(true);
+    mandorla->setEnabled(true);
+    nocciola->setEnabled(true);
+    backer->setEnabled(true);
+    dritto->setEnabled(true);
+    qualsiasi->setEnabled(true);
+
+
+    tipoProdotto->setCurrentIndex(0);
+    formaC->setCurrentIndex(0);
+    aroma1->setCurrentIndex(0);
+    aroma2->setCurrentIndex(0);
+    sfuso->setCurrentIndex(0);
+    dimBacker->setCurrentIndex(0);
+    dimDritto->setCurrentIndex(0);
+    schermo->setCurrentIndex(0);
+    capienza->setCurrentIndex(0);
+    velocita->setCurrentIndex(0);
+    ndenti->setCurrentIndex(0);
+    raccoglipoll->setCurrentIndex(0);
+
+}
+
 void Ricerca::scelteBiscotti(){
     if(tipoProdotto->currentText()=="Biscotti"){
         //FARINE
