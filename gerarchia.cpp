@@ -447,7 +447,7 @@ bool vaporizzatore::getSchermo() const{
 int vaporizzatore::setVelocitaEvaporazione(int ve){
     return velocitaEvaporazione=ve;
 }
-double vaporizzatore::setCapienza(double cap){
+int vaporizzatore::setCapienza(int cap){
     return capienza=cap;
 }
 bool vaporizzatore::setSchermo(bool sch){

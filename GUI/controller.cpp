@@ -368,6 +368,7 @@ void Controller::modifica(){
     }
     else{
         layoutModifica->setProdotto(catCompleto->getLista()->currentItem()->getSelezionato());
+        layoutModifica->compilaModifica();
         layoutModifica->exec();
     }
 }

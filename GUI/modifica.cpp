@@ -16,7 +16,7 @@ Modifica::Modifica(QWidget* p):
     prodO(new QCheckBox(this)),
     labelColori(new QLabel(this)),
     colori(new QComboBox(this)),
-    tipoProdotto(new QComboBox(this)),
+    tipoProdotto(new QLabel(this)),
 //CONSUMABILI
     lableTipoFarine(new QLabel(this)),
     grano(new QCheckBox(this)),
@@ -201,10 +201,6 @@ Modifica::Modifica(QWidget* p):
 
      salva->show();
      salva->setText("Salva");
-     QList<QString> prodotti={"Seleziona prodotto...","Biscotti","Cioccolata","Infusi","Bong","Vaporizzatore","Grinder"};
-     for(int i=0;i<prodotti.length();++i)
-             tipoProdotto->addItem(prodotti[i]);
-      tipoProdotto->setCurrentIndex(0);
 
       labelNomeRegalo->hide();
       nome->hide();
@@ -437,11 +433,7 @@ Modifica::Modifica(QWidget* p):
 
 
 
-      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteBiscotti()));
-      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteCioccolato()));
-      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteInfusi()));
-
-      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteFormaBong()));
+        connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteBiscotti()));
       connect(backer,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniB(bool)));
       connect(dritto,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniD(bool)));
 
@@ -473,12 +465,429 @@ Modifica::Modifica(QWidget* p):
       connect(prodI,SIGNAL(toggled(bool)),this,SLOT(checkIndoor(bool)));
       connect(prodO,SIGNAL(toggled(bool)),this,SLOT(checkOutdoor(bool)));
       //CONNECT CHECKGRANELLA
-      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteVapo()));
-      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteGrinder()));
 
       connect(backer,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
       connect(dritto,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
 }
 void Modifica::setProdotto(catalogo *p){
     prodottoDaModificare=p;
+}
+void Modifica::compilaModifica() {
+    //setto il nome
+    nome->setText(QString::fromStdString(prodottoDaModificare->getNome()));
+    //confezione regalo?
+    if(prodottoDaModificare->getConfezioneRegalo()) regalo->setCheckState(Qt::Checked);
+    else regalo->setCheckState(Qt::Unchecked);
+    consumabile* cons = dynamic_cast<consumabile*>(prodottoDaModificare);
+    nonConsumabile* nCons = dynamic_cast<nonConsumabile*>(prodottoDaModificare);
+    labelNomeRegalo->show();
+    nome->show();
+    regalo->show();
+    if(cons!=nullptr){
+        biscotti* bisc = dynamic_cast<biscotti*>(cons);
+        cioccolata* ciocc = dynamic_cast<cioccolata*>(cons);
+        infusi* infu = dynamic_cast<infusi*>(cons);
+        peso->setText(QString::number(cons->getPeso(),'h',3));
+        if(cons->getErba()){
+            hempI->setCheckState(Qt::Checked);
+            hempS->setCheckState(Qt::Unchecked);
+        }
+        else{
+            hempI->setCheckState(Qt::Unchecked);
+            hempS->setCheckState(Qt::Checked);
+        }
+        if(cons->getProduzione()){
+            prodI->setCheckState(Qt::Checked);
+            prodO->setCheckState(Qt::Unchecked);
+        }
+        else{
+            prodI->setCheckState(Qt::Unchecked);
+            prodO->setCheckState(Qt::Checked);
+        }
+
+        labelIngredienti->show();
+        labelPeso->show();
+        peso->show();
+        labelHemp->show();
+        hempI->show();
+        hempS->show();
+        labelProd->show();
+        prodI->show();
+        prodO->show();
+
+        if(bisc!=nullptr){
+            tipoProdotto->setText("Biscotti");
+            labelIngredienti->setText("Inredienti: Farina,Uova,Burro,Zucchero,Hemp");
+            if(bisc->getTipoFarina()==1){
+                grano->setCheckState(Qt::Checked);
+                riso->setCheckState(Qt::Unchecked);
+                mandorle->setCheckState(Qt::Unchecked);
+                castagne->setCheckState(Qt::Unchecked);
+                amaranto->setCheckState(Qt::Unchecked);
+            }
+            else if(bisc->getTipoFarina()==2){
+                grano->setCheckState(Qt::Unchecked);
+                riso->setCheckState(Qt::Checked);
+                mandorle->setCheckState(Qt::Unchecked);
+                castagne->setCheckState(Qt::Unchecked);
+                amaranto->setCheckState(Qt::Unchecked);
+            }
+            else if(bisc->getTipoFarina()==3){
+                grano->setCheckState(Qt::Unchecked);
+                riso->setCheckState(Qt::Unchecked);
+                mandorle->setCheckState(Qt::Checked);
+                castagne->setCheckState(Qt::Unchecked);
+                amaranto->setCheckState(Qt::Unchecked);
+            }
+            else if(bisc->getTipoFarina()==4){
+                grano->setCheckState(Qt::Unchecked);
+                riso->setCheckState(Qt::Unchecked);
+                mandorle->setCheckState(Qt::Unchecked);
+                castagne->setCheckState(Qt::Checked);
+                amaranto->setCheckState(Qt::Unchecked);
+            }
+            else {
+                grano->setCheckState(Qt::Unchecked);
+                riso->setCheckState(Qt::Unchecked);
+                mandorle->setCheckState(Qt::Unchecked);
+                castagne->setCheckState(Qt::Unchecked);
+                amaranto->setCheckState(Qt::Checked);
+            }
+
+            if(bisc->getGocceCioccolata()==1){
+                latte->setCheckState(Qt::Checked);
+                fondente->setCheckState(Qt::Unchecked);
+                bianco->setCheckState(Qt::Unchecked);
+                senza->setCheckState(Qt::Unchecked);
+            }
+            else if(bisc->getGocceCioccolata()==2){
+                latte->setCheckState(Qt::Unchecked);
+                fondente->setCheckState(Qt::Checked);
+                bianco->setCheckState(Qt::Unchecked);
+                senza->setCheckState(Qt::Unchecked);
+            }
+            else if(bisc->getGocceCioccolata()==3){
+                latte->setCheckState(Qt::Unchecked);
+                fondente->setCheckState(Qt::Unchecked);
+                bianco->setCheckState(Qt::Checked);
+                senza->setCheckState(Qt::Unchecked);
+            }
+            else{
+                latte->setCheckState(Qt::Unchecked);
+                fondente->setCheckState(Qt::Unchecked);
+                bianco->setCheckState(Qt::Unchecked);
+                senza->setCheckState(Qt::Checked);
+            }
+
+            lableTipoFarine->show();
+            grano->show();
+            riso->show();
+            mandorle->show();
+            castagne->show();
+            amaranto->show();
+
+            lableTipoGocce->show();
+            senza->show();
+            latte->show();
+            fondente->show();
+            bianco->show();
+
+
+
+            lableLvFondenza->hide();
+            nessuna->hide();
+            bassa->hide();
+            media->hide();
+            alta->hide();
+
+            lableTipoGranella->hide();
+            cocco->hide();
+            noce->hide();
+            mandorla->hide();
+            nocciola->hide();
+
+            lableFormaC->hide();
+            formaC->hide();
+        }
+
+        if(ciocc!=nullptr){
+            tipoProdotto->setText("Cioccolata");
+            labelIngredienti->setText("Inredienti: Cioccolata,Burro,Zucchero,Hemp");
+
+            if(ciocc->getLivelloFondenza()==1){
+                nessuna->setCheckState(Qt::Checked);
+                bassa->setCheckState(Qt::Unchecked);
+                media->setCheckState(Qt::Unchecked);
+                alta->setCheckState(Qt::Unchecked);
+            }
+            else if(ciocc->getLivelloFondenza()==2){
+                nessuna->setCheckState(Qt::Unchecked);
+                bassa->setCheckState(Qt::Checked);
+                media->setCheckState(Qt::Unchecked);
+                alta->setCheckState(Qt::Unchecked);
+            }
+            else if(ciocc->getLivelloFondenza()==3){
+                nessuna->setCheckState(Qt::Unchecked);
+                bassa->setCheckState(Qt::Unchecked);
+                media->setCheckState(Qt::Checked);
+                alta->setCheckState(Qt::Unchecked);
+            }
+            else{
+                nessuna->setCheckState(Qt::Unchecked);
+                bassa->setCheckState(Qt::Unchecked);
+                media->setCheckState(Qt::Unchecked);
+                alta->setCheckState(Qt::Checked);
+            }
+
+            if(ciocc->getTipoGranella()==1){
+                cocco->setCheckState(Qt::Checked);
+                noce->setCheckState(Qt::Unchecked);
+                mandorla->setCheckState(Qt::Unchecked);
+                nocciola->setCheckState(Qt::Unchecked);
+            }
+            else if(ciocc->getTipoGranella()==2){
+                cocco->setCheckState(Qt::Unchecked);
+                noce->setCheckState(Qt::Checked);
+                mandorla->setCheckState(Qt::Unchecked);
+                nocciola->setCheckState(Qt::Unchecked);
+            }
+            else if(ciocc->getTipoGranella()==3){
+                cocco->setCheckState(Qt::Unchecked);
+                noce->setCheckState(Qt::Unchecked);
+                mandorla->setCheckState(Qt::Checked);
+                nocciola->setCheckState(Qt::Unchecked);
+            }
+            else{
+                cocco->setCheckState(Qt::Unchecked);
+                noce->setCheckState(Qt::Unchecked);
+                mandorla->setCheckState(Qt::Unchecked);
+                nocciola->setCheckState(Qt::Checked);
+            }
+            if(ciocc->getForma())formaC->setCurrentIndex(0);
+            else formaC->setCurrentIndex(1);
+
+
+            lableLvFondenza->show();
+            nessuna->show();
+            bassa->show();
+            media->show();
+            alta->show();
+
+            lableTipoGranella->show();
+            cocco->show();
+            noce->show();
+            mandorla->show();
+            nocciola->show();
+
+            lableFormaC->show();
+            formaC->show();
+
+            lableTipoFarine->hide();
+            grano->hide();
+            riso->hide();
+            mandorle->hide();
+            castagne->hide();
+            amaranto->hide();
+
+            lableTipoGocce->hide();
+            senza->hide();
+            latte->hide();
+            fondente->hide();
+            bianco->hide();
+
+        }
+
+        if(infu!=nullptr){
+            tipoProdotto->setText("Infusi");
+            labelIngredienti->setText("Inredienti: Fiori Di Camomilla,Fiori Di Calendula,Fiori Di Sambuco,Foglie Di The,Hemp");
+            std::vector<std::string> listaAromi = infu->getAroma();
+            int count=0;
+            for(std::vector<std::string>::const_iterator cit=listaAromi.cbegin();cit!=listaAromi.cend();++cit){
+               QString corrente = QString::fromStdString(*cit);
+               if(count==0){
+                aroma1->setCurrentIndex(aroma1->findText(corrente));
+                lableTipoAroma1->show();
+                aroma1->show();
+                count++;
+               }
+               else if(count==1){
+                       if(listaAromi.size()==2){
+                            aroma2->setCurrentIndex(aroma2->findText(corrente));
+                            lableTipoAroma2->show();
+                            aroma2->show();
+                       }
+                       else{
+                           aroma2->setCurrentIndex(0);
+                           lableTipoAroma2->show();
+                           aroma2->show();
+                       }
+               }
+            }
+            if(infu->getSfuso())sfuso->setCurrentIndex(0);
+            else sfuso->setCurrentIndex(1);
+//            lableTipoAroma1->show();
+//            aroma1->show();
+            lableSfuso->show();
+            sfuso->show();
+
+            lableLvFondenza->hide();
+            nessuna->hide();
+            bassa->hide();
+            media->hide();
+            alta->hide();
+
+            lableTipoGranella->hide();
+            cocco->hide();
+            noce->hide();
+            mandorla->hide();
+            nocciola->hide();
+
+            lableFormaC->hide();
+            formaC->hide();
+            lableTipoFarine->hide();
+            grano->hide();
+            riso->hide();
+            mandorle->hide();
+            castagne->hide();
+            amaranto->hide();
+
+            lableTipoGocce->hide();
+            senza->hide();
+            latte->hide();
+            fondente->hide();
+            bianco->hide();
+        }
+
+    }
+    if(nCons!=nullptr){
+        bong* bng = dynamic_cast<bong*>(nCons);
+        vaporizzatore* vapo = dynamic_cast<vaporizzatore*>(nCons);
+        grinder* grd = dynamic_cast<grinder*>(nCons);
+        QString colore = QString::fromStdString(nCons->getColori());
+        colori->setCurrentIndex(colori->findText(colore));
+        colori->show();
+        if(bng!=nullptr){
+            tipoProdotto->setText("Bong");
+            if(bng->getForma()){
+                backer->setCheckState(Qt::Checked);
+                dritto->setCheckState(Qt::Unchecked);
+                std::string dimB = std::to_string(bng->getAltezza())+"X"+std::to_string(bng->getLarghezza());
+                dimBacker->setCurrentText(QString::fromStdString(dimB));
+
+                dimBacker->show();
+                dimDritto->hide();
+            }
+            else{
+                backer->setCheckState(Qt::Unchecked);
+                dritto->setCheckState(Qt::Checked);
+                std::string dimD = std::to_string(bng->getAltezza())+"X"+std::to_string(bng->getLarghezza());
+                dimDritto->setCurrentText(QString::fromStdString(dimD));
+
+                dimBacker->hide();
+                dimDritto->show();
+            }
+            lableTipoBong->show();
+            backer->show();
+            dritto->show();
+            lableTipoDimensioni->show();
+
+            lableSchermo->hide();
+            schermo->hide();
+            lableCapienza->hide();
+            capienza->hide();
+            lableVelocita->hide();
+            velocita->hide();
+
+        }
+        if(vapo!=nullptr){
+            tipoProdotto->setText("Vaporizzatori");
+
+            if(vapo->getSchermo()) schermo->setCurrentIndex(0);
+            else schermo->setCurrentIndex(1);
+
+            if(vapo->getCapienza()==1) capienza->setCurrentIndex(0);
+            else if(vapo->getCapienza()==2) capienza->setCurrentIndex(1);
+            else if(vapo->getCapienza()==3) capienza->setCurrentIndex(2);
+            else capienza->setCurrentIndex(3);
+
+
+            if(vapo->getVelocitaEvaporazione()==1) velocita->setCurrentIndex(0);
+            else if(vapo->getVelocitaEvaporazione()==2) velocita->setCurrentIndex(1);
+            else velocita->setCurrentIndex(2);
+
+
+
+            lableSchermo->show();
+            schermo->show();
+            lableCapienza->show();
+            capienza->show();
+            lableVelocita->show();
+            velocita->show();
+
+            lableTipoBong->hide();
+            backer->hide();
+            dritto->hide();
+            lableTipoDimensioni->hide();
+            dimBacker->hide();
+            dimDritto->hide();
+
+        }
+        if(grd!=nullptr){
+            tipoProdotto->setText("Gringer");
+            lableTipoBong->hide();
+            backer->hide();
+            dritto->hide();
+            lableTipoDimensioni->hide();
+            dimBacker->hide();
+            dimDritto->hide();
+            lableSchermo->hide();
+            schermo->hide();
+            lableCapienza->hide();
+            capienza->hide();
+            lableVelocita->hide();
+            velocita->hide();
+        }
+        labelIngredienti->hide();
+        labelPeso->hide();
+        peso->hide();
+        labelHemp->hide();
+        hempI->hide();
+        hempS->hide();
+        labelProd->hide();
+        prodI->hide();
+        prodO->hide();
+        lableLvFondenza->hide();
+        nessuna->hide();
+        bassa->hide();
+        media->hide();
+        alta->hide();
+
+        lableTipoGranella->hide();
+        cocco->hide();
+        noce->hide();
+        mandorla->hide();
+        nocciola->hide();
+
+        lableFormaC->hide();
+        formaC->hide();
+        lableTipoFarine->hide();
+        grano->hide();
+        riso->hide();
+        mandorle->hide();
+        castagne->hide();
+        amaranto->hide();
+
+        lableTipoGocce->hide();
+        senza->hide();
+        latte->hide();
+        fondente->hide();
+        bianco->hide();
+
+        lableSfuso->hide();
+        sfuso->hide();
+        lableTipoAroma1->hide();
+        aroma1->hide();
+        lableTipoAroma2->hide();
+        aroma2->hide();
+    }
 }

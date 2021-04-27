@@ -198,7 +198,7 @@ public:
     bool  getSchermo() const;
     //SET
     int  setVelocitaEvaporazione(int);
-    double  setCapienza(double);
+    int  setCapienza(int);
     bool setSchermo(bool);
     //METODI
     virtual double prezzo() const override;

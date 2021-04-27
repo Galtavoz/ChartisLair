@@ -38,8 +38,7 @@ private:
     QComboBox*      colori;
 
     //CONSUMABILI
-    QComboBox*      tipoProdotto;
-
+    QLabel*      tipoProdotto;
     QLabel*         lableTipoFarine;
     QCheckBox*      grano;
     QCheckBox*      riso;
@@ -102,6 +101,47 @@ public:
     void setProdotto(catalogo*);
     void compilaModifica();
     void setNuoviCampi();
+//public slots:
+//    void scelteBiscotti();
+//    void scelteCioccolato();
+//    void scelteInfusi();
+
+//    void scelteFormaBong();
+//    void scelteDimensioniB(bool);
+//    void scelteDimensioniD(bool);
+//    void scelteVapo();
+//    void scelteGrinder();
+
+//    void resetDim();
+
+
+//    //CHECKFARINE
+//    void checkGrano(bool);
+//    void checkRiso(bool);
+//    void checkMandorle(bool);
+//    void checkCastagne(bool);
+//    void checkAmaranto(bool);
+//    //CHECKGOCCE
+//    void checkSenza(bool);
+//    void checkLatte(bool);
+//    void checkFondente(bool);
+//    void checkBianco(bool);
+//    //CHECKFONDENZA
+//    void checkNessuna(bool);
+//    void checkBassa(bool);
+//    void checkMedia(bool);
+//    void checkAlta(bool);
+//    //CHECKGRANELLA
+//    void checkCocco(bool);
+//    void checkNoce(bool);
+//    void checkMandorla(bool);
+//    void checkNocciola(bool);
+//    //CHECKHEMP
+//    void checkIndica(bool);
+//    void checkSativa(bool);
+//    //CHECKPRODUZIONE
+//    void checkIndoor(bool);
+//    void checkOutdoor(bool);
 };
 
 #endif // MODIFICA_H
