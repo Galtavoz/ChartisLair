@@ -1155,10 +1155,10 @@ moc_modifica.cpp: GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qscrollbar.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QComboBox \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qcombobox.h \
+		gerarchia.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
-		gerarchia.h \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
 	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\modifica.h -o moc_modifica.cpp
@@ -2482,10 +2482,10 @@ modifica.o: GUI/modifica.cpp GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qscrollbar.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QComboBox \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qcombobox.h \
+		gerarchia.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
-		gerarchia.h
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modifica.o GUI\modifica.cpp
 
 popup.o: GUI/popup.cpp GUI/popup.h \

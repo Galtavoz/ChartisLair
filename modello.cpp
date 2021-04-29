@@ -95,6 +95,7 @@ void Modello::Salva(){
         }
         if(elementoCatalogo=="infusi"){
             QString ing;
+            QString aromi;
             const infusi* Infusi = dynamic_cast<const infusi*>(nuovoCatalogo);
             std::vector<std::string> ingredienti = Infusi->getIngredienti();
             for(std::vector<std::string>::iterator scorri=ingredienti.begin(); scorri!=ingredienti.end();++scorri){
@@ -107,9 +108,10 @@ void Modello::Salva(){
             scrivi.writeAttribute("produzione",Infusi->getProduzione()==true ? "Si" : "No");
             std::vector<std::string> aroma = Infusi->getAroma();
             for(std::vector<std::string>::iterator scorri=aroma.begin(); scorri!=aroma.end();++scorri){
-                if(scorri!=aroma.cend()-1) ing.append(QString::fromStdString(*scorri)).append(",");
-                else ing.append(QString::fromStdString(*scorri));
+                if(scorri!=aroma.cend()-1) aromi.append(QString::fromStdString(*scorri)).append(",");
+                else aromi.append(QString::fromStdString(*scorri));
             }
+            scrivi.writeAttribute("aroma",aromi);
             scrivi.writeAttribute("sfuso",Infusi->getSfuso()==true ? "Si" : "No");
         }
 
@@ -231,14 +233,15 @@ void Modello::Carica() {
                     bool erba = field.value("erba").toString()=="Si" ? true : false;
                     bool produzione = field.value("produzione").toString()=="Si" ? true : false;
                     std::string aroma = field.value("aroma").toString().toStdString();
+
                     std::vector<std::string> listaAromi;
                     const char* v1=",";
                     std::string ing1="";
                     int lung1=aroma.length();
                     for(int i=0;i<lung1;++i) {
                         while(aroma[i]!=*v1 && i<lung1) {
-                            std::string lettera=toString(aroma[i]);
-                            ing1.append(lettera);
+                            std::string lettera1=toString(aroma[i]);
+                            ing1.append(lettera1);
                             ++i;
                         }
                     listaAromi.push_back(ing1);

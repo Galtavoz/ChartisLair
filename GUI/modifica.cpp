@@ -433,39 +433,57 @@ Modifica::Modifica(QWidget* p):
 
 
 
-        connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteBiscotti()));
-      connect(backer,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniB(bool)));
-      connect(dritto,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniD(bool)));
+//        connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteBiscotti()));
+      connect(backer,SIGNAL(toggled(bool)),this,SLOT(checkDimensioniB(bool)));
+      connect(dritto,SIGNAL(toggled(bool)),this,SLOT(checkDimensioniD(bool)));
 
-      //CONNECT CHECKFARINE
+      //CONNECT RESET_CHECK_FARINE
+      connect(grano,SIGNAL(stateChanged(int)),this,SLOT(resetFarine()));
+      connect(riso,SIGNAL(stateChanged(int)),this,SLOT(resetFarine()));
+      connect(mandorle,SIGNAL(stateChanged(int)),this,SLOT(resetFarine()));
+      connect(castagne,SIGNAL(stateChanged(int)),this,SLOT(resetFarine()));
+      connect(amaranto,SIGNAL(stateChanged(int)),this,SLOT(resetFarine()));
       connect(grano,SIGNAL(toggled(bool)),this,SLOT(checkGrano(bool)));
       connect(riso,SIGNAL(toggled(bool)),this,SLOT(checkRiso(bool)));
       connect(mandorle,SIGNAL(toggled(bool)),this,SLOT(checkMandorle(bool)));
       connect(castagne,SIGNAL(toggled(bool)),this,SLOT(checkCastagne(bool)));
       connect(amaranto,SIGNAL(toggled(bool)),this,SLOT(checkAmaranto(bool)));
-      //CONNECT CHECKGOCCE
+      //CONNECT RESET_CHECK_GOCCE
+      connect(senza,SIGNAL(stateChanged(int)),this,SLOT(resetGocce()));
+      connect(latte,SIGNAL(stateChanged(int)),this,SLOT(resetGocce()));
+      connect(fondente,SIGNAL(stateChanged(int)),this,SLOT(resetGocce()));
+      connect(bianco,SIGNAL(stateChanged(int)),this,SLOT(resetGocce()));
       connect(senza,SIGNAL(toggled(bool)),this,SLOT(checkSenza(bool)));
       connect(latte,SIGNAL(toggled(bool)),this,SLOT(checkLatte(bool)));
       connect(fondente,SIGNAL(toggled(bool)),this,SLOT(checkFondente(bool)));
       connect(bianco,SIGNAL(toggled(bool)),this,SLOT(checkBianco(bool)));
-      //CONNECT CHECKFONDENZA
+      //CONNECT RESET_CHECK_FONDENZA
+      connect(nessuna,SIGNAL(stateChanged(int)),this,SLOT(resetFondenza()));
+      connect(bassa,SIGNAL(stateChanged(int)),this,SLOT(resetFondenza()));
+      connect(media,SIGNAL(stateChanged(int)),this,SLOT(resetFondenza()));
+      connect(alta,SIGNAL(stateChanged(int)),this,SLOT(resetFondenza()));
       connect(nessuna,SIGNAL(toggled(bool)),this,SLOT(checkNessuna(bool)));
       connect(bassa,SIGNAL(toggled(bool)),this,SLOT(checkBassa(bool)));
       connect(media,SIGNAL(toggled(bool)),this,SLOT(checkMedia(bool)));
       connect(alta,SIGNAL(toggled(bool)),this,SLOT(checkAlta(bool)));
-      //CONNECT CHECKGRANELLA
+      //CONNECT RESET_CHECK_GRANELLA
+      connect(cocco,SIGNAL(stateChanged(int)),this,SLOT(resetGranella()));
+      connect(noce,SIGNAL(stateChanged(int)),this,SLOT(resetGranella()));
+      connect(mandorla,SIGNAL(stateChanged(int)),this,SLOT(resetGranella()));
+      connect(nocciola,SIGNAL(stateChanged(int)),this,SLOT(resetGranella()));
       connect(cocco,SIGNAL(toggled(bool)),this,SLOT(checkCocco(bool)));
       connect(noce,SIGNAL(toggled(bool)),this,SLOT(checkNoce(bool)));
       connect(mandorla,SIGNAL(toggled(bool)),this,SLOT(checkMandorla(bool)));
       connect(nocciola,SIGNAL(toggled(bool)),this,SLOT(checkNocciola(bool)));
-      //CONNECT CHECKHEMP
+      //CONNECT RESET_CHECK_HEMP
+      connect(hempI,SIGNAL(stateChanged(int)),this,SLOT(resetHemp()));
+      connect(hempS,SIGNAL(stateChanged(int)),this,SLOT(resetHemp()));
       connect(hempI,SIGNAL(toggled(bool)),this,SLOT(checkIndica(bool)));
       connect(hempS,SIGNAL(toggled(bool)),this,SLOT(checkSativa(bool)));
-      //CONNECT CHECKPRODUZIONE
+      //CONNECT RESET_CHECK_PRODUZIONE
       connect(prodI,SIGNAL(toggled(bool)),this,SLOT(checkIndoor(bool)));
       connect(prodO,SIGNAL(toggled(bool)),this,SLOT(checkOutdoor(bool)));
-      //CONNECT CHECKGRANELLA
-
+      //CONNECT RESET_DIM_BONG
       connect(backer,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
       connect(dritto,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
 }
@@ -491,18 +509,22 @@ void Modifica::compilaModifica() {
         if(cons->getErba()){
             hempI->setCheckState(Qt::Checked);
             hempS->setCheckState(Qt::Unchecked);
+            hempS->setEnabled(false);
         }
         else{
             hempI->setCheckState(Qt::Unchecked);
             hempS->setCheckState(Qt::Checked);
+            hempI->setEnabled(false);
         }
         if(cons->getProduzione()){
             prodI->setCheckState(Qt::Checked);
             prodO->setCheckState(Qt::Unchecked);
+            prodO->setEnabled(false);
         }
         else{
             prodI->setCheckState(Qt::Unchecked);
             prodO->setCheckState(Qt::Checked);
+            prodI->setEnabled(false);
         }
 
         labelIngredienti->show();
@@ -524,6 +546,11 @@ void Modifica::compilaModifica() {
                 mandorle->setCheckState(Qt::Unchecked);
                 castagne->setCheckState(Qt::Unchecked);
                 amaranto->setCheckState(Qt::Unchecked);
+                riso->setEnabled(false);
+                mandorle->setEnabled(false);
+                castagne->setEnabled(false);
+                amaranto->setEnabled(false);
+
             }
             else if(bisc->getTipoFarina()==2){
                 grano->setCheckState(Qt::Unchecked);
@@ -531,6 +558,10 @@ void Modifica::compilaModifica() {
                 mandorle->setCheckState(Qt::Unchecked);
                 castagne->setCheckState(Qt::Unchecked);
                 amaranto->setCheckState(Qt::Unchecked);
+                grano->setEnabled(false);
+                mandorle->setEnabled(false);
+                castagne->setEnabled(false);
+                amaranto->setEnabled(false);
             }
             else if(bisc->getTipoFarina()==3){
                 grano->setCheckState(Qt::Unchecked);
@@ -538,6 +569,10 @@ void Modifica::compilaModifica() {
                 mandorle->setCheckState(Qt::Checked);
                 castagne->setCheckState(Qt::Unchecked);
                 amaranto->setCheckState(Qt::Unchecked);
+                grano->setEnabled(false);
+                riso->setEnabled(false);
+                castagne->setEnabled(false);
+                amaranto->setEnabled(false);
             }
             else if(bisc->getTipoFarina()==4){
                 grano->setCheckState(Qt::Unchecked);
@@ -545,6 +580,10 @@ void Modifica::compilaModifica() {
                 mandorle->setCheckState(Qt::Unchecked);
                 castagne->setCheckState(Qt::Checked);
                 amaranto->setCheckState(Qt::Unchecked);
+                grano->setEnabled(false);
+                riso->setEnabled(false);
+                mandorle->setEnabled(false);
+                amaranto->setEnabled(false);
             }
             else {
                 grano->setCheckState(Qt::Unchecked);
@@ -552,6 +591,10 @@ void Modifica::compilaModifica() {
                 mandorle->setCheckState(Qt::Unchecked);
                 castagne->setCheckState(Qt::Unchecked);
                 amaranto->setCheckState(Qt::Checked);
+                grano->setEnabled(false);
+                riso->setEnabled(false);
+                mandorle->setEnabled(false);
+                castagne->setEnabled(false);
             }
 
             if(bisc->getGocceCioccolata()==1){
@@ -559,24 +602,36 @@ void Modifica::compilaModifica() {
                 fondente->setCheckState(Qt::Unchecked);
                 bianco->setCheckState(Qt::Unchecked);
                 senza->setCheckState(Qt::Unchecked);
+                fondente->setEnabled(false);
+                bianco->setEnabled(false);
+                senza->setEnabled(false);
             }
             else if(bisc->getGocceCioccolata()==2){
                 latte->setCheckState(Qt::Unchecked);
                 fondente->setCheckState(Qt::Checked);
                 bianco->setCheckState(Qt::Unchecked);
                 senza->setCheckState(Qt::Unchecked);
+                latte->setEnabled(false);
+                bianco->setEnabled(false);
+                senza->setEnabled(false);
             }
             else if(bisc->getGocceCioccolata()==3){
                 latte->setCheckState(Qt::Unchecked);
                 fondente->setCheckState(Qt::Unchecked);
                 bianco->setCheckState(Qt::Checked);
                 senza->setCheckState(Qt::Unchecked);
+                latte->setEnabled(false);
+                fondente->setEnabled(false);
+                senza->setEnabled(false);
             }
             else{
                 latte->setCheckState(Qt::Unchecked);
                 fondente->setCheckState(Qt::Unchecked);
                 bianco->setCheckState(Qt::Unchecked);
                 senza->setCheckState(Qt::Checked);
+                latte->setEnabled(false);
+                fondente->setEnabled(false);
+                bianco->setEnabled(false);
             }
 
             lableTipoFarine->show();
@@ -619,24 +674,36 @@ void Modifica::compilaModifica() {
                 bassa->setCheckState(Qt::Unchecked);
                 media->setCheckState(Qt::Unchecked);
                 alta->setCheckState(Qt::Unchecked);
+                bassa->setEnabled(false);
+                media->setEnabled(false);
+                alta->setEnabled(false);
             }
             else if(ciocc->getLivelloFondenza()==2){
                 nessuna->setCheckState(Qt::Unchecked);
                 bassa->setCheckState(Qt::Checked);
                 media->setCheckState(Qt::Unchecked);
                 alta->setCheckState(Qt::Unchecked);
+                nessuna->setEnabled(false);
+                media->setEnabled(false);
+                alta->setEnabled(false);
             }
             else if(ciocc->getLivelloFondenza()==3){
                 nessuna->setCheckState(Qt::Unchecked);
                 bassa->setCheckState(Qt::Unchecked);
                 media->setCheckState(Qt::Checked);
                 alta->setCheckState(Qt::Unchecked);
+                nessuna->setEnabled(false);
+                bassa->setEnabled(false);
+                alta->setEnabled(false);
             }
             else{
                 nessuna->setCheckState(Qt::Unchecked);
                 bassa->setCheckState(Qt::Unchecked);
                 media->setCheckState(Qt::Unchecked);
                 alta->setCheckState(Qt::Checked);
+                nessuna->setEnabled(false);
+                bassa->setEnabled(false);
+                media->setEnabled(false);
             }
 
             if(ciocc->getTipoGranella()==1){
@@ -644,24 +711,36 @@ void Modifica::compilaModifica() {
                 noce->setCheckState(Qt::Unchecked);
                 mandorla->setCheckState(Qt::Unchecked);
                 nocciola->setCheckState(Qt::Unchecked);
+                noce->setEnabled(false);
+                mandorla->setEnabled(false);
+                nocciola->setEnabled(false);
             }
             else if(ciocc->getTipoGranella()==2){
                 cocco->setCheckState(Qt::Unchecked);
                 noce->setCheckState(Qt::Checked);
                 mandorla->setCheckState(Qt::Unchecked);
                 nocciola->setCheckState(Qt::Unchecked);
+                cocco->setEnabled(false);
+                mandorla->setEnabled(false);
+                nocciola->setEnabled(false);
             }
             else if(ciocc->getTipoGranella()==3){
                 cocco->setCheckState(Qt::Unchecked);
                 noce->setCheckState(Qt::Unchecked);
                 mandorla->setCheckState(Qt::Checked);
                 nocciola->setCheckState(Qt::Unchecked);
+                cocco->setEnabled(false);
+                noce->setEnabled(false);
+                nocciola->setEnabled(false);
             }
             else{
                 cocco->setCheckState(Qt::Unchecked);
                 noce->setCheckState(Qt::Unchecked);
                 mandorla->setCheckState(Qt::Unchecked);
                 nocciola->setCheckState(Qt::Checked);
+                cocco->setEnabled(false);
+                noce->setEnabled(false);
+                mandorla->setEnabled(false);
             }
             if(ciocc->getForma())formaC->setCurrentIndex(0);
             else formaC->setCurrentIndex(1);
@@ -771,6 +850,7 @@ void Modifica::compilaModifica() {
             if(bng->getForma()){
                 backer->setCheckState(Qt::Checked);
                 dritto->setCheckState(Qt::Unchecked);
+                dritto->setEnabled(false);
                 std::string dimB = std::to_string(bng->getAltezza())+"X"+std::to_string(bng->getLarghezza());
                 dimBacker->setCurrentText(QString::fromStdString(dimB));
 
@@ -780,6 +860,7 @@ void Modifica::compilaModifica() {
             else{
                 backer->setCheckState(Qt::Unchecked);
                 dritto->setCheckState(Qt::Checked);
+                backer->setEnabled(false);
                 std::string dimD = std::to_string(bng->getAltezza())+"X"+std::to_string(bng->getLarghezza());
                 dimDritto->setCurrentText(QString::fromStdString(dimD));
 
@@ -890,4 +971,495 @@ void Modifica::compilaModifica() {
         lableTipoAroma2->hide();
         aroma2->hide();
     }
+
+
+}
+//RESET_CHECK_HEMP
+void Modifica::resetHemp(){
+    if(hempS->isEnabled()==true){
+       hempI->setEnabled(true);
+    }
+    if(hempI->isEnabled()==true){
+       hempS->setEnabled(true);
+    }
+
+}
+void Modifica::checkIndica(bool f){
+    if(f) {
+        hempI->setCheckState(Qt::Checked);
+        hempS->setEnabled(false);
+    }
+    else {
+        hempI->setCheckState(Qt::Unchecked);
+        hempS->setEnabled(true);
+    }
+}
+void Modifica::checkSativa(bool f){
+    if(f){
+        hempS->setCheckState(Qt::Checked);
+        hempI->setEnabled(false);
+    }
+    else{
+        hempS->setCheckState(Qt::Unchecked);
+        hempI->setEnabled(true);
+    }
+}
+
+//RESET_CHECK_PRODUZIONE
+void Modifica::resetProduzione(){
+    if(prodO->isEnabled()==true){
+        prodI->setEnabled(true);
+    }
+    if(prodI->isEnabled()==true){
+        prodO->setEnabled(true);
+    }
+}
+void Modifica::checkIndoor(bool f){
+    if(f) {
+        prodI->setCheckState(Qt::Checked);
+        prodO->setEnabled(false);
+    }
+    else {
+        prodI->setCheckState(Qt::Unchecked);
+        prodO->setEnabled(true);
+    }
+}
+void Modifica::checkOutdoor(bool f){
+    if(f){
+        prodO->setCheckState(Qt::Checked);
+        prodI->setEnabled(false);
+    }
+    else{
+        prodO->setCheckState(Qt::Unchecked);
+        prodI->setEnabled(true);
+    }
+}
+//RESET_CHECK_GRANELLA
+void Modifica::resetGranella(){
+    if(cocco->isEnabled()==true){
+        noce->setEnabled(true);
+        mandorla->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+    if(noce->isEnabled()==true){
+        cocco->setEnabled(true);
+        mandorla->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+    if(mandorla->isEnabled()==true){
+        cocco->setEnabled(true);
+        noce->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+    if(nocciola->isEnabled()==true){
+        cocco->setEnabled(true);
+        noce->setEnabled(true);
+        mandorla->setEnabled(true);
+    }
+}
+void Modifica::checkCocco(bool f){
+    if(f){
+        cocco->setCheckState(Qt::Checked);
+        noce->setEnabled(false);
+        mandorla->setEnabled(false);
+        nocciola->setEnabled(false);
+    }
+    else{
+        cocco->setCheckState(Qt::Unchecked);
+        noce->setEnabled(true);
+        mandorla->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+}
+void Modifica::checkNoce(bool f){
+    if(f){
+        noce->setCheckState(Qt::Checked);
+        cocco->setEnabled(false);
+        mandorla->setEnabled(false);
+        nocciola->setEnabled(false);
+    }
+    else{
+        noce->setCheckState(Qt::Unchecked);
+        cocco->setEnabled(true);
+        mandorla->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+}
+void Modifica::checkMandorla(bool f){
+    if(f){
+        mandorla->setCheckState(Qt::Checked);
+        cocco->setEnabled(false);
+        noce->setEnabled(false);
+        nocciola->setEnabled(false);
+    }
+    else{
+        mandorla->setCheckState(Qt::Unchecked);
+        cocco->setEnabled(true);
+        noce->setEnabled(true);
+        nocciola->setEnabled(true);
+    }
+}
+void Modifica::checkNocciola(bool f){
+    if(f){
+        nocciola->setCheckState(Qt::Checked);
+        cocco->setEnabled(false);
+        noce->setEnabled(false);
+        mandorla->setEnabled(false);
+    }
+    else{
+        nocciola->setCheckState(Qt::Unchecked);
+        cocco->setEnabled(true);
+        noce->setEnabled(true);
+        mandorla->setEnabled(true);
+    }
+}
+//RESET_CHECK_FONDENZA
+void Modifica::resetFondenza(){
+    if(nessuna->isEnabled()==true){
+        bassa->setEnabled(true);
+        media->setEnabled(true);
+        alta->setEnabled(true);
+    }
+    if(bassa->isEnabled()==true){
+        nessuna->setEnabled(true);
+        media->setEnabled(true);
+        alta->setEnabled(true);
+    }
+    if(media->isEnabled()==true){
+        nessuna->setEnabled(true);
+        bassa->setEnabled(true);
+        alta->setEnabled(true);
+    }
+    if(alta->isEnabled()==true){
+        nessuna->setEnabled(true);
+        bassa->setEnabled(true);
+        media->setEnabled(true);
+    }
+}
+void Modifica::checkNessuna(bool f){
+    if(f){
+        nessuna->setCheckState(Qt::Checked);
+        bassa->setEnabled(false);
+        media->setEnabled(false);
+        alta->setEnabled(false);
+    }
+    else{
+        nessuna->setCheckState(Qt::Unchecked);
+        bassa->setEnabled(true);
+        media->setEnabled(true);
+        alta->setEnabled(true);
+    }
+}
+void Modifica::checkBassa(bool f){
+    if(f){
+        bassa->setCheckState(Qt::Checked);
+        nessuna->setEnabled(false);
+        media->setEnabled(false);
+        alta->setEnabled(false);
+    }
+    else{
+        bassa->setCheckState(Qt::Unchecked);
+        nessuna->setEnabled(true);
+        media->setEnabled(true);
+        alta->setEnabled(true);
+    }
+}
+void Modifica::checkMedia(bool f){
+    if(f){
+        media->setCheckState(Qt::Checked);
+        nessuna->setEnabled(false);
+        bassa->setEnabled(false);
+        alta->setEnabled(false);
+    }
+    else{
+        media->setCheckState(Qt::Unchecked);
+        nessuna->setEnabled(true);
+        bassa->setEnabled(true);
+        alta->setEnabled(true);
+    }
+}
+void Modifica::checkAlta(bool f){
+    if(f){
+        alta->setCheckState(Qt::Checked);
+        nessuna->setEnabled(false);
+        bassa->setEnabled(false);
+        media->setEnabled(false);
+    }
+    else{
+        alta->setCheckState(Qt::Unchecked);
+        nessuna->setEnabled(true);
+        bassa->setEnabled(true);
+        media->setEnabled(true);
+    }
+}
+//RESET_CHECK_GOCCE
+void Modifica::resetGocce(){
+    if(senza->isEnabled()==true){
+        latte->setEnabled(true);
+        fondente->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+    if(latte->isEnabled()==true){
+        senza->setEnabled(true);
+        fondente->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+    if(fondente->isEnabled()==true){
+        senza->setEnabled(true);
+        latte->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+    if(bianco->isEnabled()==true){
+        senza->setEnabled(true);
+        latte->setEnabled(true);
+        fondente->setEnabled(true);
+    }
+}
+void Modifica::checkSenza(bool f){
+    if(f){
+        senza->setCheckState(Qt::Checked);
+        latte->setEnabled(false);
+        fondente->setEnabled(false);
+        bianco->setEnabled(false);
+    }
+    else{
+        senza->setCheckState(Qt::Unchecked);
+        latte->setEnabled(true);
+        fondente->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+}
+void Modifica::checkLatte(bool f){
+    if(f){
+        latte->setCheckState(Qt::Checked);
+        senza->setEnabled(false);
+        fondente->setEnabled(false);
+        bianco->setEnabled(false);
+    }
+    else{
+        latte->setCheckState(Qt::Unchecked);
+        senza->setEnabled(true);
+        fondente->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+}
+void Modifica::checkFondente(bool f){
+    if(f){
+        fondente->setCheckState(Qt::Checked);
+        senza->setEnabled(false);
+        latte->setEnabled(false);
+        bianco->setEnabled(false);
+    }
+    else{
+        fondente->setCheckState(Qt::Unchecked);
+        senza->setEnabled(true);
+        latte->setEnabled(true);
+        bianco->setEnabled(true);
+    }
+}
+void Modifica::checkBianco(bool f){
+    if(f){
+        bianco->setCheckState(Qt::Checked);
+        senza->setEnabled(false);
+        latte->setEnabled(false);
+        fondente->setEnabled(false);
+    }
+    else{
+        bianco->setCheckState(Qt::Unchecked);
+        senza->setEnabled(true);
+        latte->setEnabled(true);
+        fondente->setEnabled(true);
+    }
+}
+//RESET_CHECK_FARINE
+void Modifica::resetFarine(){
+    if(grano->isEnabled()==true){
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+    if(riso->isEnabled()==true){
+        grano->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+    if(mandorle->isEnabled()==true){
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+    if(castagne->isEnabled()==true){
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+    if(amaranto->isEnabled()==true){
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+    }
+}
+void Modifica::checkGrano(bool f){
+    if(f){
+        grano->setCheckState(Qt::Checked);
+        riso->setEnabled(false);
+        mandorle->setEnabled(false);
+        castagne->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        grano->setCheckState(Qt::Unchecked);
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Modifica::checkRiso(bool f){
+    if(f){
+        riso->setCheckState(Qt::Checked);
+        grano->setEnabled(false);
+        mandorle->setEnabled(false);
+        castagne->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        riso->setCheckState(Qt::Unchecked);
+        grano->setEnabled(true);
+        mandorle->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Modifica::checkMandorle(bool f){
+    if(f){
+        mandorle->setCheckState(Qt::Checked);
+        grano->setEnabled(false);
+        riso->setEnabled(false);
+        castagne->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        mandorle->setCheckState(Qt::Unchecked);
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        castagne->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Modifica::checkCastagne(bool f){
+    if(f){
+        castagne->setCheckState(Qt::Checked);
+        grano->setEnabled(false);
+        riso->setEnabled(false);
+        mandorle->setEnabled(false);
+        amaranto->setEnabled(false);
+    }
+    else{
+        castagne->setCheckState(Qt::Unchecked);
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        mandorle->setEnabled(true);
+        amaranto->setEnabled(true);
+    }
+}
+void Modifica::checkAmaranto(bool f){
+    if(f){
+        amaranto->setCheckState(Qt::Checked);
+        grano->setEnabled(false);
+        riso->setEnabled(false);
+        castagne->setEnabled(false);
+        mandorle->setEnabled(false);
+    }
+    else{
+        amaranto->setCheckState(Qt::Unchecked);
+        grano->setEnabled(true);
+        riso->setEnabled(true);
+        castagne->setEnabled(true);
+        mandorle->setEnabled(true);
+    }
+}
+void Modifica::resetDim(){
+    if(backer->isEnabled()==true && dritto->isEnabled()==true){
+        dimBacker->hide();
+        dimDritto->hide();
+        lableTipoDimensioni->hide();
+    }
+}
+void Modifica::checkDimensioniB(bool flag){
+    lableTipoDimensioni->show();
+    if(flag) dritto->setEnabled(false);
+    else dritto->setEnabled(true);
+    dimBacker->show();
+    dimDritto->hide();
+
+}
+void Modifica::checkDimensioniD(bool flag){
+    lableTipoDimensioni->show();
+    if(flag) backer->setEnabled(false);
+    else backer->setEnabled(true);
+    dimBacker->hide();
+    dimDritto->show();
+}
+void Modifica::setNuoviCampi(){
+    prodottoDaModificare->setNome(nome->text().toStdString());
+    prodottoDaModificare->setConfezioneRegalo(regalo->isChecked()==true ? true : false);
+    consumabile* cons = dynamic_cast<consumabile*>(prodottoDaModificare);
+    nonConsumabile* nCons = dynamic_cast<nonConsumabile*>(prodottoDaModificare);
+    if(cons!=nullptr){
+        biscotti* bisc = dynamic_cast<biscotti*>(cons);
+        cioccolata* ciocc = dynamic_cast<cioccolata*>(cons);
+        infusi* infu = dynamic_cast<infusi*>(cons);
+        int farina=0;
+        int gocce=0;
+        int fondenza=0;
+        int granella=0;
+        if(bisc!=nullptr){
+            if(grano->isChecked()) farina=1;
+            else if(riso->isChecked()) farina=2;
+            else if(mandorle->isChecked()) farina=3;
+            else if(castagne->isChecked()) farina=4;
+            else farina=5;
+            bisc->setTipoFarina(farina);
+
+            if(latte->isChecked()) gocce=1;
+            else if(fondente->isChecked()) gocce=2;
+            else if(bianco->isChecked()) gocce=3;
+            else gocce=4;
+            bisc->setGocceCioccolata(gocce);
+        }
+        if(ciocc!=nullptr){
+            if(nessuna->isChecked()) fondenza=1;
+            else if(bassa->isChecked()) fondenza=2;
+            else if(media->isChecked()) fondenza=3;
+            else fondenza=4;
+            ciocc->setLivelloFondenza(fondenza);
+
+            if(cocco->isChecked()) granella=1;
+            else if(noce->isChecked()) granella=2;
+            else if(mandorla->isChecked()) granella=3;
+            else granella=4;
+            ciocc->setTipoGranella(granella);
+
+            if(formaC->currentText()=="Stecche")ciocc->setForma(true);
+            else ciocc->setForma(false);
+        }
+        if(infu!=nullptr){
+            infu->setAroma(aroma1->currentText().toStdString());
+            if(aroma2->currentText().toStdString()!="Nessun Aroma"){
+                infu->setAroma(aroma2->currentText().toStdString());
+            }
+
+            if(formaC->currentText()=="Sfuso")infu->setSfuso(true);
+            else infu->setSfuso(false);
+        }
+    }
+}
+QPushButton* Modifica::getSalvaMod() const {
+    return salva;
 }

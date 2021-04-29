@@ -555,9 +555,6 @@ void Inserisci::resetCambioProdotto(){
     peso->setText("");
 
 
-    nome->hide();
-    labelNomeRegalo->hide();
-    regalo->hide();
 }
 void Inserisci::resetInserisci(){
     regalo->setChecked(false);

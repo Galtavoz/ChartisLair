@@ -38,7 +38,7 @@ private:
     QComboBox*      colori;
 
     //CONSUMABILI
-    QLabel*      tipoProdotto;
+    QLabel*         tipoProdotto;
     QLabel*         lableTipoFarine;
     QCheckBox*      grano;
     QCheckBox*      riso;
@@ -94,54 +94,59 @@ private:
     QLabel*         lableRaccPoll;
     QComboBox*      raccoglipoll;
 
-
     QPushButton*    salva;
 public:
-    Modifica(QWidget* = nullptr);
-    void setProdotto(catalogo*);
-    void compilaModifica();
-    void setNuoviCampi();
-//public slots:
-//    void scelteBiscotti();
-//    void scelteCioccolato();
-//    void scelteInfusi();
+   Modifica(QWidget* = nullptr);
+   void setProdotto(catalogo*);
+   void compilaModifica();
+   void setNuoviCampi();
+   QPushButton* getSalvaMod() const;
+public slots:
 
-//    void scelteFormaBong();
-//    void scelteDimensioniB(bool);
-//    void scelteDimensioniD(bool);
-//    void scelteVapo();
-//    void scelteGrinder();
-
-//    void resetDim();
+   //RESET_CHECK_BONG
+   void resetDim();
+   void checkDimensioniB(bool);
+   void checkDimensioniD(bool);
 
 
-//    //CHECKFARINE
-//    void checkGrano(bool);
-//    void checkRiso(bool);
-//    void checkMandorle(bool);
-//    void checkCastagne(bool);
-//    void checkAmaranto(bool);
-//    //CHECKGOCCE
-//    void checkSenza(bool);
-//    void checkLatte(bool);
-//    void checkFondente(bool);
-//    void checkBianco(bool);
-//    //CHECKFONDENZA
-//    void checkNessuna(bool);
-//    void checkBassa(bool);
-//    void checkMedia(bool);
-//    void checkAlta(bool);
-//    //CHECKGRANELLA
-//    void checkCocco(bool);
-//    void checkNoce(bool);
-//    void checkMandorla(bool);
-//    void checkNocciola(bool);
-//    //CHECKHEMP
-//    void checkIndica(bool);
-//    void checkSativa(bool);
-//    //CHECKPRODUZIONE
-//    void checkIndoor(bool);
-//    void checkOutdoor(bool);
+   //RESET_CHECK_FARINE
+   void resetFarine();
+   void checkGrano(bool);
+   void checkRiso(bool);
+   void checkMandorle(bool);
+   void checkCastagne(bool);
+   void checkAmaranto(bool);
+
+   //RESET_CHECK_GOCCE
+   void resetGocce();
+   void checkSenza(bool);
+   void checkLatte(bool);
+   void checkFondente(bool);
+   void checkBianco(bool);
+
+   //RESET_CHECK_FONDENZA
+   void resetFondenza();
+   void checkNessuna(bool);
+   void checkBassa(bool);
+   void checkMedia(bool);
+   void checkAlta(bool);
+
+   //RESET_CHECK_GRANELLA
+   void resetGranella();
+   void checkCocco(bool);
+   void checkNoce(bool);
+   void checkMandorla(bool);
+   void checkNocciola(bool);
+
+   //RESET_CHECK_HEMP
+   void resetHemp();
+   void checkIndica(bool);
+   void checkSativa(bool);
+
+   //RESET_CHECK_PRODUZIONE
+   void resetProduzione();
+   void checkIndoor(bool);
+   void checkOutdoor(bool);
 };
 
 #endif // MODIFICA_H

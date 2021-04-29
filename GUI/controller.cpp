@@ -41,6 +41,8 @@ Controller::Controller(Modello* m,QWidget* p):
     connect(catCompleto->getModifica(),SIGNAL(clicked()),this,SLOT(modifica()));
     connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
     connect(inserisci->getInserisciBut(),SIGNAL(clicked()),this,SLOT(inserisciNuovoProdotto()));
+
+    connect(layoutModifica->getSalvaMod(),SIGNAL(clicked()),this,SLOT(salvaModifiche()));
 }
 void Controller::caricaDati() {
     if(file!="") {
@@ -446,4 +448,16 @@ void Controller::inserisciNuovoProdotto(){
         inserisci->hide();
         catCompleto->show();
     }
+}
+void Controller::salvaModifiche(){
+    layoutModifica->setNuoviCampi();
+    modello->Salva();
+    catCompleto->getLista()->clear();
+    caricaDati();
+    catCompleto->show();
+    ricerca->hide();
+    inserisci->hide();
+    layoutModifica->close();
+    popup* avvisoModifica= new popup("Informazione","Modifica avvenuta con successo");
+    avvisoModifica->exec();
 }
