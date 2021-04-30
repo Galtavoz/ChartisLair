@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <infusi nome="Dio mandamela buona" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="333" erba="Si" produzione="Si" aroma="Albicocca,Liquirizia" sfuso="Si"/>
+    <infusi nome="Dio mandamela buona" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="333" erba="Si" produzione="Si" aroma="Albicocca,Liquirizia,Menta,Nessun aroma" sfuso="No"/>
     <infusi nome="Questa è quella buona" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="5" erba="Si" produzione="Si" aroma="Limone" sfuso="Si"/>
     <infusi nome="Speriamo" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="10" erba="Si" produzione="Si" aroma="" sfuso="Si"/>
     <infusi nome="JOLLY" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0" erba="No" produzione="Si" aroma="" sfuso="Si"/>
     <infusi nome="Loop" confezioneRegalo="No" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="1" erba="Si" produzione="Si" aroma="" sfuso="Si"/>
-    <biscotti nome="Pollo" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,hemp" peso="0" erba="Si" produzione="No" farina="1" gocceCioccolata="2"/>
-    <cioccolata nome="Ugo" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="No" produzione="Si" tipoGranella="3" livelloFondenza="2" forma="Si"/>
-    <bong nome="Ken" confezioneRegalo="No" colori="Oro" forma="No" altezza="5" larghezza="4.6"/>
+    <biscotti nome="Pollo" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,hemp" peso="0" erba="Si" produzione="No" farina="0" gocceCioccolata="2"/>
+    <cioccolata nome="Ugo" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.5" erba="No" produzione="Si" tipoGranella="1" livelloFondenza="4" forma="Si"/>
+    <bong nome="Ken" confezioneRegalo="No" colori="Verde" forma="No" altezza="0" larghezza="4.6"/>
     <vaporizzatore nome="Yulia" confezioneRegalo="No" colori="Viola" velocitaEvaporazione="0" capienza="3" schermo="Si"/>
     <grinder nome="Filippo" confezioneRegalo="No" colori="Bianco" ndenti="24" raccoglipolline="Si"/>
     <grinder nome="Sputnik" confezioneRegalo="Si" colori="Arancione" ndenti="36" raccoglipolline="Si"/>
     <biscotti nome="Biscotti al cioccolato e cocco" confezioneRegalo="No" ingredienti="Farina,uova,burro,zucchero,hemp" peso="0.45" erba="No" produzione="No" farina="0" gocceCioccolata="4"/>
     <biscotti nome="Biscotti alla margehrita" confezioneRegalo="Si" ingredienti="Farina,uova,burro,zucchero,hemp" peso="0.75" erba="No" produzione="No" farina="0" gocceCioccolata="2"/>
-    <cioccolata nome="Praline con nocciole" confezioneRegalo="No" ingredienti="Cioccolato, burro, zucchero, hemp" peso="0.25" erba="No" produzione="No" tipoGranella="4" livelloFondenza="2" forma="No"/>
+    <cioccolata nome="Praline con nocciole" confezioneRegalo="Si" ingredienti="Cioccolato, burro, zucchero, hemp" peso="0.25" erba="Si" produzione="Si" tipoGranella="4" livelloFondenza="2" forma="No"/>
     <cioccolata nome="Barretta con noci" confezioneRegalo="No" ingredienti="Cioccolato, burro, zucchero, hemp" peso="0.5" erba="No" produzione="No" tipoGranella="2" livelloFondenza="3" forma="Si"/>
     <infusi nome="Infuso del pomeriggio" confezioneRegalo="Si" ingredienti="Foglie di the, hemp, fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0.5" erba="No" produzione="No" aroma="" sfuso="Si"/>
     <infusi nome="Infuso digestivo" confezioneRegalo="Si" ingredienti="Foglie di the, hemp, fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0.25" erba="No" produzione="No" aroma="" sfuso="No"/>

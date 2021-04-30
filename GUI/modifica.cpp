@@ -333,7 +333,6 @@ Modifica::Modifica(QWidget* p):
           sfuso->addItem(listaSfuso[i]);
       sfuso->setCurrentIndex(0);
 
-
       lableTipoBong->setText("Seleziona la forma del bong");
       backer->setText("Backer");
       dritto->setText("Dritto");
@@ -663,6 +662,16 @@ void Modifica::compilaModifica() {
 
             lableFormaC->hide();
             formaC->hide();
+
+
+
+
+            lableSfuso->hide();
+            sfuso->hide();
+            lableTipoAroma1->hide();
+            aroma1->hide();
+            lableTipoAroma2->hide();
+            aroma2->hide();
         }
 
         if(ciocc!=nullptr){
@@ -773,6 +782,13 @@ void Modifica::compilaModifica() {
             latte->hide();
             fondente->hide();
             bianco->hide();
+
+            lableSfuso->hide();
+            sfuso->hide();
+            lableTipoAroma1->hide();
+            aroma1->hide();
+            lableTipoAroma2->hide();
+            aroma2->hide();
 
         }
 
@@ -1412,6 +1428,10 @@ void Modifica::setNuoviCampi(){
     consumabile* cons = dynamic_cast<consumabile*>(prodottoDaModificare);
     nonConsumabile* nCons = dynamic_cast<nonConsumabile*>(prodottoDaModificare);
     if(cons!=nullptr){
+        cons->setPeso(peso->text().toDouble());
+        if(hempI->isChecked()) cons->setErba(true);
+        else cons->setErba(false);
+        if(prodI->isChecked()) cons->setProduzione(true);
         biscotti* bisc = dynamic_cast<biscotti*>(cons);
         cioccolata* ciocc = dynamic_cast<cioccolata*>(cons);
         infusi* infu = dynamic_cast<infusi*>(cons);
@@ -1457,6 +1477,72 @@ void Modifica::setNuoviCampi(){
 
             if(formaC->currentText()=="Sfuso")infu->setSfuso(true);
             else infu->setSfuso(false);
+        }
+    }
+    if(nCons!=nullptr){
+        nCons->setColori(colori->currentText().toStdString());
+        bong* bng = dynamic_cast<bong*>(nCons);
+        vaporizzatore* vapo = dynamic_cast<vaporizzatore*>(nCons);
+        grinder* grd = dynamic_cast<grinder*>(nCons);
+        int alt=0;
+        int capacita=0;
+        int velocitaE=0;
+        int denti=0;
+        if(bng!=nullptr){
+            if(backer->isChecked()){
+                bng->setForma(true);
+                if(dimBacker->currentText()=="33X4.6 cm")alt=5;
+                else alt=6;
+                bng->setAltezza(alt);
+                bng->setLarghezza(4.6);
+            }
+            else if(dritto->isChecked()){
+                bng->setForma(false);
+                if(dimBacker->currentText()=="24X3.1 cm"){
+                    alt=1;
+                    bng->setLarghezza(3.1);
+                }
+                if(dimBacker->currentText()=="32X4.1 cm"){
+                    alt=2;
+                    bng->setLarghezza(4.1);
+                }
+                if(dimBacker->currentText()=="37X5.3 cm"){
+                    alt=3;
+                    bng->setLarghezza(5.3);
+                }
+                if(dimBacker->currentText()=="46X6.7 cm"){
+                    alt=4;
+                    bng->setLarghezza(6.7);
+                }
+                bng->setAltezza(alt);
+            }
+        }
+        if(vapo!=nullptr){
+
+           if(schermo->currentText()=="Schermo") vapo->setSchermo(true);
+           else vapo->setSchermo(false);
+
+           if(capienza->currentText()=="1 gr") capacita=1;
+           else if(capienza->currentText()=="2 gr")capacita=2;
+           else if(capienza->currentText()=="3 gr")capacita=3;
+           else capacita=4;
+           vapo->setCapienza(capacita);
+
+           if(velocita->currentText()=="Lv 1") velocitaE=1;
+           else if(velocita->currentText()=="Lv 2") velocitaE=2;
+           else velocitaE=3;
+           vapo->setVelocitaEvaporazione(velocitaE);
+        }
+        if(grd!=nullptr){
+            if(ndenti->currentText()=="6") denti=6;
+            else if(ndenti->currentText()=="12") denti=12;
+            else if(ndenti->currentText()=="24") denti=24;
+            else if(ndenti->currentText()=="30") denti=30;
+            else if(ndenti->currentText()=="36") denti=36;
+            grd->setNdenti(denti);
+
+            if(raccoglipoll->currentText()=="Con raccogli polline") grd->setRaccogliPolline(true);
+            else grd->setRaccogliPolline(false);
         }
     }
 }

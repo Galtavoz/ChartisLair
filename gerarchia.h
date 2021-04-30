@@ -10,7 +10,7 @@ enum fondenza   {niente=1,bassa=2,media=3,alta=4};//1=0%, 2=50%, 3=75%, 4=90%
 enum granella   {cocco=1,noce=2,mandorla=3,nocciola=4};
 enum farina     {grano=1,riso=2,mandorle=3,castagne=4,amaranto=5};
 enum gocce      {latte=1,fondente=2,bianco=3,senza=4};
-enum altezze    {cm24=1,cm32=2,cm37=3,cm46=4,cm35=5,cm45=6};
+enum altezze    {cm24=1,cm32=2,cm37=3,cm46=4,cm33=5,cm45=6};
 enum lvVelocitaEvaporazione {lv1=1,lv2=2,lv3=3};
 
 class catalogo{
@@ -187,7 +187,7 @@ public:
 class vaporizzatore: public nonConsumabile{
 private:
     int  velocitaEvaporazione = lvVelocitaEvaporazione{};//più è alta la velocita piu velocemnte vaporizza
-    double  capienza;//capienza dello sportello portaerba espressa in grammi
+    int  capienza;//capienza dello sportello portaerba espressa in grammi
     bool schermo;
 public:
     vaporizzatore(std::string,bool,std::string,int,double,bool);
