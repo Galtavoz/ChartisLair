@@ -39,6 +39,8 @@ Controller::Controller(Modello* m,QWidget* p):
     connect(menu->getInserisci(),SIGNAL(triggered()),this,SLOT(vediInserisci()));
 
     connect(catCompleto->getModifica(),SIGNAL(clicked()),this,SLOT(modifica()));
+    connect(catCompleto->getRimuovi(),SIGNAL(clicked()),this,SLOT(rimuoviProdotto()));
+
     connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
     connect(inserisci->getInserisciBut(),SIGNAL(clicked()),this,SLOT(inserisciNuovoProdotto()));
 
@@ -461,3 +463,23 @@ void Controller::salvaModifiche(){
     popup* avvisoModifica= new popup("Informazione","Modifica avvenuta con successo");
     avvisoModifica->exec();
 }
+void Controller::rimuoviProdotto(){
+    if(catCompleto->getLista()->currentItem()==nullptr) {
+            popup* nessunProdottoSelezionatoElimina = new popup("Warning","Nessun prodotto selezionato, seleziona un piatto da eliminare!");
+            nessunProdottoSelezionatoElimina->exec();
+     } else {
+        modello->rimuovi(catCompleto->getLista()->currentItem()->getSelezionato());
+        modello->Salva();
+        catCompleto->getLista()->clear();
+        caricaDati();
+        vediInfoCatalogo();
+        if(modello->contaCatalogo()!=0) {
+        popup* eliminatoCorrettamente = new popup("Informazione","Prodotto eliminato correttamente!");
+        eliminatoCorrettamente->exec();
+        } else {
+           menu->show();
+           catCompleto->hide();
+        }
+     }
+}
+

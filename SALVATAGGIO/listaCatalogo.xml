@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <infusi nome="Dio mandamela buona" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="333" erba="Si" produzione="Si" aroma="Albicocca,Liquirizia,Menta,Nessun aroma" sfuso="No"/>
+    <cioccolata nome="Sara" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.5" erba="Si" produzione="No" tipoGranella="4" livelloFondenza="4" forma="Si"/>
     <infusi nome="Questa è quella buona" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="5" erba="Si" produzione="Si" aroma="Limone" sfuso="Si"/>
-    <infusi nome="Speriamo" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="10" erba="Si" produzione="Si" aroma="" sfuso="Si"/>
     <infusi nome="JOLLY" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0" erba="No" produzione="Si" aroma="" sfuso="Si"/>
     <infusi nome="Loop" confezioneRegalo="No" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="1" erba="Si" produzione="Si" aroma="" sfuso="Si"/>
     <biscotti nome="Pollo" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,hemp" peso="0" erba="Si" produzione="No" farina="0" gocceCioccolata="2"/>
