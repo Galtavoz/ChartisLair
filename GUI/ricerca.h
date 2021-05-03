@@ -89,8 +89,8 @@ private:
 public:
     Ricerca(QWidget* = nullptr);
     QPushButton* getCercaBut() const;
-    //QPushButton* getModificaRic() const;
-    //QPushButton* getRimuoviRic() const;
+    QPushButton* getModificaRicerca() const;
+    QPushButton* getRimuoviRicerca() const;
     std::string getTipoProdotto() const;
     int getTipoFarina() const;
     int getTipoGocce() const;

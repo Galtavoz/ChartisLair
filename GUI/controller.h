@@ -56,7 +56,9 @@ public slots:
         void ricercaProdotti();
         void inserisciNuovoProdotto();
         void modifica();
+        void modificaRicerca();
         void salvaModifiche();
         void rimuoviProdotto();
+        void rimuoviProdottoRicerca();
 };
 #endif // CONTROLLER_H

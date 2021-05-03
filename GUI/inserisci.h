@@ -96,6 +96,7 @@ private:
 
 
     QPushButton*    inserisci;
+
 public:
     Inserisci(QWidget* = nullptr);
     QPushButton* getInserisciBut() const;

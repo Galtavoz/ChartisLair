@@ -1082,3 +1082,9 @@ int Ricerca::getRaccogliP() const{
 elementoWidget* Ricerca::getListaRicerca() const{
     return catalogo;
 }
+QPushButton* Ricerca::getRimuoviRicerca() const {
+    return rimuovi;
+}
+QPushButton* Ricerca::getModificaRicerca() const {
+    return modifica;
+}

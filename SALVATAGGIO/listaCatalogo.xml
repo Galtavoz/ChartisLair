@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <cioccolata nome="Sara" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.5" erba="Si" produzione="No" tipoGranella="4" livelloFondenza="4" forma="Si"/>
-    <infusi nome="Questa è quella buona" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="5" erba="Si" produzione="Si" aroma="Limone" sfuso="Si"/>
-    <infusi nome="JOLLY" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0" erba="No" produzione="Si" aroma="" sfuso="Si"/>
-    <infusi nome="Loop" confezioneRegalo="No" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="1" erba="Si" produzione="Si" aroma="" sfuso="Si"/>
-    <biscotti nome="Pollo" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,hemp" peso="0" erba="Si" produzione="No" farina="0" gocceCioccolata="2"/>
+    <biscotti nome="Biscotti al cioccolato fondente e Amaranto" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,hemp" peso="1" erba="Si" produzione="No" farina="5" gocceCioccolata="2"/>
     <cioccolata nome="Ugo" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.5" erba="No" produzione="Si" tipoGranella="1" livelloFondenza="4" forma="Si"/>
     <bong nome="Ken" confezioneRegalo="No" colori="Verde" forma="No" altezza="0" larghezza="4.6"/>
     <vaporizzatore nome="Yulia" confezioneRegalo="No" colori="Viola" velocitaEvaporazione="0" capienza="3" schermo="Si"/>

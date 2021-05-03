@@ -100,6 +100,8 @@ Inserisci::Inserisci(QWidget* p):
      QHBoxLayout* layoutRaccpolline = new QHBoxLayout();
 
 
+
+
      layoutIns->addWidget(lableTipoProdotto);
      layoutIns->addWidget(tipoProdotto);
      layoutIns->addLayout(layoutNomeRegalo);
@@ -125,6 +127,7 @@ Inserisci::Inserisci(QWidget* p):
      layoutIns->addLayout(layoutVelocita);
      layoutIns->addLayout(layoutNDenti);
      layoutIns->addLayout(layoutRaccpolline);
+
      layoutIns->addWidget(inserisci);
 
      layoutNomeRegalo->addWidget(labelNomeRegalo);

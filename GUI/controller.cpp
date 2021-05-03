@@ -42,6 +42,9 @@ Controller::Controller(Modello* m,QWidget* p):
     connect(catCompleto->getRimuovi(),SIGNAL(clicked()),this,SLOT(rimuoviProdotto()));
 
     connect(ricerca->getCercaBut(),SIGNAL(clicked()),this,SLOT(ricercaProdotti()));
+    connect(ricerca->getRimuoviRicerca(),SIGNAL(clicked()),this,SLOT(rimuoviProdottoRicerca()));
+    connect(ricerca->getModificaRicerca(),SIGNAL(clicked()),this,SLOT(modificaRicerca()));
+
     connect(inserisci->getInserisciBut(),SIGNAL(clicked()),this,SLOT(inserisciNuovoProdotto()));
 
     connect(layoutModifica->getSalvaMod(),SIGNAL(clicked()),this,SLOT(salvaModifiche()));
@@ -376,6 +379,17 @@ void Controller::modifica(){
         layoutModifica->exec();
     }
 }
+void Controller::modificaRicerca() {
+    if(ricerca->getListaRicerca()->currentItem()==nullptr) {
+        popup* nessunProdottoSelezionato = new popup("Warning","Nessun prodotto selezionato, seleziona un prodotto da modificare!");
+        nessunProdottoSelezionato->exec();
+    }
+    else {
+        layoutModifica->setProdotto(ricerca->getListaRicerca()->currentItem()->getSelezionato());
+        layoutModifica->compilaModifica();
+        layoutModifica->exec();
+    }
+}
 //SLOTS
 void Controller::esci() {
     close();
@@ -465,9 +479,10 @@ void Controller::salvaModifiche(){
 }
 void Controller::rimuoviProdotto(){
     if(catCompleto->getLista()->currentItem()==nullptr) {
-            popup* nessunProdottoSelezionatoElimina = new popup("Warning","Nessun prodotto selezionato, seleziona un piatto da eliminare!");
+            popup* nessunProdottoSelezionatoElimina = new popup("Warning","Nessun prodotto selezionato, seleziona un prodotto da eliminare!");
             nessunProdottoSelezionatoElimina->exec();
-     } else {
+     }
+     else {
         modello->rimuovi(catCompleto->getLista()->currentItem()->getSelezionato());
         modello->Salva();
         catCompleto->getLista()->clear();
@@ -476,10 +491,31 @@ void Controller::rimuoviProdotto(){
         if(modello->contaCatalogo()!=0) {
         popup* eliminatoCorrettamente = new popup("Informazione","Prodotto eliminato correttamente!");
         eliminatoCorrettamente->exec();
-        } else {
+        }
+        else {
            menu->show();
            catCompleto->hide();
         }
      }
+}
+void Controller::rimuoviProdottoRicerca() {
+    if(ricerca->getListaRicerca()->currentItem()==nullptr) {
+        popup* nessunProdottoSelezionatoElimina = new popup("Warning","Nessun prodotto selezionato, seleziona un prodotto da eliminare!");
+        nessunProdottoSelezionatoElimina->exec();
+    }
+    else {
+        modello->rimuovi(ricerca->getListaRicerca()->currentItem()->getSelezionato());
+        modello->Salva();
+        ricerca->resetRicerca();
+        caricaDati();
+        if(ricerca->getListaRicerca()!=0) {
+        popup* eliminatoCorrettamente = new popup("Informazione","Prodotto eliminato correttamente!");
+        eliminatoCorrettamente->exec();
+        }
+        else {
+            ricerca->show();
+            catCompleto->hide();
+        }
+    }
 }
 
