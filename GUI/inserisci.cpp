@@ -73,8 +73,10 @@ Inserisci::Inserisci(QWidget* p):
     lableRaccPoll(new QLabel(this)),
     raccoglipoll(new QComboBox(this)),
 
+
     inserisci(new QPushButton(this))
     {
+
 
 
      QVBoxLayout* layoutIns         = new QVBoxLayout(this);
@@ -127,6 +129,7 @@ Inserisci::Inserisci(QWidget* p):
      layoutIns->addLayout(layoutVelocita);
      layoutIns->addLayout(layoutNDenti);
      layoutIns->addLayout(layoutRaccpolline);
+
 
      layoutIns->addWidget(inserisci);
 
@@ -632,7 +635,6 @@ void Inserisci::resetInserisci(){
     nome->hide();
     labelNomeRegalo->hide();
     regalo->hide();
-
 }
 
 void Inserisci::scelteBiscotti(){
@@ -1207,7 +1209,7 @@ catalogo* Inserisci::nuovoProdotto(){
         else if(castagne->isChecked()==true){
             nuovoFarina=4;
         }
-        else{
+        else {
             nuovoFarina=5;
         }
 
@@ -1291,29 +1293,33 @@ catalogo* Inserisci::nuovoProdotto(){
         bool nuovaForma=backer->isChecked()==true ? true : false;
         int nuovoAltezza;
         double nuovoLarghezza;
-        if(dimBacker->currentText()=="33X4.6 cm"){
-            nuovoAltezza= 5;
-            nuovoLarghezza= 4.6;
+        if(nuovaForma){
+            if(dimBacker->currentText()=="33X4.6 cm"){
+                nuovoAltezza= 5;
+                nuovoLarghezza= 4.6;
+            }
+            else if(dimBacker->currentText()=="45X4.6 cm"){
+                nuovoAltezza= 6;
+                nuovoLarghezza= 4.6;
+            }
         }
-        else if(dimBacker->currentText()=="45X4.6 cm"){
-            nuovoAltezza= 6;
-            nuovoLarghezza= 4.6;
-        }
-        else if(dimDritto->currentText()=="24X3.1 cm"){
-            nuovoAltezza= 1;
-            nuovoLarghezza= 3.1;
-        }
-        else if(dimDritto->currentText()=="32X4.1 cm"){
-            nuovoAltezza= 2;
-            nuovoLarghezza= 4.1;
-        }
-        else if(dimDritto->currentText()=="37X5.3 cm"){
-            nuovoAltezza= 3;
-            nuovoLarghezza= 5.3;
-        }
-        else {
-            nuovoAltezza= 4;
-            nuovoLarghezza= 6.7;
+        else{
+            if(dimDritto->currentText()=="24X3.1 cm"){
+                nuovoAltezza= 1;
+                nuovoLarghezza= 3.1;
+            }
+            else if(dimDritto->currentText()=="32X4.1 cm"){
+                nuovoAltezza= 2;
+                nuovoLarghezza= 4.1;
+            }
+            else if(dimDritto->currentText()=="37X5.3 cm"){
+                nuovoAltezza= 3;
+                nuovoLarghezza= 5.3;
+            }
+            else if(dimDritto->currentText()=="46X6.7 cm"){
+                nuovoAltezza= 4;
+                nuovoLarghezza= 6.7;
+            }
         }
         ritorno = new bong(nomeNuovo,confRegalo,nuovoColore,nuovaForma,nuovoAltezza,nuovoLarghezza);
 

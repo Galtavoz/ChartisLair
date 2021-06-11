@@ -13,8 +13,8 @@ private:
     QAction*   carica;
     QAction*   salva;
     QAction*   esci;
-    QAction*     inserisci;
-    QAction*     ricerca;
+    QAction*   inserisci;
+    QAction*   ricerca;
     QMenu*     informazioni;
     QAction*   infoCatalogo;
     QAction*   infoSviluppatore;

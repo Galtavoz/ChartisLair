@@ -94,7 +94,6 @@ private:
     QLabel*         lableRaccPoll;
     QComboBox*      raccoglipoll;
 
-
     QPushButton*    inserisci;
 
 public:

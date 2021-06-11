@@ -75,6 +75,7 @@ Modifica::Modifica(QWidget* p):
     salva(new QPushButton(this))
     {
 
+     resize(800,100);
 
      QVBoxLayout* layoutMod         = new QVBoxLayout(this);
      QHBoxLayout* layoutNomeRegalo  = new QHBoxLayout();
@@ -852,7 +853,23 @@ void Modifica::compilaModifica() {
             fondente->hide();
             bianco->hide();
         }
-
+        colori->hide();
+        lableTipoBong->hide();
+        backer->hide();
+        dritto->hide();
+        lableTipoDimensioni->hide();
+        dimBacker->hide();
+        dimDritto->hide();
+        lableSchermo->hide();
+        schermo->hide();
+        lableCapienza->hide();
+        capienza->hide();
+        lableVelocita->hide();
+        velocita->hide();
+        lableNDenti->hide();
+        ndenti->hide();
+        lableRaccPoll->hide();
+        raccoglipoll->hide();
     }
     if(nCons!=nullptr){
         bong* bng = dynamic_cast<bong*>(nCons);
@@ -867,7 +884,17 @@ void Modifica::compilaModifica() {
                 backer->setCheckState(Qt::Checked);
                 dritto->setCheckState(Qt::Unchecked);
                 dritto->setEnabled(false);
-                std::string dimB = std::to_string(bng->getAltezza())+"X"+std::to_string(bng->getLarghezza());
+                std::string altezza;
+                std::stringstream larghezza;
+                larghezza<<std::fixed<<std::setprecision(1)<<bng->getLarghezza();
+                if(bng->getAltezza()==1) altezza="24";
+                else if(bng->getAltezza()==2) altezza="32";
+                else if(bng->getAltezza()==3) altezza="37";
+                else if(bng->getAltezza()==4) altezza="46";
+                else if(bng->getAltezza()==5) altezza="33";
+                else altezza="45";
+                std::string dimB = altezza + "X"+ larghezza.str()+" cm";
+                qDebug()<<QString::fromStdString(dimB);
                 dimBacker->setCurrentText(QString::fromStdString(dimB));
 
                 dimBacker->show();
@@ -877,7 +904,17 @@ void Modifica::compilaModifica() {
                 backer->setCheckState(Qt::Unchecked);
                 dritto->setCheckState(Qt::Checked);
                 backer->setEnabled(false);
-                std::string dimD = std::to_string(bng->getAltezza())+"X"+std::to_string(bng->getLarghezza());
+                std::string altezza;
+                std::stringstream larghezza;
+                larghezza<<std::fixed<<std::setprecision(1)<<bng->getLarghezza();
+                if(bng->getAltezza()==1) altezza="24";
+                else if(bng->getAltezza()==2) altezza="32";
+                else if(bng->getAltezza()==3) altezza="37";
+                else if(bng->getAltezza()==4) altezza="46";
+                else if(bng->getAltezza()==5) altezza="33";
+                else altezza="45";
+                std::string dimD = altezza + "X"+ larghezza.str()+" cm";
+                qDebug()<<QString::fromStdString(dimD);
                 dimDritto->setCurrentText(QString::fromStdString(dimD));
 
                 dimBacker->hide();
@@ -894,6 +931,10 @@ void Modifica::compilaModifica() {
             capienza->hide();
             lableVelocita->hide();
             velocita->hide();
+            lableNDenti->hide();
+            ndenti->hide();
+            lableRaccPoll->hide();
+            raccoglipoll->hide();
 
         }
         if(vapo!=nullptr){
@@ -927,10 +968,31 @@ void Modifica::compilaModifica() {
             lableTipoDimensioni->hide();
             dimBacker->hide();
             dimDritto->hide();
+            lableNDenti->hide();
+            ndenti->hide();
+            lableRaccPoll->hide();
+            raccoglipoll->hide();
 
         }
         if(grd!=nullptr){
-            tipoProdotto->setText("Gringer");
+            tipoProdotto->setText("Grinder");
+
+
+            if(grd->getNdenti()==6) ndenti->setCurrentText("6");
+            else if(grd->getNdenti()==12) ndenti->setCurrentText("12");
+            else if(grd->getNdenti()==24) ndenti->setCurrentText("24");
+            else if(grd->getNdenti()==30) ndenti->setCurrentText("30");
+            else if(grd->getNdenti()==36) ndenti->setCurrentText("36");
+
+
+            if(grd->getRaccogliPolline()) raccoglipoll->setCurrentIndex(0);
+            else raccoglipoll->setCurrentIndex(1);
+
+            lableNDenti->show();
+            ndenti->show();
+            lableRaccPoll->show();
+            raccoglipoll->show();
+
             lableTipoBong->hide();
             backer->hide();
             dritto->hide();
@@ -1498,19 +1560,19 @@ void Modifica::setNuoviCampi(){
             }
             else if(dritto->isChecked()){
                 bng->setForma(false);
-                if(dimBacker->currentText()=="24X3.1 cm"){
+                if(dimDritto->currentText()=="24X3.1 cm"){
                     alt=1;
                     bng->setLarghezza(3.1);
                 }
-                if(dimBacker->currentText()=="32X4.1 cm"){
+                if(dimDritto->currentText()=="32X4.1 cm"){
                     alt=2;
                     bng->setLarghezza(4.1);
                 }
-                if(dimBacker->currentText()=="37X5.3 cm"){
+                if(dimDritto->currentText()=="37X5.3 cm"){
                     alt=3;
                     bng->setLarghezza(5.3);
                 }
-                if(dimBacker->currentText()=="46X6.7 cm"){
+                if(dimDritto->currentText()=="46X6.7 cm"){
                     alt=4;
                     bng->setLarghezza(6.7);
                 }

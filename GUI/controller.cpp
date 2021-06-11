@@ -14,14 +14,14 @@ Controller::Controller(Modello* m,QWidget* p):
 
     QVBoxLayout* controller = new QVBoxLayout(this);
 
-    setMinimumSize(500,500);
+    setMinimumSize(700,500);
     setWindowTitle("Chartis'Lair");
     setWindowIcon(QIcon("../ChartisLair/IMMAGINI/logo.png"));
 
     QRect screenGeometry = QGuiApplication::screens()[0]->geometry();
     setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), screenGeometry));
 
-    controller->addWidget(menu);
+    controller->setMenuBar(menu);
     controller->addWidget(catCompleto);
     controller->addWidget(ricerca);
     controller->addWidget(inserisci);
@@ -366,6 +366,11 @@ void Controller::ricercaProdotti(){
            }
         }
     }
+    if(ricerca->getListaRicerca()->count()==0){
+        popup* avvisoNonTrovato = new popup("Warning","Prodotto cercato non presente in catalogo");
+        avvisoNonTrovato->exec();
+        return;
+    }
 }
 
 void Controller::modifica(){
@@ -416,6 +421,7 @@ void Controller::vediInserisci(){
     ricerca->getListaRicerca()->clear();
     catCompleto->hide();
     ricerca->hide();
+    inserisci->resetInserisci();
     inserisci->show();
     ricerca->resetRicerca();
 }
@@ -507,8 +513,10 @@ void Controller::rimuoviProdottoRicerca() {
         modello->rimuovi(ricerca->getListaRicerca()->currentItem()->getSelezionato());
         modello->Salva();
         ricerca->resetRicerca();
+        catCompleto->getLista()->clear();
         caricaDati();
-        if(ricerca->getListaRicerca()!=0) {
+        tornaHome();
+        if(modello->contaCatalogo()!=0) {
         popup* eliminatoCorrettamente = new popup("Informazione","Prodotto eliminato correttamente!");
         eliminatoCorrettamente->exec();
         }

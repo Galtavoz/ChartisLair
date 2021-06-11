@@ -1,5 +1,6 @@
 #ifndef MODIFICA_H
 #define MODIFICA_H
+#include<QDebug>
 #include<QWidget>
 #include<QDialog>
 #include<QLineEdit>

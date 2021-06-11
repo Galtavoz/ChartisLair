@@ -183,7 +183,7 @@ void Modello::Carica() {
                     double peso = field.value("peso").toDouble();
                     bool erba = field.value("erba").toString()=="Si" ? true : false;
                     bool produzione = field.value("produzione").toString()=="Si" ? true : false;
-                    int tipoFarina = field.value("tipoFarina").toUInt();
+                    int tipoFarina = field.value("farina").toUInt();
                     int gocceCioccolata = field.value("gocceCioccolata").toUInt();
 
                     inserisci = new biscotti(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,tipoFarina,gocceCioccolata);
@@ -264,7 +264,7 @@ void Modello::Carica() {
 
                 if(lettore.name()=="vaporizzatore") {
                     std::string colori = field.value("colori").toString().toStdString();
-                    int velocitaEvaporazione = field.value("velocita").toUInt();
+                    int velocitaEvaporazione = field.value("velocitaEvaporazione").toUInt();
                     double capienza = field.value("capienza").toUInt();
                     bool schermo = field.value("schermo").toString()=="Si" ? true : false;
 
