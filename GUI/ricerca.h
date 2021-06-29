@@ -122,6 +122,7 @@ public slots:
     void scelteVapo();
     void scelteGrinder();
 
+    void nessunProdSel();
     void resetDim();
 
 

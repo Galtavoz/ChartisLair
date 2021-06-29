@@ -380,6 +380,8 @@ Ricerca::Ricerca(QWidget* p):
       connect(dritto,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniD(bool)));
       connect(qualsiasi,SIGNAL(toggled(bool)),this,SLOT(checkQualsiasi(bool)));
 
+      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(nessunProdSel()));
+
       //CONNECT CHECKFARINE
       connect(grano,SIGNAL(toggled(bool)),this,SLOT(checkGrano(bool)));
       connect(riso,SIGNAL(toggled(bool)),this,SLOT(checkRiso(bool)));
@@ -470,6 +472,7 @@ void Ricerca::resetRicerca(){
 
 void Ricerca::scelteBiscotti(){
     if(tipoProdotto->currentText()=="Biscotti"){
+        getListaRicerca()->clear();
         //FARINE
         lableTipoFarine->show();
         grano->show();
@@ -503,6 +506,7 @@ void Ricerca::scelteBiscotti(){
 
 void Ricerca::scelteCioccolato(){
     if(tipoProdotto->currentText()=="Cioccolata"){
+        getListaRicerca()->clear();
         lableLvFondenza->show();
         nessuna->show();
         bassa->show();
@@ -538,6 +542,7 @@ void Ricerca::scelteCioccolato(){
 
 void Ricerca::scelteInfusi(){
     if(tipoProdotto->currentText()=="Infusi"){
+        getListaRicerca()->clear();
         lableTipoAroma1->show();
         aroma1->show();
         lableTipoAroma2->show();
@@ -557,6 +562,7 @@ void Ricerca::scelteInfusi(){
 
 void Ricerca::scelteFormaBong(){
     if(tipoProdotto->currentText()=="Bong"){
+        getListaRicerca()->clear();
         lableTipoBong->show();
         backer->show();
         dritto->show();
@@ -602,6 +608,7 @@ void Ricerca::scelteDimensioniD(bool flag){
 }
 void Ricerca::scelteVapo(){
     if(tipoProdotto->currentText()=="Vaporizzatore"){
+        getListaRicerca()->clear();
         lableSchermo->show();
         schermo->show();
         lableCapienza->show();
@@ -620,6 +627,7 @@ void Ricerca::scelteVapo(){
 }
 void Ricerca::scelteGrinder(){
     if(tipoProdotto->currentText()=="Grinder"){
+        getListaRicerca()->clear();
         lableNDenti->show();
         ndenti->show();
         lableRaccPoll->show();
@@ -630,6 +638,11 @@ void Ricerca::scelteGrinder(){
         ndenti->hide();
         lableRaccPoll->hide();
         raccoglipoll->hide();
+    }
+}
+void Ricerca::nessunProdSel(){
+    if(tipoProdotto->currentText()=="Seleziona prodotto..."){
+        getListaRicerca()->clear();
     }
 }
 void Ricerca::resetDim(){

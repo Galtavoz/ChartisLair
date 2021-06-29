@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Ricerca_t {
-    QByteArrayData data[29];
-    char stringdata0[360];
+    QByteArrayData data[30];
+    char stringdata0[374];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,37 +42,39 @@ QT_MOC_LITERAL(6, 70, 17), // "scelteDimensioniB"
 QT_MOC_LITERAL(7, 88, 17), // "scelteDimensioniD"
 QT_MOC_LITERAL(8, 106, 10), // "scelteVapo"
 QT_MOC_LITERAL(9, 117, 13), // "scelteGrinder"
-QT_MOC_LITERAL(10, 131, 8), // "resetDim"
-QT_MOC_LITERAL(11, 140, 10), // "checkGrano"
-QT_MOC_LITERAL(12, 151, 9), // "checkRiso"
-QT_MOC_LITERAL(13, 161, 13), // "checkMandorle"
-QT_MOC_LITERAL(14, 175, 13), // "checkCastagne"
-QT_MOC_LITERAL(15, 189, 13), // "checkAmaranto"
-QT_MOC_LITERAL(16, 203, 10), // "checkSenza"
-QT_MOC_LITERAL(17, 214, 10), // "checkLatte"
-QT_MOC_LITERAL(18, 225, 13), // "checkFondente"
-QT_MOC_LITERAL(19, 239, 11), // "checkBianco"
-QT_MOC_LITERAL(20, 251, 12), // "checkNessuna"
-QT_MOC_LITERAL(21, 264, 10), // "checkBassa"
-QT_MOC_LITERAL(22, 275, 10), // "checkMedia"
-QT_MOC_LITERAL(23, 286, 9), // "checkAlta"
-QT_MOC_LITERAL(24, 296, 10), // "checkCocco"
-QT_MOC_LITERAL(25, 307, 9), // "checkNoce"
-QT_MOC_LITERAL(26, 317, 13), // "checkMandorla"
-QT_MOC_LITERAL(27, 331, 13), // "checkNocciola"
-QT_MOC_LITERAL(28, 345, 14) // "checkQualsiasi"
+QT_MOC_LITERAL(10, 131, 13), // "nessunProdSel"
+QT_MOC_LITERAL(11, 145, 8), // "resetDim"
+QT_MOC_LITERAL(12, 154, 10), // "checkGrano"
+QT_MOC_LITERAL(13, 165, 9), // "checkRiso"
+QT_MOC_LITERAL(14, 175, 13), // "checkMandorle"
+QT_MOC_LITERAL(15, 189, 13), // "checkCastagne"
+QT_MOC_LITERAL(16, 203, 13), // "checkAmaranto"
+QT_MOC_LITERAL(17, 217, 10), // "checkSenza"
+QT_MOC_LITERAL(18, 228, 10), // "checkLatte"
+QT_MOC_LITERAL(19, 239, 13), // "checkFondente"
+QT_MOC_LITERAL(20, 253, 11), // "checkBianco"
+QT_MOC_LITERAL(21, 265, 12), // "checkNessuna"
+QT_MOC_LITERAL(22, 278, 10), // "checkBassa"
+QT_MOC_LITERAL(23, 289, 10), // "checkMedia"
+QT_MOC_LITERAL(24, 300, 9), // "checkAlta"
+QT_MOC_LITERAL(25, 310, 10), // "checkCocco"
+QT_MOC_LITERAL(26, 321, 9), // "checkNoce"
+QT_MOC_LITERAL(27, 331, 13), // "checkMandorla"
+QT_MOC_LITERAL(28, 345, 13), // "checkNocciola"
+QT_MOC_LITERAL(29, 359, 14) // "checkQualsiasi"
 
     },
     "Ricerca\0scelteBiscotti\0\0scelteCioccolato\0"
     "scelteInfusi\0scelteFormaBong\0"
     "scelteDimensioniB\0scelteDimensioniD\0"
-    "scelteVapo\0scelteGrinder\0resetDim\0"
-    "checkGrano\0checkRiso\0checkMandorle\0"
-    "checkCastagne\0checkAmaranto\0checkSenza\0"
-    "checkLatte\0checkFondente\0checkBianco\0"
-    "checkNessuna\0checkBassa\0checkMedia\0"
-    "checkAlta\0checkCocco\0checkNoce\0"
-    "checkMandorla\0checkNocciola\0checkQualsiasi"
+    "scelteVapo\0scelteGrinder\0nessunProdSel\0"
+    "resetDim\0checkGrano\0checkRiso\0"
+    "checkMandorle\0checkCastagne\0checkAmaranto\0"
+    "checkSenza\0checkLatte\0checkFondente\0"
+    "checkBianco\0checkNessuna\0checkBassa\0"
+    "checkMedia\0checkAlta\0checkCocco\0"
+    "checkNoce\0checkMandorla\0checkNocciola\0"
+    "checkQualsiasi"
 };
 #undef QT_MOC_LITERAL
 
@@ -82,7 +84,7 @@ static const uint qt_meta_data_Ricerca[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      27,   14, // methods
+      28,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -90,33 +92,34 @@ static const uint qt_meta_data_Ricerca[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  149,    2, 0x0a /* Public */,
-       3,    0,  150,    2, 0x0a /* Public */,
-       4,    0,  151,    2, 0x0a /* Public */,
-       5,    0,  152,    2, 0x0a /* Public */,
-       6,    1,  153,    2, 0x0a /* Public */,
-       7,    1,  156,    2, 0x0a /* Public */,
-       8,    0,  159,    2, 0x0a /* Public */,
-       9,    0,  160,    2, 0x0a /* Public */,
-      10,    0,  161,    2, 0x0a /* Public */,
-      11,    1,  162,    2, 0x0a /* Public */,
-      12,    1,  165,    2, 0x0a /* Public */,
-      13,    1,  168,    2, 0x0a /* Public */,
-      14,    1,  171,    2, 0x0a /* Public */,
-      15,    1,  174,    2, 0x0a /* Public */,
-      16,    1,  177,    2, 0x0a /* Public */,
-      17,    1,  180,    2, 0x0a /* Public */,
-      18,    1,  183,    2, 0x0a /* Public */,
-      19,    1,  186,    2, 0x0a /* Public */,
-      20,    1,  189,    2, 0x0a /* Public */,
-      21,    1,  192,    2, 0x0a /* Public */,
-      22,    1,  195,    2, 0x0a /* Public */,
-      23,    1,  198,    2, 0x0a /* Public */,
-      24,    1,  201,    2, 0x0a /* Public */,
-      25,    1,  204,    2, 0x0a /* Public */,
-      26,    1,  207,    2, 0x0a /* Public */,
-      27,    1,  210,    2, 0x0a /* Public */,
-      28,    1,  213,    2, 0x0a /* Public */,
+       1,    0,  154,    2, 0x0a /* Public */,
+       3,    0,  155,    2, 0x0a /* Public */,
+       4,    0,  156,    2, 0x0a /* Public */,
+       5,    0,  157,    2, 0x0a /* Public */,
+       6,    1,  158,    2, 0x0a /* Public */,
+       7,    1,  161,    2, 0x0a /* Public */,
+       8,    0,  164,    2, 0x0a /* Public */,
+       9,    0,  165,    2, 0x0a /* Public */,
+      10,    0,  166,    2, 0x0a /* Public */,
+      11,    0,  167,    2, 0x0a /* Public */,
+      12,    1,  168,    2, 0x0a /* Public */,
+      13,    1,  171,    2, 0x0a /* Public */,
+      14,    1,  174,    2, 0x0a /* Public */,
+      15,    1,  177,    2, 0x0a /* Public */,
+      16,    1,  180,    2, 0x0a /* Public */,
+      17,    1,  183,    2, 0x0a /* Public */,
+      18,    1,  186,    2, 0x0a /* Public */,
+      19,    1,  189,    2, 0x0a /* Public */,
+      20,    1,  192,    2, 0x0a /* Public */,
+      21,    1,  195,    2, 0x0a /* Public */,
+      22,    1,  198,    2, 0x0a /* Public */,
+      23,    1,  201,    2, 0x0a /* Public */,
+      24,    1,  204,    2, 0x0a /* Public */,
+      25,    1,  207,    2, 0x0a /* Public */,
+      26,    1,  210,    2, 0x0a /* Public */,
+      27,    1,  213,    2, 0x0a /* Public */,
+      28,    1,  216,    2, 0x0a /* Public */,
+      29,    1,  219,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -125,6 +128,7 @@ static const uint qt_meta_data_Ricerca[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -164,25 +168,26 @@ void Ricerca::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 5: _t->scelteDimensioniD((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 6: _t->scelteVapo(); break;
         case 7: _t->scelteGrinder(); break;
-        case 8: _t->resetDim(); break;
-        case 9: _t->checkGrano((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 10: _t->checkRiso((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 11: _t->checkMandorle((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 12: _t->checkCastagne((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 13: _t->checkAmaranto((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 14: _t->checkSenza((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 15: _t->checkLatte((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 16: _t->checkFondente((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 17: _t->checkBianco((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 18: _t->checkNessuna((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 19: _t->checkBassa((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 20: _t->checkMedia((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 21: _t->checkAlta((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 22: _t->checkCocco((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 23: _t->checkNoce((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 24: _t->checkMandorla((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 25: _t->checkNocciola((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 26: _t->checkQualsiasi((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: _t->nessunProdSel(); break;
+        case 9: _t->resetDim(); break;
+        case 10: _t->checkGrano((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 11: _t->checkRiso((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 12: _t->checkMandorle((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 13: _t->checkCastagne((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 14: _t->checkAmaranto((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 15: _t->checkSenza((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 16: _t->checkLatte((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 17: _t->checkFondente((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 18: _t->checkBianco((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 19: _t->checkNessuna((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 20: _t->checkBassa((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 21: _t->checkMedia((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 22: _t->checkAlta((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 23: _t->checkCocco((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 24: _t->checkNoce((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 25: _t->checkMandorla((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 26: _t->checkNocciola((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 27: _t->checkQualsiasi((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -217,13 +222,13 @@ int Ricerca::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 27)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 27;
+        _id -= 28;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 27)
+        if (_id < 28)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 27;
+        _id -= 28;
     }
     return _id;
 }

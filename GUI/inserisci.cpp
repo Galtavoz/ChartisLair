@@ -287,7 +287,7 @@ Inserisci::Inserisci(QWidget* p):
 
       labelNomeRegalo->setText("Inserisci il nome e spunta se confezione regalo");
       regalo->setText("Confezione Regalo?");
-      labelPeso->setText("Peso:");
+      labelPeso->setText("Peso in kg(per i decimali separare con un punto es. 0.500):");
       labelHemp->setText("Tipologia di hemp:");
       hempI->setText("Indica");
       hempS->setText("Sativa");
@@ -453,6 +453,7 @@ Inserisci::Inserisci(QWidget* p):
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteBiscotti()));
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteCioccolato()));
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteInfusi()));
+      connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(nessunProdSel()));
 
       connect(tipoProdotto,SIGNAL(currentIndexChanged(int)),this,SLOT(scelteFormaBong()));
       connect(backer,SIGNAL(toggled(bool)),this,SLOT(scelteDimensioniB(bool)));
@@ -931,6 +932,14 @@ void Inserisci::scelteGrinder(){
 
     resetCambioProdotto();
 }
+void Inserisci::nessunProdSel(){
+    if(tipoProdotto->currentText()=="Seleziona prodotto..."){
+        labelNomeRegalo->hide();
+        nome->hide();
+        regalo->hide();
+        resetCambioProdotto();
+    }
+}
 void Inserisci::resetDim(){
     if(backer->isEnabled()==true && dritto->isEnabled()==true){
         dimBacker->hide();
@@ -1266,7 +1275,7 @@ catalogo* Inserisci::nuovoProdotto(){
         if(formaC->currentText()=="Stecche") nuovoFormaC=true;
         else nuovoFormaC=false;
 
-        ritorno= new cioccolata(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuovoFondenza,nuovoGranella,nuovoFormaC);
+        ritorno= new cioccolata(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuovoGranella,nuovoFondenza,nuovoFormaC);
     }
     else if(tipoProdotto->currentText()=="Infusi"){
         nuoviIng.push_back("foglie di the");

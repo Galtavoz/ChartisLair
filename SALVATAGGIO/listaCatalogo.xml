@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <cioccolata nome="w" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="2" livelloFondenza="2" forma="No"/>
+    <cioccolata nome="3" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="1" livelloFondenza="4" forma="Si"/>
+    <cioccolata nome="2" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="3" livelloFondenza="1" forma="Si"/>
+    <cioccolata nome="1" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="2" livelloFondenza="2" forma="Si"/>
+    <cioccolata nome="tttt" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="3" livelloFondenza="3" forma="Si"/>
+    <cioccolata nome="eee" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="4" livelloFondenza="1" forma="Si"/>
+    <cioccolata nome="hhhhh" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="2" livelloFondenza="3" forma="No"/>
+    <cioccolata nome="vfr" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="1" erba="Si" produzione="Si" tipoGranella="4" livelloFondenza="2" forma="Si"/>
+    <bong nome="Dyson" confezioneRegalo="No" colori="Verde" forma="Si" altezza="6" larghezza="4.6"/>
+    <cioccolata nome="Cocoa Dream" confezioneRegalo="No" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.5" erba="Si" produzione="Si" tipoGranella="1" livelloFondenza="1" forma="No"/>
+    <infusi nome="The Ambassador" confezioneRegalo="Si" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="12" erba="No" produzione="Si" aroma="Zenzero,Liquirizia" sfuso="Si"/>
+    <grinder nome="Er magnifico Grinder" confezioneRegalo="No" colori="Viola" ndenti="24" raccoglipolline="Si"/>
     <biscotti nome="pluto" confezioneRegalo="No" ingredienti="farina,uova,burro,zucchero,hemp" peso="0.3" erba="Si" produzione="No" farina="3" gocceCioccolata="1"/>
     <vaporizzatore nome="lol" confezioneRegalo="No" colori="Viola" velocitaEvaporazione="1" capienza="1" schermo="Si"/>
     <vaporizzatore nome="lopoipo" confezioneRegalo="No" colori="Bianco" velocitaEvaporazione="1" capienza="1" schermo="Si"/>
-    <grinder nome="juio" confezioneRegalo="Si" colori="Verde" ndenti="24" raccoglipolline="Si"/>
     <grinder nome="Gorgoroth" confezioneRegalo="No" colori="Oro" ndenti="30" raccoglipolline="No"/>
     <vaporizzatore nome="Groot" confezioneRegalo="Si" colori="Verde" velocitaEvaporazione="0" capienza="4" schermo="Si"/>
     <infusi nome="Lovegood" confezioneRegalo="No" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0.4" erba="No" produzione="No" aroma="Limone,Menta" sfuso="Si"/>
