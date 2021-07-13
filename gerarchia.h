@@ -130,6 +130,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    void svuotaAromi();
     //OPERATORI
     virtual bool operator==(const catalogo&) const override;
 };

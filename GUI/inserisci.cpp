@@ -1234,8 +1234,15 @@ catalogo* Inserisci::nuovoProdotto(){
         else{
             nuovoGocce= 3;
         }
+        if(nomeNuovo!="" &&
+           nuovoPeso!=0 &&
+          (hempI->isChecked()==true || hempS->isChecked()==true) &&
+          (prodI->isChecked()==true || prodO->isChecked()==true) &&
+          (grano->isChecked()==true || riso->isChecked()==true || mandorle->isChecked()==true || castagne->isChecked()==true || amaranto->isChecked()==true) &&
+          (senza->isChecked()==true || latte->isChecked()==true || fondente->isChecked()==true || bianco->isChecked()==true))
+            ritorno= new biscotti(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuovoFarina,nuovoGocce);
+        else ritorno=nullptr;
 
-        ritorno= new biscotti(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuovoFarina,nuovoGocce);
     }
     else if(tipoProdotto->currentText()=="Cioccolata"){
         nuoviIng.push_back("cioccolato");
@@ -1275,7 +1282,14 @@ catalogo* Inserisci::nuovoProdotto(){
         if(formaC->currentText()=="Stecche") nuovoFormaC=true;
         else nuovoFormaC=false;
 
-        ritorno= new cioccolata(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuovoGranella,nuovoFondenza,nuovoFormaC);
+        if(nomeNuovo!="" &&
+           nuovoPeso!=0 &&
+           (hempI->isChecked()==true || hempS->isChecked()==true) &&
+           (prodI->isChecked()==true || prodO->isChecked()==true) &&
+           (nessuna->isChecked()==true || bassa->isChecked()==true || media->isChecked()==true || alta->isChecked()==true) &&
+           (cocco->isChecked()==true || noce->isChecked()==true || mandorla->isChecked()==true || nocciola->isChecked()==true))
+            ritorno= new cioccolata(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuovoGranella,nuovoFondenza,nuovoFormaC);
+        else ritorno=nullptr;
     }
     else if(tipoProdotto->currentText()=="Infusi"){
         nuoviIng.push_back("foglie di the");
@@ -1293,8 +1307,12 @@ catalogo* Inserisci::nuovoProdotto(){
             nuoviAromi.push_back(aroma2->currentText().toStdString());
         if(sfuso->currentText()=="Sfuso") nuovoSfuso=true;
         else nuovoSfuso=false;
-
-        ritorno= new infusi(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuoviAromi,nuovoSfuso);
+        if(nomeNuovo!="" &&
+           nuovoPeso!=0 &&
+           (hempI->isChecked()==true || hempS->isChecked()==true) &&
+           (prodI->isChecked()==true || prodO->isChecked()==true))
+            ritorno= new infusi(nomeNuovo,confRegalo,nuoviIng,nuovoPeso,nuovoHemp,nuovoProd,nuoviAromi,nuovoSfuso);
+        else ritorno=nullptr;
     }
     //NON CONSUMABILI
     else if(tipoProdotto->currentText()=="Bong"){
@@ -1330,8 +1348,10 @@ catalogo* Inserisci::nuovoProdotto(){
                 nuovoLarghezza= 6.7;
             }
         }
-        ritorno = new bong(nomeNuovo,confRegalo,nuovoColore,nuovaForma,nuovoAltezza,nuovoLarghezza);
-
+        if(nomeNuovo!="" &&
+          (dritto->isChecked()==true || backer->isChecked()==true))
+            ritorno = new bong(nomeNuovo,confRegalo,nuovoColore,nuovaForma,nuovoAltezza,nuovoLarghezza);
+        else ritorno=nullptr;
     }
     else if(tipoProdotto->currentText()=="Vaporizzatore"){
         std::string nuovoColore=colori->currentText().toStdString();
@@ -1361,7 +1381,10 @@ catalogo* Inserisci::nuovoProdotto(){
         }
         if(schermo->currentText()=="Schermo") nuovoSchermo=true;
         else nuovoSchermo=false;
-        ritorno = new vaporizzatore(nomeNuovo,confRegalo,nuovoColore,nuovoVelocita,nuovoCapienza,nuovoSchermo);
+
+        if(nomeNuovo!="")
+            ritorno = new vaporizzatore(nomeNuovo,confRegalo,nuovoColore,nuovoVelocita,nuovoCapienza,nuovoSchermo);
+        else ritorno=nullptr;
     }
     else if(tipoProdotto->currentText()=="Grinder"){
         std::string nuovoColore=colori->currentText().toStdString();
@@ -1384,7 +1407,9 @@ catalogo* Inserisci::nuovoProdotto(){
         }
         if(raccoglipoll->currentText()=="Con raccogli polline") nuovoRaccogliP=true;
         else nuovoRaccogliP=false;
-        ritorno = new grinder(nomeNuovo,confRegalo,nuovoColore,nuovoNdenti,nuovoRaccogliP);
+        if(nomeNuovo!="")
+            ritorno = new grinder(nomeNuovo,confRegalo,nuovoColore,nuovoNdenti,nuovoRaccogliP);
+        else ritorno=nullptr;
     }
     return ritorno;
 }

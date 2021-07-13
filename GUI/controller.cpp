@@ -7,7 +7,7 @@ Controller::Controller(Modello* m,QWidget* p):
     ricerca(new Ricerca(this)),
     inserisci(new Inserisci(this)),
     catCompleto(new catalogoCompleto(this)),
-    file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ChartisLair/SALVATAGGIO","File XML(*.xml)")),
+    file(QFileDialog::getOpenFileName(this,tr("Scegli file"),"./SALVATAGGIO","File XML(*.xml)")),
     layoutModifica(new Modifica(this))
 {
 
@@ -16,7 +16,7 @@ Controller::Controller(Modello* m,QWidget* p):
 
     setMinimumSize(700,500);
     setWindowTitle("Chartis'Lair");
-    setWindowIcon(QIcon("../ChartisLair/IMMAGINI/logo.png"));
+    setWindowIcon(QIcon("./IMMAGINI/logo.png"));
 
     QRect screenGeometry = QGuiApplication::screens()[0]->geometry();
     setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), screenGeometry));
@@ -72,7 +72,7 @@ void Controller::caricaDati() {
     }
 }
 void Controller::caricaDatiXML() {
-    QString caricaAncora = QFileDialog::getOpenFileName(this,tr("Scegli file"),"../ProgettoP2/SALVATAGGIO","File XML(*.xml)");
+    QString caricaAncora = QFileDialog::getOpenFileName(this,tr("Scegli file"),"./SALVATAGGIO","File XML(*.xml)");
     if(caricaAncora!="") {
         modello->setPath(caricaAncora.toStdString());
         modello->Carica();
@@ -458,7 +458,11 @@ void Controller::vediInfoCatalogo() {
 }
 void Controller::inserisciNuovoProdotto(){
     catalogo* daInserire = inserisci->nuovoProdotto();
-    if (controlloDoppione(daInserire)) {
+    if(daInserire==nullptr){
+        popup* prodottoNull = new popup("Warning","Prodotto nullo,non puo creare un prodotto nullo!");
+        prodottoNull->exec();
+    }
+    else if (controlloDoppione(daInserire)) {
             popup* prodottoDoppione = new popup("Warning","Prodotto doppione,hai già creato un prodotto così!");
             prodottoDoppione->exec();
     }

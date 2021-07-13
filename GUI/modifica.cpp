@@ -806,7 +806,7 @@ void Modifica::compilaModifica() {
                 aroma1->show();
                 count++;
                }
-               else if(count==1){
+               if(count==1){
                        if(listaAromi.size()==2){
                             aroma2->setCurrentIndex(aroma2->findText(corrente));
                             lableTipoAroma2->show();
@@ -1532,13 +1532,14 @@ void Modifica::setNuoviCampi(){
             else ciocc->setForma(false);
         }
         if(infu!=nullptr){
+            infu->svuotaAromi();
             infu->setAroma(aroma1->currentText().toStdString());
-            if(aroma2->currentText().toStdString()!="Nessun Aroma"){
+            if(aroma2->currentText().toStdString()!="Nessun aroma"){
                 infu->setAroma(aroma2->currentText().toStdString());
             }
-
             if(formaC->currentText()=="Sfuso")infu->setSfuso(true);
             else infu->setSfuso(false);
+
         }
     }
     if(nCons!=nullptr){

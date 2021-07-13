@@ -23,7 +23,6 @@
     <vaporizzatore nome="Yulia" confezioneRegalo="No" colori="Viola" velocitaEvaporazione="0" capienza="3" schermo="Si"/>
     <biscotti nome="Biscotti al cioccolato e cocco" confezioneRegalo="No" ingredienti="Farina,uova,burro,zucchero,hemp" peso="0.45" erba="No" produzione="No" farina="4" gocceCioccolata="4"/>
     <cioccolata nome="Praline con nocciole" confezioneRegalo="Si" ingredienti="Cioccolato, burro, zucchero, hemp" peso="0.25" erba="Si" produzione="Si" tipoGranella="4" livelloFondenza="2" forma="No"/>
-    <infusi nome="Infuso del pomeriggio" confezioneRegalo="Si" ingredienti="Foglie di the, hemp, fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0.5" erba="No" produzione="No" aroma="Albicocca,Nessun aroma" sfuso="No"/>
     <vaporizzatore nome="O'Vesuvio" confezioneRegalo="No" colori="Rosso" velocitaEvaporazione="0" capienza="2" schermo="No"/>
     <vaporizzatore nome="Krakatoa" confezioneRegalo="Si" colori="Verde" velocitaEvaporazione="0" capienza="4" schermo="Si"/>
     <grinder nome="Birello" confezioneRegalo="Si" colori="Giallo" ndenti="36" raccoglipolline="No"/>

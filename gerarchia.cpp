@@ -267,6 +267,9 @@ void infusi::setAroma(std::string arm){
 bool infusi::setSfuso(bool sf){
     return sfuso=sf;
 }
+void infusi::svuotaAromi() {
+    aroma.clear();
+}
 //METODI
 double infusi::prezzo() const{
     double prezzo=10*getPeso();
