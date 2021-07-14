@@ -14,7 +14,7 @@ Controller::Controller(Modello* m,QWidget* p):
 
     QVBoxLayout* controller = new QVBoxLayout(this);
 
-    setMinimumSize(700,500);
+    setMinimumSize(800,500);
     setWindowTitle("Chartis'Lair");
     setWindowIcon(QIcon("./IMMAGINI/logo.png"));
 
@@ -174,10 +174,10 @@ void Controller::ricercaProdotti(){
                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
            }
            //SELEZIONATO GRANELLA, SELEZIONATO FONDENZA
-           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() ){
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getFormaC()==0){
                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
            }
-           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() ){
+           else if(dynamic_cast<cioccolata*>(*inizio) && (dynamic_cast<cioccolata*>(*inizio))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(*inizio))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getFormaC()==0){
                (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
            }
            //SELEZIONATO GRANELLA, SELEZIONATO FORMA
@@ -236,45 +236,69 @@ void Controller::ricercaProdotti(){
             else  if(dynamic_cast<infusi*>(*inizio) && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==true && ricerca->getSfuso()==1)){
                 std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
                 std::vector<std::string> stringRicerca= ricerca->getAroma();
-                for (unsigned int i=0;i<stringAroma.size();++i) {
-                     for (unsigned int j=0;j<stringRicerca.size();++j) {
-                         if(stringAroma[i]==stringRicerca[j]){
-                             (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                if(stringAroma.size()==stringRicerca.size()) {
+                    for (unsigned int i=0;i<stringAroma.size();++i) {
+                        if(stringRicerca.size()<=1){
+                             for (unsigned int j=i;j<stringRicerca.size();++j) {
+                                 if(stringAroma[i]==stringRicerca[j]){
+                                     (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                                 }
+                             }
                          }
-                     }
+                        else{
+                            if(stringAroma.size()==stringRicerca.size()){
+                                for (unsigned int j=i;j<stringRicerca.size()-1;++j)
+                                     if(stringAroma[i]==stringRicerca[j])
+                                         (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                            }
+                        }
+                    }
                 }
             }
             else if(dynamic_cast<infusi*>(*inizio) && ((dynamic_cast<infusi*>(*inizio))->getSfuso()==false && ricerca->getSfuso()==2)){
                 std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
                 std::vector<std::string> stringRicerca= ricerca->getAroma();
-                for (unsigned int i=0;i<stringAroma.size();++i) {
-                     for (unsigned int j=0;j<stringRicerca.size();++j) {
-                         if(stringAroma[i]==stringRicerca[j]){
-                             (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                         }
-                     }
+                if(stringAroma.size()==stringRicerca.size()) {
+                    for (unsigned int i=0;i<stringAroma.size();++i) {
+                        if(stringRicerca.size()<=1){
+                            for (unsigned int j=i;j<stringRicerca.size();++j) {
+                                 if(stringAroma[i]==stringRicerca[j]){
+                                     (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                                 }
+                             }
+                        }
+                        else{
+                            if(stringAroma.size()==stringRicerca.size()){
+                                for (unsigned int j=i;j<stringRicerca.size()-1;++j)
+                                     if(stringAroma[i]==stringRicerca[j])
+                                         (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                            }
+                        }
+                    }
                 }
+
             }
            //SELEZIONATO PRIMO AROMA, SELEZIONATO SECONDO AROMA
            else if(dynamic_cast<infusi*>(*inizio) && ricerca->getSfuso()==0){
                std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(*inizio))->getAroma());
                std::vector<std::string> stringRicerca= ricerca->getAroma();
-               for (unsigned int i=0;i<stringAroma.size();++i) {
-                   if(stringRicerca.size()<=1){
-                       if(stringAroma.size()==stringRicerca.size()){
-                           for (unsigned int j=0;j<stringRicerca.size();++j)
-                                if(stringAroma[i]==stringRicerca[j])
-                                    (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                   for (unsigned int i=0;i<stringAroma.size();++i) {
+                       if(stringRicerca.size()<=1){
+                           if(stringAroma.size()==stringRicerca.size()){
+                               for (unsigned int j=i;j<stringRicerca.size();++j)
+                                    if(stringAroma[i]==stringRicerca[j])
+                                        (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                           }
+                       }
+                       else{
+                           if(stringAroma.size()==stringRicerca.size()){
+                               for (unsigned int j=i;j<stringRicerca.size()-1;++j)
+                                    if(stringAroma[i]==stringRicerca[j])
+                                        (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
+                           }
                        }
                    }
-                   else{
-                       if(stringAroma.size()==stringRicerca.size()){
-                           for (unsigned int j=0;j<stringRicerca.size()-1;++j)
-                                if(stringAroma[i]==stringRicerca[j])
-                                    (ricerca->getListaRicerca())->aggiungiElemento(*inizio);
-                       }
-                   }
-               }
+
            }
         }
     }
@@ -390,6 +414,7 @@ void Controller::modifica(){
         layoutModifica->compilaModifica();
         layoutModifica->exec();
     }
+    abilita();
 }
 void Controller::modificaRicerca() {
     if(ricerca->getListaRicerca()->currentItem()==nullptr) {
@@ -399,7 +424,9 @@ void Controller::modificaRicerca() {
     else {
         layoutModifica->setProdotto(ricerca->getListaRicerca()->currentItem()->getSelezionato());
         layoutModifica->compilaModifica();
+        ricerca->resetRicerca();
         layoutModifica->exec();
+
     }
 }
 //SLOTS

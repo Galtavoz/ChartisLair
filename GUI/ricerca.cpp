@@ -650,6 +650,9 @@ void Ricerca::resetDim(){
         dimBacker->hide();
         dimDritto->hide();
         lableTipoDimensioni->hide();
+        getListaRicerca()->clear();
+        dimBacker->setCurrentIndex(0);
+        dimDritto->setCurrentIndex(0);
     }
 }
 //CHECKFARINE

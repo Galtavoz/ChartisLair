@@ -88,29 +88,14 @@ bool lista<T>::vuoto() {
 
 template<class T>
 void lista<T>::togliUno(const T& t) {
-    //PAGINA 117-118
+
     deepPtr<T> p = primo;
-       deepPtr<T> prec = nullptr/*, q = nullptr*/;
-       //deepPtr inizio = primo;
-       //primo = nullptr;
+       deepPtr<T> prec = nullptr;
        while(p != nullptr && !(p->info == t)) {
-           //q = new nodo(p->info, p->prev, p->next);
+
            prec = p;
            p = p->next;
-           /*if(p->prev == nullptr) {
-               primo = q;
-               std::cout<<"qua?"<<std::endl;
-           } else {
-               prec->next = q;
-               q->prev = prec;
-           }*/
-
-           //prec = q;
-           //p = p->next;
        }
-       /*if(p == nullptr){
-           primo = inizio;
-       } else {*/
        if(p != nullptr) {
            if (prec == nullptr && p->next == nullptr) {
                primo = p->next;
