@@ -74,7 +74,8 @@ Inserisci::Inserisci(QWidget* p):
     raccoglipoll(new QComboBox(this)),
 
 
-    inserisci(new QPushButton(this))
+    inserisci(new QPushButton(this)),
+    labelObbligatorio(new QLabel(this))
     {
 
 
@@ -132,6 +133,7 @@ Inserisci::Inserisci(QWidget* p):
 
 
      layoutIns->addWidget(inserisci);
+     layoutIns->addWidget(labelObbligatorio);
 
      layoutNomeRegalo->addWidget(labelNomeRegalo);
      layoutNomeRegalo->addWidget(nome);
@@ -211,6 +213,8 @@ Inserisci::Inserisci(QWidget* p):
      inserisci->show();
      lableTipoProdotto->setText("Seleziona la tipologia di prodotto da inserire :");
      inserisci->setText("Inserisci");
+     labelObbligatorio->setText("* Campi Obbligatori");
+     labelObbligatorio->hide();
      QList<QString> prodotti={"Seleziona prodotto...","Biscotti","Cioccolata","Infusi","Bong","Vaporizzatore","Grinder"};
      for(int i=0;i<prodotti.length();++i)
              tipoProdotto->addItem(prodotti[i]);
@@ -285,41 +289,41 @@ Inserisci::Inserisci(QWidget* p):
       lableRaccPoll->hide();
       raccoglipoll->hide();
 
-      labelNomeRegalo->setText("Inserisci il nome e spunta se confezione regalo");
+      labelNomeRegalo->setText("Inserisci il nome * e spunta se confezione regalo");
       regalo->setText("Confezione Regalo?");
-      labelPeso->setText("Peso in kg(per i decimali separare con un punto es. 0.500):");
-      labelHemp->setText("Tipologia di hemp:");
+      labelPeso->setText("Peso in kg(per i decimali separare con un punto es. 0.500) *:");
+      labelHemp->setText("Tipologia di hemp *:");
       hempI->setText("Indica");
       hempS->setText("Sativa");
       prodI->setText("Indoor");
       prodO->setText("Outdoor");
-      labelProd->setText("Tipo di produzione:");
+      labelProd->setText("Tipo di produzione *:");
       labelColori->setText("Colore:");
       QList<QString> listaColori={"Bianco","Blu","Verde","Arancione","Viola","Fucsia","Oro","Giallo"};
       for(int i=0;i<listaColori.length();++i)
               colori->addItem(listaColori[i]);
        colori->setCurrentIndex(0);
 
-      lableTipoFarine->setText("Seleziona la tipologia di farina:");
+      lableTipoFarine->setText("Seleziona la tipologia di farina *:");
       grano->setText("Grano");
       riso->setText("Riso");
       mandorle->setText("Mandorle");
       castagne->setText("Castagne");
       amaranto->setText("Amaranto");
 
-      lableTipoGocce->setText("Seleziona la tipologia di gocce :");
+      lableTipoGocce->setText("Seleziona la tipologia di gocce *:");
       senza->setText("Senza");
       latte->setText("Latte");
       fondente->setText("Fondente");
       bianco->setText("Bianco");
 
-      lableLvFondenza->setText("Seleziona il livello di fondenza :");
+      lableLvFondenza->setText("Seleziona il livello di fondenza *:");
       nessuna->setText("0%");
       bassa->setText("50%");
       media->setText("75%");
       alta->setText("90%");
 
-      lableTipoGranella->setText("Seleziona la tipologia di granella :");
+      lableTipoGranella->setText("Seleziona la tipologia di granella *:");
       cocco->setText("Cocco");
       noce->setText("Noce");
       mandorla->setText("Mandorla");
@@ -331,7 +335,7 @@ Inserisci::Inserisci(QWidget* p):
           formaC->addItem(listaFormaC[i]);
       formaC->setCurrentIndex(0);
 
-      lableTipoAroma1->setText("Seleziona il primo aroma: ");
+      lableTipoAroma1->setText("Seleziona il primo aroma :");
       QList<QString> listaaromi={"Albicocca","Limone","Liquirizia","Menta","Zenzero"};
       for(int i=0;i<listaaromi.length();++i)
           aroma1->addItem(listaaromi[i]);
@@ -348,7 +352,7 @@ Inserisci::Inserisci(QWidget* p):
       sfuso->setCurrentIndex(0);
 
 
-      lableTipoBong->setText("Seleziona la forma del bong");
+      lableTipoBong->setText("Seleziona la forma del bong *:");
       backer->setText("Backer");
       dritto->setText("Dritto");
       lableTipoDimensioni->setText("Seleziona le dimensioni del bong");
@@ -447,6 +451,9 @@ Inserisci::Inserisci(QWidget* p):
       lableNDenti->setWordWrap(true);
       lableRaccPoll->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
       lableRaccPoll->setWordWrap(true);
+
+      labelObbligatorio->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+      labelObbligatorio->setWordWrap(true);
 
 
 
@@ -636,6 +643,7 @@ void Inserisci::resetInserisci(){
     nome->hide();
     labelNomeRegalo->hide();
     regalo->hide();
+    labelObbligatorio->hide();
 }
 
 void Inserisci::scelteBiscotti(){
@@ -644,6 +652,7 @@ void Inserisci::scelteBiscotti(){
         labelNomeRegalo->show();
         nome->show();
         regalo->show();
+        labelObbligatorio->show();
         //CONSUMABILI
         labelIngredienti->setText("Ingredienti : farina,uova,burro,zucchero,hemp");
         labelIngredienti->show();
@@ -669,7 +678,6 @@ void Inserisci::scelteBiscotti(){
         latte->show();
         fondente->show();
         bianco->show();
-
     }
     else{
         if(tipoProdotto->currentText()!="Bong" && tipoProdotto->currentText()!="Vaporizzatore" && tipoProdotto->currentText()!="Grinder" ){
@@ -690,6 +698,8 @@ void Inserisci::scelteBiscotti(){
         latte->hide();
         fondente->hide();
         bianco->hide();
+
+        labelObbligatorio->hide();
     }
 
     resetCambioProdotto();
@@ -701,6 +711,7 @@ void Inserisci::scelteCioccolato(){
         labelNomeRegalo->show();
         nome->show();
         regalo->show();
+        labelObbligatorio->show();
         //CONSUMABILI
         labelIngredienti->show();
         labelIngredienti->setText("Cioccolato, burro, zucchero,hemp");
@@ -760,6 +771,7 @@ void Inserisci::scelteInfusi(){
         labelNomeRegalo->show();
         nome->show();
         regalo->show();
+        labelObbligatorio->show();
         //CONSUMABILI
         labelIngredienti->show();
         labelIngredienti->setText("Foglie di the,hemp, fiori di calendula,fiori di sambuco,fiori di camomilla");
@@ -803,6 +815,7 @@ void Inserisci::scelteFormaBong(){
         labelNomeRegalo->show();
         nome->show();
         regalo->show();
+        labelObbligatorio->show();
         //NON CONSUMABILI
         labelColori->show();
         colori->show();
@@ -860,6 +873,7 @@ void Inserisci::scelteVapo(){
         labelNomeRegalo->show();
         nome->show();
         regalo->show();
+        labelObbligatorio->show();
         //NON CONSUMABILI
         labelColori->show();
         colori->show();
@@ -890,7 +904,7 @@ void Inserisci::scelteVapo(){
         lableCapienza->hide();
         capienza->hide();
         lableVelocita->hide();
-        velocita->hide();
+        velocita->hide();  
     }
 
     resetCambioProdotto();
@@ -901,6 +915,7 @@ void Inserisci::scelteGrinder(){
         labelNomeRegalo->show();
         nome->show();
         regalo->show();
+        labelObbligatorio->show();
         //NON CONSUMABILI
         labelColori->show();
         colori->show();
@@ -937,6 +952,7 @@ void Inserisci::nessunProdSel(){
         labelNomeRegalo->hide();
         nome->hide();
         regalo->hide();
+        labelObbligatorio->hide();
         resetCambioProdotto();
     }
 }

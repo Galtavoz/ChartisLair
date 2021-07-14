@@ -95,6 +95,7 @@ private:
     QComboBox*      raccoglipoll;
 
     QPushButton*    inserisci;
+    QLabel*         labelObbligatorio;
 
 public:
     Inserisci(QWidget* = nullptr);

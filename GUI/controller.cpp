@@ -105,6 +105,9 @@ void Controller::disabilita() {
     catCompleto->hide();
     menu->getSalva()->setEnabled(false);
     menu->getRicerca()->setEnabled(false);
+    menu->getInserisci()->setEnabled(false);
+    menu->getHome()->setEnabled(false);
+    menu->getSalva()->setEnabled(false);
 
 }
 
@@ -113,6 +116,10 @@ void Controller::abilita() {
     catCompleto->show();
     menu->getSalva()->setEnabled(true);
     menu->getRicerca()->setEnabled(true);
+    menu->getInserisci()->setEnabled(true);
+    menu->getHome()->setEnabled(true);
+    menu->getSalva()->setEnabled(true);
+
 
 }
 bool Controller::controlloDoppione(catalogo* p) const {
