@@ -4,93 +4,82 @@
 template<class T>
 
 class deepPtr {
+private:
+    T* d_Ptr;
+    unsigned int riferimenti;
 public:
-    class nodo;
-
-    nodo* punt;
-    deepPtr(nodo* p = 0); //costruttore
+    deepPtr(T* d_Ptr = nullptr);//costruttore
     deepPtr(const deepPtr&); //costruttre di copia profondo
     ~deepPtr(); //distruttore profondo
-    //operatori
+    
+	//operatori
     deepPtr& operator=(const deepPtr&); //assegnazione profonda
-    nodo& operator*() const;
-    nodo* operator->() const;
+    T& operator*() const;
+    T* operator->() const;
     bool operator==(const deepPtr&) const;
     bool operator!=(const deepPtr&) const;
 
-
-class nodo {
-public:
-    T info;
-    deepPtr prev;
-    deepPtr next;
-    unsigned int riferimenti;
-    nodo();
-    nodo(const T&, const deepPtr&, const deepPtr&);
 };
-
-};
+//GIUSTA....FORSE, la parte sopra
 
 //deepPtr
-
 template <class T>
-typename deepPtr<T>::deepPtr& deepPtr<T>::deepPtr::operator=(const deepPtr& p) {
+deepPtr<T>::deepPtr(T* ptr) : d_Ptr(ptr), riferimenti(ptr ? 1 : 0) {}//costruttore
+
+template <class T>//costruttore di copia profonda
+deepPtr<T>::deepPtr(const deepPtr& cptr) : d_Ptr(cptr.d_Ptr), riferimenti(cptr.riferimenti) {
+    if (d_Ptr != nullptr) riferimenti++;
+    else riferimenti = 0;
+}
+
+template <class T>//distruttore profondo
+deepPtr<T>::~deepPtr() {
+    if (riferimenti > 0) riferimenti--;
+    if (riferimenti <= 0) {
+        delete d_Ptr;
+        d_Ptr = nullptr;
+        riferimenti = 0;
+    }
+}
+//operatori
+template <class T>
+deepPtr<T>& deepPtr<T>::operator=(const deepPtr& p) {
     if (this != &p) {
-        nodo* t = punt;
-        punt = p.punt;
-        if(punt) punt->riferimenti++;
-        if(t) {
-            t->riferimenti--;
-            if(t->riferimenti == 0) delete t;
+        if(riferimenti > 0 ) riferimenti--;
+        if(riferimenti <= 0){
+            delete d_Ptr;
+            d_Ptr = nullptr;
+            riferimenti = 0;
         }
+
+        d_Ptr = p.d_Ptr;
+        riferimenti = p.riferimenti;
+
+        if(d_Ptr != nullptr) riferimenti++;
+        else riferimenti=0;
+
     }
     return  *this;
 }
 
 template <class T>
-deepPtr<T>::deepPtr(nodo* p): punt(p) {
-    if(punt) punt->riferimenti++;
+T& deepPtr<T>::operator*() const {
+    return *d_Ptr;
 }
 
 template <class T>
-deepPtr<T>::deepPtr(const deepPtr& c): punt(c.punt) {
-    if(punt) punt->riferimenti++;
-}
-
-template <class T>
-deepPtr<T>::~deepPtr() {
-    if(punt) {
-        punt->riferimenti--;
-        if (punt->riferimenti == 0) delete punt;
-    }
-}
-
-template <class T>
-typename deepPtr<T>::nodo& deepPtr<T>::deepPtr::operator*() const {
-    return *punt;
-}
-
-template <class T>
-typename deepPtr<T>::nodo* deepPtr<T>::deepPtr::operator->() const {
-    return punt;
+T* deepPtr<T>::operator->() const {
+    return *d_Ptr;
 }
 
 template <class T>
 bool deepPtr<T>::operator==(const deepPtr& p) const {
-    return punt == p.punt;
+    return d_Ptr == p.d_Ptr;
 }
 
 template <class T>
 bool deepPtr<T>::operator!=(const deepPtr& p) const {
-    return punt != p.punt;
+    return d_Ptr != p.d_Ptr;
 }
-
-//NODO
-
-template <class T>
-deepPtr<T>::nodo::nodo(): riferimenti(0) {}
-
-template <class T>
-deepPtr<T>::nodo::nodo(const T& i, const deepPtr& p, const deepPtr& n): info(i), prev(p), next(n), riferimenti(0) {}
 
 #endif // DEEPPTR_H

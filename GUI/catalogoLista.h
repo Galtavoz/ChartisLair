@@ -4,14 +4,15 @@
 #include<QListWidgetItem>
 
 #include"gerarchia.h"
+#include"DeepPtr.h"
 
 class catalogoLista: public QListWidgetItem {
 private:
     QWidget* parent;
-    catalogo* prodotti;
+   catalogo* prodotti;
 public:
     catalogoLista(QWidget* = nullptr, catalogo* = nullptr);
-    void aggiornaPiatto();
+    void aggiornaLista();
     catalogo* getSelezionato() const;
 };
 

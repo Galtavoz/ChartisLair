@@ -13,7 +13,7 @@
 class Modello{
 private:
         std::string path;
-        lista<catalogo*>* Catalogo;
+        lista<deepPtr<catalogo*>>* Catalogo;
         bool salvaModifiche;
 public:
         Modello(std::string=":/SALVATAGGIO/listaCatalogo.xml");
@@ -21,14 +21,14 @@ public:
 
         std::string getPath() const;
         bool getSalvaModifiche() const;
-        lista<catalogo*>* getListaCatalogo() const;
+        lista<deepPtr<catalogo*>>* getListaCatalogo() const;
         void setSalvaModifiche(bool);
         void setPath(std::string = "");
 
-        lista<catalogo*>::iteratore inizioIter() const;
-        lista<catalogo*>::iteratore fineIter() const;
-        lista<catalogo*>::iteratoreConst inizioCIter() const;
-        lista<catalogo*>::iteratoreConst fineCIter() const;
+        lista<deepPtr<catalogo*>>::iteratore inizioIter() const;
+        lista<deepPtr<catalogo*>>::iteratore fineIter() const;
+        lista<deepPtr<catalogo*>>::iteratoreConst inizioCIter() const;
+        lista<deepPtr<catalogo*>>::iteratoreConst fineCIter() const;
 
         void Salva();
         void Carica();
@@ -46,4 +46,3 @@ public:
         int contaGrinder();
 };
 #endif // MODELLO_H
-

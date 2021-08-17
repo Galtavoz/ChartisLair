@@ -730,7 +730,7 @@ moc_controller.cpp: GUI/controller.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QDialog \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\controller.h -o moc_controller.cpp
+	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/moc_predefs.h" -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair" -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\controller.h -o moc_controller.cpp
 
 moc_inserisci.cpp: GUI/inserisci.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QWidget \
@@ -884,9 +884,10 @@ moc_inserisci.cpp: GUI/inserisci.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
 		gerarchia.h \
+		DeepPtr.h \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\inserisci.h -o moc_inserisci.cpp
+	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/moc_predefs.h" -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair" -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\inserisci.h -o moc_inserisci.cpp
 
 moc_menu.cpp: GUI/menu.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QMenuBar \
@@ -1003,13 +1004,12 @@ moc_menu.cpp: GUI/menu.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qwidgetaction.h \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\menu.h -o moc_menu.cpp
+	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/moc_predefs.h" -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair" -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\menu.h -o moc_menu.cpp
 
 moc_modifica.cpp: GUI/modifica.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QWidget \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qwidget.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/QDebug \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qdebug.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qalgorithms.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qglobal.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qconfig.h \
@@ -1031,27 +1031,20 @@ moc_modifica.cpp: GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmutex.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qnumeric.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qversiontagging.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtgui-config.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qnamespace.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobject.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstring.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhash.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qchar.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qbytearray.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiterator.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlist.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qrefcount.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qarraydata.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstring.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qbytearray.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qnamespace.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringliteral.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringview.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlist.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qalgorithms.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiterator.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhashfunctions.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qpair.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvector.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontainertools_impl.h \
@@ -1060,12 +1053,33 @@ moc_modifica.cpp: GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringlist.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qregexp.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmap.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qtextstream.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiodevice.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobject.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs_impl.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcoreevent.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qscopedpointer.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmetatype.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobject_impl.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlocale.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvariant.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qshareddata.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qset.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QWidget \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qwidget.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtgui-config.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmargins.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpaintdevice.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qrect.h \
@@ -1079,17 +1093,12 @@ moc_modifica.cpp: GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpolygon.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qregion.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qdatastream.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiodevice.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qline.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtransform.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpainterpath.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qimage.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpixelformat.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpixmap.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qshareddata.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhash.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qfont.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qfontmetrics.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qfontinfo.h \
@@ -1097,13 +1106,6 @@ moc_modifica.cpp: GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qcursor.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qkeysequence.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qevent.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvariant.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmap.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qdebug.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qtextstream.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlocale.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qset.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qurl.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qurlquery.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qfile.h \
@@ -1159,9 +1161,10 @@ moc_modifica.cpp: GUI/modifica.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
+		DeepPtr.h \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\modifica.h -o moc_modifica.cpp
+	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/moc_predefs.h" -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair" -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\modifica.h -o moc_modifica.cpp
 
 moc_ricerca.cpp: GUI/ricerca.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QWidget \
@@ -1315,9 +1318,10 @@ moc_ricerca.cpp: GUI/ricerca.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
 		gerarchia.h \
+		DeepPtr.h \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\ricerca.h -o moc_ricerca.cpp
+	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/moc_predefs.h" -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair" -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include GUI\ricerca.h -o moc_ricerca.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QMainWindow \
@@ -1429,7 +1433,7 @@ moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qicon.h \
 		moc_predefs.h \
 		C:/Qt/5.14.1/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/P/Desktop/GitChartis/ChartisLair/moc_predefs.h -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -IC:/Users/P/Desktop/GitChartis/ChartisLair -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include mainwindow.h -o moc_mainwindow.cpp
+	C:\Qt\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/moc_predefs.h" -IC:/Qt/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair" -IC:/Qt/5.14.1/mingw73_32/include -IC:/Qt/5.14.1/mingw73_32/include/QtWidgets -IC:/Qt/5.14.1/mingw73_32/include/QtGui -IC:/Qt/5.14.1/mingw73_32/include/QtANGLE -IC:/Qt/5.14.1/mingw73_32/include/QtCore -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1593,7 +1597,8 @@ catalogoCompleto.o: GUI/catalogoCompleto.cpp GUI/catalogoCompleto.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
-		gerarchia.h
+		gerarchia.h \
+		DeepPtr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o catalogoCompleto.o GUI\catalogoCompleto.cpp
 
 catalogoLista.o: GUI/catalogoLista.cpp GUI/catalogoLista.h \
@@ -1720,7 +1725,8 @@ catalogoLista.o: GUI/catalogoLista.cpp GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qrubberband.h \
-		gerarchia.h
+		gerarchia.h \
+		DeepPtr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o catalogoLista.o GUI\catalogoLista.cpp
 
 controller.o: GUI/controller.cpp GUI/controller.h \
@@ -2055,6 +2061,7 @@ elementoWidget.o: GUI/elementoWidget.cpp GUI/elementoWidget.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qrubberband.h \
 		gerarchia.h \
+		DeepPtr.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidget \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QPushButton \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qpushbutton.h \
@@ -2214,7 +2221,8 @@ inserisci.o: GUI/inserisci.cpp GUI/inserisci.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
-		gerarchia.h
+		gerarchia.h \
+		DeepPtr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inserisci.o GUI\inserisci.cpp
 
 menu.o: GUI/menu.cpp GUI/menu.h \
@@ -2333,10 +2341,9 @@ menu.o: GUI/menu.cpp GUI/menu.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o GUI\menu.cpp
 
 modifica.o: GUI/modifica.cpp GUI/modifica.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QWidget \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qwidget.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/QDebug \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qdebug.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qalgorithms.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qglobal.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qconfig.h \
@@ -2358,27 +2365,20 @@ modifica.o: GUI/modifica.cpp GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmutex.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qnumeric.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qversiontagging.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtgui-config.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qnamespace.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobject.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstring.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhash.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qchar.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qbytearray.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiterator.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlist.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qrefcount.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qarraydata.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstring.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qbytearray.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qnamespace.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringliteral.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringview.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlist.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qalgorithms.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiterator.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhashfunctions.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qpair.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvector.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontainertools_impl.h \
@@ -2387,12 +2387,33 @@ modifica.o: GUI/modifica.cpp GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringlist.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qregexp.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmap.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qtextstream.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiodevice.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobject.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobjectdefs_impl.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcoreevent.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qscopedpointer.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmetatype.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qobject_impl.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlocale.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvariant.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qshareddata.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qset.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QWidget \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qwidget.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtgui-config.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.14.1/mingw73_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmargins.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpaintdevice.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qrect.h \
@@ -2406,17 +2427,12 @@ modifica.o: GUI/modifica.cpp GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpolygon.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qregion.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qdatastream.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qiodevice.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qline.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qtransform.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpainterpath.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qimage.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpixelformat.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qpixmap.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qshareddata.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qhash.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qfont.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qfontmetrics.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qfontinfo.h \
@@ -2424,13 +2440,6 @@ modifica.o: GUI/modifica.cpp GUI/modifica.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qcursor.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qkeysequence.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtGui/qevent.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qvariant.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qmap.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qdebug.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qtextstream.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qlocale.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qset.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qurl.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qurlquery.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtCore/qfile.h \
@@ -2485,7 +2494,8 @@ modifica.o: GUI/modifica.cpp GUI/modifica.h \
 		gerarchia.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
-		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem
+		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
+		DeepPtr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modifica.o GUI\modifica.cpp
 
 popup.o: GUI/popup.cpp GUI/popup.h \
@@ -2750,7 +2760,8 @@ ricerca.o: GUI/ricerca.cpp GUI/ricerca.h \
 		GUI/elementoWidget.h \
 		GUI/catalogoLista.h \
 		C:/Qt/5.14.1/mingw73_32/include/QtWidgets/QListWidgetItem \
-		gerarchia.h
+		gerarchia.h \
+		DeepPtr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ricerca.o GUI\ricerca.cpp
 
 gerarchia.o: gerarchia.cpp gerarchia.h

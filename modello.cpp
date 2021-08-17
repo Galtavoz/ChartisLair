@@ -1,6 +1,6 @@
 #include "modello.h"
 
-Modello::Modello(std::string p): path(p), Catalogo(new lista<catalogo*>), salvaModifiche(true){}
+Modello::Modello(std::string p): path(p), Catalogo(new lista<deepPtr<catalogo*>>), salvaModifiche(true){}
 
 Modello::~Modello() {
     delete  Catalogo;
@@ -14,14 +14,14 @@ void Modello::setPath(std::string s) {
     path = s;
     delete Catalogo;
     salvaModifiche = false;
-    Catalogo = new lista<catalogo*>();
+    Catalogo = new lista<deepPtr<catalogo*>>();
 }
 
 bool Modello::getSalvaModifiche() const {
     return salvaModifiche;
 }
 
-lista<catalogo*>* Modello::getListaCatalogo() const {
+lista<deepPtr<catalogo*>>* Modello::getListaCatalogo() const {
     return Catalogo;
 }
 
@@ -29,19 +29,19 @@ void Modello::setSalvaModifiche(bool s) {
     salvaModifiche = s;
 }
 
-lista<catalogo*>::iteratore Modello::inizioIter() const {
+ lista<deepPtr<catalogo*>>::iteratore Modello::inizioIter() const {
     return Catalogo->inizio();
 }
 
-lista<catalogo*>::iteratore Modello::fineIter() const {
+ lista<deepPtr<catalogo*>>::iteratore Modello::fineIter() const {
     return Catalogo->fine();
 }
 
-lista<catalogo*>::iteratoreConst Modello::inizioCIter() const {
+ lista<deepPtr<catalogo*>>::iteratoreConst Modello::inizioCIter() const {
     return Catalogo->inizioC();
 }
 
-lista<catalogo*>::iteratoreConst Modello::fineCIter() const {
+ lista<deepPtr<catalogo*>>::iteratoreConst Modello::fineCIter() const {
     return Catalogo->fineC();
 }
 
@@ -56,7 +56,7 @@ void Modello::Salva(){
     scrivi.writeStartElement("root");
     auto cit = inizioCIter();
     while(cit!=fineCIter()) {
-        const catalogo* nuovoCatalogo = *cit;
+        const catalogo* nuovoCatalogo = **cit;
         const QString elementoCatalogo = QString::fromStdString(nuovoCatalogo->tipoElemento());
         scrivi.writeEmptyElement(elementoCatalogo);
         scrivi.writeAttribute("nome",QString::fromStdString(nuovoCatalogo->getNome()));
@@ -139,7 +139,7 @@ void Modello::Salva(){
             scrivi.writeAttribute("raccoglipolline",Grinder->getRaccogliPolline()==true ? "Si" : "No");
         }
 
-        delete *cit;
+        delete **cit;
         ++cit;
     }
     scrivi.writeEndElement();
@@ -280,7 +280,12 @@ void Modello::Carica() {
 
                     inserisci = new grinder(nome,confezioneRegalo,colori,ndenti,raccoglipolline);
                 }
-                if(inserisci!=nullptr) Catalogo->aggiungiCoda(inserisci);
+
+                deepPtr<catalogo*> prova=&inserisci;
+                if(prova!=nullptr) {
+                    Catalogo->aggiungiCoda(prova);
+                }
+
 
                 if(!lettore.isEndDocument()) lettore.skipCurrentElement();
 
@@ -295,56 +300,56 @@ std::string Modello::toString(char x) {
     return s;
 }
 void Modello::inserisci(catalogo* p) {
-    Catalogo->aggiungiTesta(p);
+    Catalogo->aggiungiTesta(&p);
 }
 
 void Modello::rimuovi(catalogo* p) {
-    Catalogo->togliUno(p);
+    Catalogo->togliUno(&p);
 }
 int Modello::contaCatalogo() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) conta++;
     return conta;
 }
 int Modello::contaBiscotti() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<biscotti*>(*it)) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+        if(dynamic_cast<biscotti*>(**it)) conta++;
     }
     return conta;
 }
 int Modello::contaCioccolata() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<cioccolata*>(*it)) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+        if(dynamic_cast<cioccolata*>(**it)) conta++;
     }
     return conta;
 }
 int Modello::contaInfusi() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<infusi*>(*it)) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+        if(dynamic_cast<infusi*>(**it)) conta++;
     }
     return conta;
 }
 int Modello::contaBong() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<bong*>(*it)) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+        if(dynamic_cast<bong*>(**it)) conta++;
     }
     return conta;
 }
 int Modello::contaVapo() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<vaporizzatore*>(*it)) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+        if(dynamic_cast<vaporizzatore*>(**it)) conta++;
     }
     return conta;
 }
 int Modello::contaGrinder() {
     int conta=0;
-    for(lista<catalogo*>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<grinder*>(*it)) conta++;
+    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+        if(dynamic_cast<grinder*>(**it)) conta++;
     }
     return conta;
 }
