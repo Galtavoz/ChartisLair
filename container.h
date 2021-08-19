@@ -12,19 +12,18 @@ private:
     class nodo {
      public:
         T info;
-        nodo *prev;
-        nodo *next;
+        nodo *prev,*next;
         nodo();
         ~nodo();
-        nodo(const T&,nodo*,nodo*);
+        nodo(const T& t, nodo* p = nullptr, nodo* n=nullptr);
     };
-    nodo *primo;
-    nodo *ultimo;
+    nodo *primo, *ultimo;
+    static nodo* copiaProfondaRic(nodo* from, nodo* prev, nodo*& last);
     unsigned int size;
 public:
     lista();
-    lista(const nodo*, const nodo*, const unsigned int);
-    lista(const lista&);
+    lista(const lista<T>& l);
+    lista<T>& operator=(const lista<T>& list);
     ~lista();
     unsigned int getSize() const;
 
@@ -83,13 +82,39 @@ lista<T>::nodo::~nodo(){
 
 //LISTA
 template  <class T>
-lista<T>::lista() : primo(nullptr),ultimo(nullptr), size(0) {}
+lista<T>::lista() : primo(nullptr),ultimo(nullptr),size(0){}
+
+template <class T>
+lista<T>::lista(const lista<T>& list) {
+    primo = copiaProfondaRic(list.primo, primo, ultimo);
+    size = list.size;
+}
+
+template <class T>
+typename lista<T>::nodo* lista<T>::copiaProfondaRic(nodo* from, nodo* prev, nodo*& last) {
+    if (from == nullptr) {
+        last = prev;
+        return nullptr;
+    }
+
+    nodo* temp = new nodo(from->info);
+    temp->prev = prev;
+    temp->next = copiaProfondaRic(from->next, temp, last);
+    return temp;
+}
+
+template <class T>
+lista<T>& lista<T>::operator=(const lista<T>& list) {
+    if (this != &list) {
+        delete primo;
+        primo = copiaProfondaRic(list.primo, primo, ultimo);
+        size = list.size;
+    }
+    return *this;
+}
 
 template  <class T>
-lista<T>::lista(const nodo* p, const nodo* u, const unsigned int s) : primo(p),ultimo(u), size(s) {}
-
-template  <class T>
-lista<T>::~lista(){ eliminaListaRic(primo);}
+lista<T>::~lista(){ eliminaListaRic(primo); }
 
 template<class T>
 void lista<T>::eliminaListaRic(nodo* n){
@@ -205,12 +230,12 @@ bool lista<T>::iteratore::operator!=(const iteratore& i) const {
 
 template<class T>
 T lista<T>::iteratore::operator*() const{
-    return (*it).info;
+    return it->info;
 }
 
 template<class T>
 T lista<T>::iteratore::operator->() const{
-    return &(*(*(*it)).info);
+    return &it->info;
 }
 
 template<class T>

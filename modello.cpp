@@ -1,9 +1,9 @@
 #include "modello.h"
 
-Modello::Modello(std::string p): path(p), Catalogo(new lista<deepPtr<catalogo*>>), salvaModifiche(true){}
+Modello::Modello(std::string p): path(p), Catalogo(lista<deepPtr<catalogo>>()), salvaModifiche(true) {}
 
 Modello::~Modello() {
-    delete  Catalogo;
+    Catalogo.~lista();
 }
 
 std::string Modello::getPath() const {
@@ -12,16 +12,16 @@ std::string Modello::getPath() const {
 
 void Modello::setPath(std::string s) {
     path = s;
-    delete Catalogo;
+    Catalogo.~lista();
     salvaModifiche = false;
-    Catalogo = new lista<deepPtr<catalogo*>>();
+    Catalogo = lista<deepPtr<catalogo>>();
 }
 
 bool Modello::getSalvaModifiche() const {
     return salvaModifiche;
 }
 
-lista<deepPtr<catalogo*>>* Modello::getListaCatalogo() const {
+lista<deepPtr<catalogo>> Modello::getListaCatalogo() const {
     return Catalogo;
 }
 
@@ -29,20 +29,20 @@ void Modello::setSalvaModifiche(bool s) {
     salvaModifiche = s;
 }
 
- lista<deepPtr<catalogo*>>::iteratore Modello::inizioIter() const {
-    return Catalogo->inizio();
+ lista<deepPtr<catalogo>>::iteratore Modello::inizioIter() {
+    return Catalogo.inizio();
 }
 
- lista<deepPtr<catalogo*>>::iteratore Modello::fineIter() const {
-    return Catalogo->fine();
+ lista<deepPtr<catalogo>>::iteratore Modello::fineIter() {
+    return Catalogo.fine();
 }
 
- lista<deepPtr<catalogo*>>::iteratoreConst Modello::inizioCIter() const {
-    return Catalogo->inizioC();
+ lista<deepPtr<catalogo>>::iteratoreConst Modello::inizioCIter() const {
+    return Catalogo.inizioC();
 }
 
- lista<deepPtr<catalogo*>>::iteratoreConst Modello::fineCIter() const {
-    return Catalogo->fineC();
+ lista<deepPtr<catalogo>>::iteratoreConst Modello::fineCIter() const {
+    return Catalogo.fineC();
 }
 
 void Modello::Salva(){
@@ -54,9 +54,9 @@ void Modello::Salva(){
     scrivi.writeStartDocument();
 
     scrivi.writeStartElement("root");
-    auto cit = inizioCIter();
-    while(cit!=fineCIter()) {
-        const catalogo* nuovoCatalogo = **cit;
+    auto cit = inizioIter();
+    while(cit!=fineIter()) {
+        const catalogo* nuovoCatalogo = (*cit).get();
         const QString elementoCatalogo = QString::fromStdString(nuovoCatalogo->tipoElemento());
         scrivi.writeEmptyElement(elementoCatalogo);
         scrivi.writeAttribute("nome",QString::fromStdString(nuovoCatalogo->getNome()));
@@ -139,7 +139,7 @@ void Modello::Salva(){
             scrivi.writeAttribute("raccoglipolline",Grinder->getRaccogliPolline()==true ? "Si" : "No");
         }
 
-        delete **cit;
+        delete (*cit).get();
         ++cit;
     }
     scrivi.writeEndElement();
@@ -147,6 +147,7 @@ void Modello::Salva(){
     salvaModifiche = true;
     salvaFile.commit();
 }
+
 void Modello::Carica() {
     QFile salvaFile(QString::fromStdString(path));
     if(!salvaFile.open(QIODevice::ReadOnly)) {
@@ -281,9 +282,8 @@ void Modello::Carica() {
                     inserisci = new grinder(nome,confezioneRegalo,colori,ndenti,raccoglipolline);
                 }
 
-                deepPtr<catalogo*> prova=&inserisci;
-                if(prova!=nullptr) {
-                    Catalogo->aggiungiCoda(prova);
+                if(inserisci!=nullptr) {
+                    Catalogo.aggiungiCoda(inserisci);
                 }
 
 
@@ -295,61 +295,71 @@ void Modello::Carica() {
     salvaFile.close();
     salvaModifiche=true;
 }
+
 std::string Modello::toString(char x) {
     std::string s(1, x);
     return s;
 }
+
 void Modello::inserisci(catalogo* p) {
-    Catalogo->aggiungiTesta(&p);
+    Catalogo.aggiungiTesta(p);
 }
 
 void Modello::rimuovi(catalogo* p) {
-    Catalogo->togliUno(&p);
+    Catalogo.togliUno(p);
 }
+
 int Modello::contaCatalogo() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) conta++;
     return conta;
 }
+
 int Modello::contaBiscotti() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<biscotti*>(**it)) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) {
+        //const catalogo* prova = (*it).get();
+        if(dynamic_cast<const biscotti*>((*it).get())) conta++;
     }
     return conta;
 }
+
 int Modello::contaCioccolata() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<cioccolata*>(**it)) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) {
+        if(dynamic_cast<const cioccolata*>((*it).get())) conta++;
     }
     return conta;
 }
+
 int Modello::contaInfusi() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<infusi*>(**it)) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) {
+        if(dynamic_cast<const infusi*>((*it).get())) conta++;
     }
     return conta;
 }
+
 int Modello::contaBong() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<bong*>(**it)) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) {
+        if(dynamic_cast<const bong*>((*it).get())) conta++;
     }
     return conta;
 }
+
 int Modello::contaVapo() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<vaporizzatore*>(**it)) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) {
+        if(dynamic_cast<const vaporizzatore*>((*it).get())) conta++;
     }
     return conta;
 }
+
 int Modello::contaGrinder() {
     int conta=0;
-    for(lista<deepPtr<catalogo*>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
-        if(dynamic_cast<grinder*>(**it)) conta++;
+    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo.inizio(); it!=Catalogo.fine();++it) {
+        if(dynamic_cast<const grinder*>((*it).get())) conta++;
     }
     return conta;
 }

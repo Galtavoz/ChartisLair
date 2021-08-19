@@ -9,10 +9,13 @@ private:
     unsigned int riferimenti;
 public:
     deepPtr(T* d_Ptr = nullptr);//costruttore
-    deepPtr(const deepPtr&); //costruttre di copia profondo
+    deepPtr(const deepPtr<T>&); //costruttre di copia profondo
     ~deepPtr(); //distruttore profondo
     
 	//operatori
+
+    T* get();
+
     deepPtr& operator=(const deepPtr&); //assegnazione profonda
     T& operator*() const;
     T* operator->() const;
@@ -59,7 +62,12 @@ deepPtr<T>& deepPtr<T>::operator=(const deepPtr& p) {
         else riferimenti=0;
 
     }
-    return  *this;
+    return *this;
+}
+
+template <class T>
+T* deepPtr<T>::get() {
+    return d_Ptr;
 }
 
 template <class T>
@@ -69,7 +77,7 @@ T& deepPtr<T>::operator*() const {
 
 template <class T>
 T* deepPtr<T>::operator->() const {
-    return *d_Ptr;
+    return &d_Ptr;
 }
 
 template <class T>
