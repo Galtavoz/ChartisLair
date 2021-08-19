@@ -28,9 +28,6 @@ bool catalogo::operator==(const catalogo& p) const {
     return nome==p.nome && confezioneRegalo==p.confezioneRegalo;
 }
 
-
-
-
 //CONSUMABILI
 consumabile::consumabile(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod):
     catalogo(n,cr),ingredienti(ingr), peso(p),erba(erb),produzione(prod){}

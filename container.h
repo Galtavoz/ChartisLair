@@ -37,8 +37,8 @@ public:
         iteratore(const iteratore&);
         iteratore& operator++();
         iteratore& operator--();
-        T operator*() const;
-        T operator->() const;
+        T& operator*() const;
+        T* operator->() const;
         bool operator==(const iteratore&) const;
         bool operator!=(const iteratore&) const;
     };
@@ -229,13 +229,13 @@ bool lista<T>::iteratore::operator!=(const iteratore& i) const {
 }
 
 template<class T>
-T lista<T>::iteratore::operator*() const{
+T& lista<T>::iteratore::operator*() const{
     return it->info;
 }
 
 template<class T>
-T lista<T>::iteratore::operator->() const{
-    return &it->info;
+T* lista<T>::iteratore::operator->() const{
+    return &(it->info);
 }
 
 template<class T>

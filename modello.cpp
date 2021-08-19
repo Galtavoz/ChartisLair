@@ -164,7 +164,7 @@ void Modello::Carica() {
                 std::string nome = field.value("nome").toString().toStdString();
                 bool confezioneRegalo = field.value("confezioneRegalo").toString()=="Si" ? true : false;
 
-                catalogo* inserisci = nullptr;
+                catalogo* elementoXml = nullptr;
 
                 if(lettore.name()=="biscotti") {
                     std::string ingredienti = field.value("ingredienti").toString().toStdString();
@@ -187,7 +187,7 @@ void Modello::Carica() {
                     int tipoFarina = field.value("farina").toUInt();
                     int gocceCioccolata = field.value("gocceCioccolata").toUInt();
 
-                    inserisci = new biscotti(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,tipoFarina,gocceCioccolata);
+                    elementoXml = new biscotti(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,tipoFarina,gocceCioccolata);
                 }
 
                 if(lettore.name()=="cioccolata") {
@@ -212,7 +212,7 @@ void Modello::Carica() {
                     int livelloFondenza = field.value("livelloFondenza").toUInt();
                     bool forma = field.value("forma").toString()=="Si" ? true : false;
 
-                    inserisci = new cioccolata(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,tipoGranella,livelloFondenza,forma);
+                    elementoXml = new cioccolata(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,tipoGranella,livelloFondenza,forma);
                 }
 
                 if(lettore.name()=="infusi") {
@@ -250,7 +250,7 @@ void Modello::Carica() {
                     }
                     bool sfuso = field.value("sfuso").toString()=="Si" ? true : false;
 
-                    inserisci = new infusi(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,listaAromi,sfuso);
+                    elementoXml = new infusi(nome,confezioneRegalo,listaIngredienti,peso,erba,produzione,listaAromi,sfuso);
                 }
 
                 if(lettore.name()=="bong") {
@@ -260,7 +260,7 @@ void Modello::Carica() {
                     double larghezza = field.value("larghezza").toDouble();
 
 
-                    inserisci = new bong(nome,confezioneRegalo,colori,forma,altezza,larghezza);
+                    elementoXml = new bong(nome,confezioneRegalo,colori,forma,altezza,larghezza);
                 }
 
                 if(lettore.name()=="vaporizzatore") {
@@ -270,7 +270,7 @@ void Modello::Carica() {
                     bool schermo = field.value("schermo").toString()=="Si" ? true : false;
 
 
-                    inserisci = new vaporizzatore(nome,confezioneRegalo,colori,velocitaEvaporazione,capienza,schermo);
+                    elementoXml = new vaporizzatore(nome,confezioneRegalo,colori,velocitaEvaporazione,capienza,schermo);
                 }
 
                 if(lettore.name()=="grinder") {
@@ -279,11 +279,13 @@ void Modello::Carica() {
                     bool raccoglipolline = field.value("raccoglipolline").toString()=="Si" ? true : false;
 
 
-                    inserisci = new grinder(nome,confezioneRegalo,colori,ndenti,raccoglipolline);
+                    elementoXml = new grinder(nome,confezioneRegalo,colori,ndenti,raccoglipolline);
                 }
 
+                deepPtr<catalogo>* inserisci = new deepPtr<catalogo>(elementoXml);
+
                 if(inserisci!=nullptr) {
-                    Catalogo.aggiungiCoda(inserisci);
+                    Catalogo.aggiungiCoda(*inserisci);
                 }
 
 

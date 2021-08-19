@@ -17,8 +17,10 @@ public:
     T* get();
 
     deepPtr& operator=(const deepPtr&); //assegnazione profonda
-    T& operator*() const;
-    T* operator->() const;
+    T& operator*();
+    T* operator->();
+    const T& operator*() const;
+    const T* operator->() const;
     bool operator==(const deepPtr&) const;
     bool operator!=(const deepPtr&) const;
 
@@ -71,13 +73,22 @@ T* deepPtr<T>::get() {
 }
 
 template <class T>
-T& deepPtr<T>::operator*() const {
+T& deepPtr<T>::operator*() {
     return *d_Ptr;
 }
 
 template <class T>
-T* deepPtr<T>::operator->() const {
+T* deepPtr<T>::operator->() {
     return &d_Ptr;
+}
+template <class T>
+const T& deepPtr<T>::operator*() const {
+    return *d_Ptr;
+}
+
+template <class T>
+const T* deepPtr<T>::operator->() const {
+    return d_Ptr;
 }
 
 template <class T>
