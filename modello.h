@@ -13,7 +13,7 @@
 class Modello{
 private:
         std::string path;
-        lista<deepPtr<catalogo>> Catalogo;
+        lista<deepPtr<catalogo>>* Catalogo;
         bool salvaModifiche;
 public:
         Modello(std::string=":/SALVATAGGIO/listaCatalogo.xml");
