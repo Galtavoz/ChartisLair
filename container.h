@@ -14,7 +14,6 @@ private:
         T info;
         nodo *prev,*next;
         nodo();
-        ~nodo();
         nodo(const T& t, nodo* p = nullptr, nodo* n=nullptr);
     };
     nodo *primo, *ultimo;
@@ -74,11 +73,6 @@ public:
 //NODO
 template  <class T>
 lista<T>::nodo::nodo(const T& i, nodo* p,nodo* n) : info(i),prev(p),next(n) {}
-
-template  <class T>
-lista<T>::nodo::~nodo(){
-	delete next;
-}
 
 //LISTA
 template  <class T>

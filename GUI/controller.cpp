@@ -61,7 +61,7 @@ void Controller::caricaDati() {
         } else {
             lista<deepPtr<catalogo>>::iteratore inizioLista = modello->inizioIter();
             lista<deepPtr<catalogo>>::iteratore fineLista = modello->fineIter();
-            qDebug()<<QString::fromUtf8(inizioLista->get()->getNome().c_str());
+//            qDebug()<<QString::fromUtf8(inizioLista->get()->getNome().c_str());
             for(;inizioLista!=fineLista;++inizioLista) {
                 catCompleto->getLista()->aggiungiElemento(inizioLista->get());
             }
@@ -87,7 +87,7 @@ void Controller::caricaDatiXML() {
             lista<deepPtr<catalogo>>::iteratore inizioLista = modello->inizioIter();
             lista<deepPtr<catalogo>>::iteratore fineLista = modello->fineIter();
             for(;inizioLista!=fineLista;++inizioLista) {
-                catCompleto->getLista()->aggiungiElemento((inizioLista->get()));
+                catCompleto->getLista()->aggiungiElemento(inizioLista->get());
             }
             modello->setSalvaModifiche(true);
         }
@@ -509,6 +509,8 @@ void Controller::inserisciNuovoProdotto(){
         caricaDati();
         inserisci->hide();
         catCompleto->show();
+        popup* avvisoInserimento= new popup("Informazione","Inserimento avvenuto con successo");
+        avvisoInserimento->exec();
     }
 }
 void Controller::salvaModifiche(){

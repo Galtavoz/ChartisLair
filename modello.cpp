@@ -1,6 +1,6 @@
 #include "modello.h"
 
-Modello::Modello(std::string p): path(p), Catalogo(new lista<deepPtr<catalogo>>()), salvaModifiche(true) {}
+Modello::Modello(std::string p): path(p), Catalogo(new lista<deepPtr<catalogo>>), salvaModifiche(true) {}
 
 Modello::~Modello() {
     delete Catalogo;
@@ -304,7 +304,8 @@ std::string Modello::toString(char x) {
 }
 
 void Modello::inserisci(catalogo* p) {
-    Catalogo->aggiungiTesta(p);
+    deepPtr<catalogo>* elemento = new deepPtr<catalogo>(p);
+    Catalogo->aggiungiTesta(*elemento);
 }
 
 void Modello::rimuovi(catalogo* p) {
