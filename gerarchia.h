@@ -13,13 +13,13 @@ enum gocce      {latte=1,fondente=2,bianco=3,senza=4};
 enum altezze    {cm24=1,cm32=2,cm37=3,cm46=4,cm33=5,cm45=6};
 enum lvVelocitaEvaporazione {lv1=1,lv2=2,lv3=3};
 
-class catalogo{
+class prodotto{
 private:
     std::string nome;
     bool confezioneRegalo;
 public:
-    catalogo(std::string,bool);
-    virtual ~catalogo() = default;
+    prodotto(std::string,bool);
+    virtual ~prodotto() = default;
     //GET
     std::string getNome() const;
     bool getConfezioneRegalo() const;
@@ -32,10 +32,10 @@ public:
     virtual std::string  tipoElemento() const =0;
     virtual std::string visualizzaInfo() const;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const;
+    virtual bool operator==(const prodotto&) const;
 };
 
-class consumabile: public catalogo{
+class consumabile: public prodotto{
 private:
      std::vector<std::string> ingredienti;
      double peso;//prezzo al Kg
@@ -60,7 +60,7 @@ public:
      virtual std::string  tipoElemento() const =0;
      virtual std::string visualizzaInfo() const;
      //OPERATORI
-     virtual bool operator==(const catalogo&) const;
+     virtual bool operator==(const prodotto&) const;
 };
 
 class biscotti: public consumabile{
@@ -82,7 +82,7 @@ public:
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const override;
+    virtual bool operator==(const prodotto&) const override;
 };
 
 class cioccolata: public consumabile{
@@ -108,7 +108,7 @@ public:
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const override;
+    virtual bool operator==(const prodotto&) const override;
 
 };
 
@@ -132,14 +132,14 @@ public:
     virtual std::string visualizzaInfo() const override;
     void svuotaAromi();
     //OPERATORI
-    virtual bool operator==(const catalogo&) const override;
+    virtual bool operator==(const prodotto&) const override;
 };
 
 
 
 
 //NONCONSUMABILE
-class nonConsumabile: public catalogo{
+class nonConsumabile: public prodotto{
 private:
     std::string colori;
 public:
@@ -155,7 +155,7 @@ public:
     virtual std::string  tipoElemento() const =0;
     virtual std::string visualizzaInfo() const;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const;
+    virtual bool operator==(const prodotto&) const;
 };
 
 //BONG
@@ -181,7 +181,7 @@ public:
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const override;
+    virtual bool operator==(const prodotto&) const override;
 };
 
 //VAPORIZZATORE
@@ -207,7 +207,7 @@ public:
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const override;
+    virtual bool operator==(const prodotto&) const override;
 };
 
 //GRINDER
@@ -230,6 +230,6 @@ public:
     virtual std::string  tipoElemento() const override;
      virtual std::string visualizzaInfo() const override;
     //OPERATORI
-    virtual bool operator==(const catalogo&) const override;
+    virtual bool operator==(const prodotto&) const override;
 };
 #endif // GERARCHIA_H

@@ -1,9 +1,9 @@
 #include "modello.h"
 
-Modello::Modello(std::string p): path(p), Catalogo(new lista<deepPtr<catalogo>>), salvaModifiche(true) {}
+Modello::Modello(std::string p): path(p), Prodotto(new lista<deepPtr<prodotto>>), salvaModifiche(true) {}
 
 Modello::~Modello() {
-    delete Catalogo;
+    delete Prodotto;
 }
 
 std::string Modello::getPath() const {
@@ -12,37 +12,37 @@ std::string Modello::getPath() const {
 
 void Modello::setPath(std::string s) {
     path = s;
-    delete Catalogo;
+    delete Prodotto;
     salvaModifiche = false;
-    Catalogo = new lista<deepPtr<catalogo>>();
+    Prodotto = new lista<deepPtr<prodotto>>();
 }
 
 bool Modello::getSalvaModifiche() const {
     return salvaModifiche;
 }
 
-lista<deepPtr<catalogo>> Modello::getListaCatalogo() const {
-    return *Catalogo;
+lista<deepPtr<prodotto>> Modello::getListaCatalogo() const {
+    return *Prodotto;
 }
 
 void Modello::setSalvaModifiche(bool s) {
     salvaModifiche = s;
 }
 
- lista<deepPtr<catalogo>>::iteratore Modello::inizioIter() {
-    return Catalogo->inizio();
+ lista<deepPtr<prodotto>>::iteratore Modello::inizioIter() {
+    return Prodotto->inizio();
 }
 
- lista<deepPtr<catalogo>>::iteratore Modello::fineIter() {
-    return Catalogo->fine();
+ lista<deepPtr<prodotto>>::iteratore Modello::fineIter() {
+    return Prodotto->fine();
 }
 
- lista<deepPtr<catalogo>>::iteratoreConst Modello::inizioCIter() const {
-    return Catalogo->inizioC();
+ lista<deepPtr<prodotto>>::iteratoreConst Modello::inizioCIter() const {
+    return Prodotto->inizioC();
 }
 
- lista<deepPtr<catalogo>>::iteratoreConst Modello::fineCIter() const {
-    return Catalogo->fineC();
+ lista<deepPtr<prodotto>>::iteratoreConst Modello::fineCIter() const {
+    return Prodotto->fineC();
 }
 
 void Modello::Salva(){
@@ -56,7 +56,7 @@ void Modello::Salva(){
     scrivi.writeStartElement("root");
     auto cit = inizioIter();
     while(cit!=fineIter()) {
-        const catalogo* nuovoCatalogo = (*cit).get();
+        const prodotto* nuovoCatalogo = (*cit).get();
         const QString elementoCatalogo = QString::fromStdString(nuovoCatalogo->tipoElemento());
         scrivi.writeEmptyElement(elementoCatalogo);
         scrivi.writeAttribute("nome",QString::fromStdString(nuovoCatalogo->getNome()));
@@ -164,7 +164,7 @@ void Modello::Carica() {
                 std::string nome = field.value("nome").toString().toStdString();
                 bool confezioneRegalo = field.value("confezioneRegalo").toString()=="Si" ? true : false;
 
-                catalogo* elementoXml = nullptr;
+                prodotto* elementoXml = nullptr;
 
                 if(lettore.name()=="biscotti") {
                     std::string ingredienti = field.value("ingredienti").toString().toStdString();
@@ -282,10 +282,10 @@ void Modello::Carica() {
                     elementoXml = new grinder(nome,confezioneRegalo,colori,ndenti,raccoglipolline);
                 }
 
-                deepPtr<catalogo>* inserisci = new deepPtr<catalogo>(elementoXml);
+                deepPtr<prodotto>* inserisci = new deepPtr<prodotto>(elementoXml);
 
                 if(inserisci!=nullptr) {
-                    Catalogo->aggiungiCoda(*inserisci);
+                    Prodotto->aggiungiCoda(*inserisci);
                 }
 
 
@@ -303,24 +303,24 @@ std::string Modello::toString(char x) {
     return s;
 }
 
-void Modello::inserisci(catalogo* p) {
-    deepPtr<catalogo>* elemento = new deepPtr<catalogo>(p);
-    Catalogo->aggiungiTesta(*elemento);
+void Modello::inserisci(prodotto* p) {
+    deepPtr<prodotto>* elemento = new deepPtr<prodotto>(p);
+    Prodotto->aggiungiTesta(*elemento);
 }
 
-void Modello::rimuovi(catalogo* p) {
-    Catalogo->togliUno(p);
+void Modello::rimuovi(prodotto* p) {
+    Prodotto->togliUno(p);
 }
 
 int Modello::contaCatalogo() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) conta++;
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) conta++;
     return conta;
 }
 
 int Modello::contaBiscotti() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
         //const catalogo* prova = (*it).get();
         if(dynamic_cast<const biscotti*>((*it).get())) conta++;
     }
@@ -329,7 +329,7 @@ int Modello::contaBiscotti() {
 
 int Modello::contaCioccolata() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
         if(dynamic_cast<const cioccolata*>((*it).get())) conta++;
     }
     return conta;
@@ -337,7 +337,7 @@ int Modello::contaCioccolata() {
 
 int Modello::contaInfusi() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
         if(dynamic_cast<const infusi*>((*it).get())) conta++;
     }
     return conta;
@@ -345,7 +345,7 @@ int Modello::contaInfusi() {
 
 int Modello::contaBong() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
         if(dynamic_cast<const bong*>((*it).get())) conta++;
     }
     return conta;
@@ -353,7 +353,7 @@ int Modello::contaBong() {
 
 int Modello::contaVapo() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
         if(dynamic_cast<const vaporizzatore*>((*it).get())) conta++;
     }
     return conta;
@@ -361,7 +361,7 @@ int Modello::contaVapo() {
 
 int Modello::contaGrinder() {
     int conta=0;
-    for(lista<deepPtr<catalogo>>::iteratore it=Catalogo->inizio(); it!=Catalogo->fine();++it) {
+    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
         if(dynamic_cast<const grinder*>((*it).get())) conta++;
     }
     return conta;

@@ -9,11 +9,11 @@
 class catalogoLista: public QListWidgetItem {
 private:
     QWidget* parent;
-   catalogo* prodotti;
+   prodotto* prodotti;
 public:
-    catalogoLista(QWidget* = nullptr, catalogo* = nullptr);
+    catalogoLista(QWidget* = nullptr, prodotto* = nullptr);
     void aggiornaLista();
-    catalogo* getSelezionato() const;
+    prodotto* getSelezionato() const;
 };
 
 #endif // CATALOGOLISTA_H

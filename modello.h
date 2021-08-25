@@ -13,7 +13,7 @@
 class Modello{
 private:
         std::string path;
-        lista<deepPtr<catalogo>>* Catalogo;
+        lista<deepPtr<prodotto>>* Prodotto;
         bool salvaModifiche;
 public:
         Modello(std::string=":/SALVATAGGIO/listaCatalogo.xml");
@@ -21,22 +21,22 @@ public:
 
         std::string getPath() const;
         bool getSalvaModifiche() const;
-        lista<deepPtr<catalogo>> getListaCatalogo() const;
+        lista<deepPtr<prodotto>> getListaCatalogo() const;
         void setSalvaModifiche(bool);
         void setPath(std::string = "");
 
-        lista<deepPtr<catalogo>>::iteratore inizioIter();
-        lista<deepPtr<catalogo>>::iteratore fineIter();
-        lista<deepPtr<catalogo>>::iteratoreConst inizioCIter() const;
-        lista<deepPtr<catalogo>>::iteratoreConst fineCIter() const;
+        lista<deepPtr<prodotto>>::iteratore inizioIter();
+        lista<deepPtr<prodotto>>::iteratore fineIter();
+        lista<deepPtr<prodotto>>::iteratoreConst inizioCIter() const;
+        lista<deepPtr<prodotto>>::iteratoreConst fineCIter() const;
 
         void Salva();
         void Carica();
 
         std::string toString(char);
 
-        void inserisci(catalogo*);
-        void rimuovi(catalogo*);
+        void inserisci(prodotto*);
+        void rimuovi(prodotto*);
         int contaCatalogo();
         int contaBiscotti();
         int contaCioccolata();

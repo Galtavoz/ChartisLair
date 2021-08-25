@@ -62,7 +62,7 @@ Ricerca::Ricerca(QWidget* p):
     raccoglipoll(new QComboBox(this)),
 
     cerca(new QPushButton(this)),
-    catalogo(new elementoWidget(this)),
+    prodotto(new elementoWidget(this)),
     modifica(new QPushButton(this)),
     rimuovi(new QPushButton(this)){
 
@@ -85,8 +85,8 @@ Ricerca::Ricerca(QWidget* p):
      QHBoxLayout* layoutRaccpolline = new QHBoxLayout();
      QHBoxLayout* layoutBottoni     = new QHBoxLayout();
 
-     catalogo->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-     catalogo->QAbstractScrollArea::setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+     prodotto->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+     prodotto->QAbstractScrollArea::setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
 
      layoutRic->addWidget(lableTipoProdotto);
      layoutRic->addWidget(tipoProdotto);
@@ -106,7 +106,7 @@ Ricerca::Ricerca(QWidget* p):
      layoutRic->addLayout(layoutNDenti);
      layoutRic->addLayout(layoutRaccpolline);
      layoutRic->addWidget(cerca);
-     layoutRic->addWidget(catalogo);
+     layoutRic->addWidget(prodotto);
      layoutRic->addLayout(layoutBottoni);
 
      layoutFarine->addWidget(lableTipoFarine);
@@ -168,7 +168,7 @@ Ricerca::Ricerca(QWidget* p):
      layoutBottoni->addWidget(modifica);
      layoutBottoni->addWidget(rimuovi);
 
-     catalogo->show();
+     prodotto->show();
      modifica->show();
      rimuovi->show();
      lableTipoProdotto->show();
@@ -1096,7 +1096,7 @@ int Ricerca::getRaccogliP() const{
     else return 0;
 }
 elementoWidget* Ricerca::getListaRicerca() const{
-    return catalogo;
+    return prodotto;
 }
 QPushButton* Ricerca::getRimuoviRicerca() const {
     return rimuovi;

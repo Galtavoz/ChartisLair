@@ -1,36 +1,36 @@
 #include "gerarchia.h"
 
 //CATALOGO
-catalogo::catalogo(std::string n,bool cr):
+prodotto::prodotto(std::string n,bool cr):
     nome(n), confezioneRegalo(cr){}
 //GET
-std::string catalogo::getNome() const{
+std::string prodotto::getNome() const{
     return nome;
 }
-bool catalogo::getConfezioneRegalo() const{
+bool prodotto::getConfezioneRegalo() const{
     return confezioneRegalo;
 }
 //SET
-std::string catalogo::setNome(std::string n){
+std::string prodotto::setNome(std::string n){
     return nome=n;
 }
-bool catalogo::setConfezioneRegalo(bool flag){
+bool prodotto::setConfezioneRegalo(bool flag){
     return confezioneRegalo=flag;
 }
 //METODI
-std::string catalogo::visualizzaInfo() const {
+std::string prodotto::visualizzaInfo() const {
     std::string frase;
     return frase.append("\n Nome: "+getNome())
            .append("\n Confezione regalo: ").append((getConfezioneRegalo() ? "Si" : "No"));
 }
 //OPERATORI
-bool catalogo::operator==(const catalogo& p) const {
+bool prodotto::operator==(const prodotto& p) const {
     return nome==p.nome && confezioneRegalo==p.confezioneRegalo;
 }
 
 //CONSUMABILI
 consumabile::consumabile(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod):
-    catalogo(n,cr),ingredienti(ingr), peso(p),erba(erb),produzione(prod){}
+    prodotto(n,cr),ingredienti(ingr), peso(p),erba(erb),produzione(prod){}
 //GET
 std::vector<std::string> consumabile::getIngredienti() const{
     return ingredienti;
@@ -63,7 +63,7 @@ bool consumabile::setProduzione(bool flag){
 }
 //METODI
 std::string consumabile::visualizzaInfo() const {
-    std::string frase = catalogo::visualizzaInfo();
+    std::string frase = prodotto::visualizzaInfo();
     std::string ingredienti="";
     std::vector<std::string> vettore=getIngredienti();
     std::stringstream Peso;
@@ -78,9 +78,9 @@ std::string consumabile::visualizzaInfo() const {
            .append("\n Produzione :").append(getProduzione() ? "Indoor" : "Outdoor");
 }
 //OPERATORI
-bool consumabile::operator==(const catalogo &p) const {
+bool consumabile::operator==(const prodotto &p) const {
     const consumabile* con = dynamic_cast<const consumabile*>(&p);
-    return catalogo::operator==(p) && peso==con->peso && erba==con->erba && produzione==con->produzione;
+    return prodotto::operator==(p) && peso==con->peso && erba==con->erba && produzione==con->produzione;
 }
 
 
@@ -153,7 +153,7 @@ std::string  biscotti::tipoElemento() const{
 }
 
 //OPERATORI
-bool biscotti::operator==(const catalogo &p) const {
+bool biscotti::operator==(const prodotto &p) const {
     const biscotti* bis = dynamic_cast<const biscotti*>(&p);
     return consumabile::operator==(p) && tipoFarina==bis->tipoFarina && gocceCioccolata==bis->gocceCioccolata;
 }
@@ -234,7 +234,7 @@ std::string  cioccolata::tipoElemento() const{
     return "cioccolata";
 }
 //OPERATORI
-bool cioccolata::operator==(const catalogo &p) const {
+bool cioccolata::operator==(const prodotto &p) const {
     const cioccolata* ciocc = dynamic_cast<const cioccolata*>(&p);
     return consumabile::operator==(p) && tipoGranella==ciocc->tipoGranella && livelloFondenza==ciocc->livelloFondenza && forma==ciocc->forma;
 }
@@ -301,7 +301,7 @@ std::string  infusi::tipoElemento() const{
     return "infusi";
 }
 //OPERATORI
-bool infusi::operator==(const catalogo &p) const {
+bool infusi::operator==(const prodotto &p) const {
     bool flag=false;
     std::vector<std::string> stringAroma;
     const infusi* inf = dynamic_cast<const infusi*>(&p);
@@ -325,7 +325,7 @@ bool infusi::operator==(const catalogo &p) const {
 
 //NONCONSUMABILE
 nonConsumabile::nonConsumabile(std::string n,bool cr,std::string c):
-    catalogo(n,cr),colori(c){}
+    prodotto(n,cr),colori(c){}
 //GET
 std::string nonConsumabile::getColori() const{
     return colori;
@@ -337,14 +337,14 @@ void nonConsumabile::setColori(std::string c){
 }
 //METODI
 std::string nonConsumabile::visualizzaInfo() const {
-    std::string frase = catalogo::visualizzaInfo();
+    std::string frase = prodotto::visualizzaInfo();
     std::string colori=getColori();
     return frase.append("\n Colori: "+colori);
 }
 //OPERATORI
-bool nonConsumabile::operator==(const catalogo &p) const {
+bool nonConsumabile::operator==(const prodotto &p) const {
     const nonConsumabile* nc = dynamic_cast<const nonConsumabile*>(&p);
-    return catalogo::operator==(p) && colori==nc->colori;
+    return prodotto::operator==(p) && colori==nc->colori;
 }
 
 
@@ -423,7 +423,7 @@ std::string  bong::tipoElemento() const{
     return "bong";
 }
 //OPERATORI
-bool bong::operator==(const catalogo &p) const {
+bool bong::operator==(const prodotto &p) const {
     const bong* bon = dynamic_cast<const bong*>(&p);
     return nonConsumabile::operator==(p) && forma==bon->forma && altezza==bon->altezza && larghezza==bon->larghezza;
 }
@@ -488,7 +488,7 @@ std::string  vaporizzatore::tipoElemento() const{
     return "vaporizzatore";
 }
 //OPERATORI
-bool vaporizzatore::operator==(const catalogo &p) const {
+bool vaporizzatore::operator==(const prodotto &p) const {
     const vaporizzatore* vap = dynamic_cast<const vaporizzatore*>(&p);
     return nonConsumabile::operator==(p) && velocitaEvaporazione==vap->velocitaEvaporazione && capienza==vap->capienza && schermo==vap->schermo;
 }
@@ -537,7 +537,7 @@ std::string  grinder::tipoElemento() const{
     return "grinder";
 }
 //OPERATORI
-bool grinder::operator==(const catalogo &p) const {
+bool grinder::operator==(const prodotto &p) const {
     const grinder* grd = dynamic_cast<const grinder*>(&p);
     return nonConsumabile::operator==(p) && ndenti==grd->ndenti && raccoglipolline==grd->raccoglipolline;
 }

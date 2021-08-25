@@ -1,6 +1,6 @@
 #include"GUI/catalogoLista.h"
 
-catalogoLista::catalogoLista(QWidget* p, catalogo* c): parent(p), prodotti(c) {
+catalogoLista::catalogoLista(QWidget* p, prodotto* c): parent(p), prodotti(c) {
     aggiornaLista();
 }
 
@@ -26,6 +26,6 @@ void catalogoLista::aggiornaLista() {
     setText(QString::fromStdString((prodotti)->visualizzaInfo()));
 }
 
-catalogo* catalogoLista::getSelezionato() const {
+prodotto* catalogoLista::getSelezionato() const {
     return prodotti;
 }

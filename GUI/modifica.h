@@ -21,7 +21,7 @@
 class Modifica: public QDialog {
     Q_OBJECT
 private:
-    catalogo*       prodottoDaModificare;
+    prodotto*       prodottoDaModificare;
     QWidget*        parent;
     QLabel*         labelNomeRegalo;
     QLineEdit*      nome;
@@ -98,7 +98,7 @@ private:
     QPushButton*    salva;
 public:
    Modifica(QWidget* = nullptr);
-   void setProdotto(catalogo*);
+   void setProdotto(prodotto*);
    void compilaModifica();
    void setNuoviCampi();
    QPushButton* getSalvaMod() const;

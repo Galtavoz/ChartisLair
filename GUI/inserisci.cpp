@@ -1203,8 +1203,8 @@ void Inserisci::checkOutdoor(bool f){
 QPushButton* Inserisci::getInserisciBut() const {
     return  inserisci;
 }
-catalogo* Inserisci::nuovoProdotto(){
-    catalogo* ritorno = nullptr;
+prodotto* Inserisci::nuovoProdotto(){
+    prodotto* ritorno = nullptr;
     //NOME
     std::string nomeNuovo=nome->text().toStdString();
     //CONFEZIONE REGALO

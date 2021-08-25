@@ -83,7 +83,7 @@ private:
 
 
     QPushButton*    cerca;
-    elementoWidget* catalogo;
+    elementoWidget* prodotto;
     QPushButton*    modifica;
     QPushButton*    rimuovi;
 public:

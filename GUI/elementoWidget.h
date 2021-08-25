@@ -13,7 +13,7 @@ private:
     QWidget* parent;
 public:
     elementoWidget(QWidget* = nullptr);
-    void aggiungiElemento(catalogo*);
+    void aggiungiElemento(prodotto*);
     catalogoLista* currentItem() const;
 };
 

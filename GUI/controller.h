@@ -43,7 +43,7 @@ public:
     void abilita();
 
 
-    bool controlloDoppione(catalogo*) const;
+    bool controlloDoppione(prodotto*) const;
 
 public slots:
         void esci();

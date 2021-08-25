@@ -59,8 +59,8 @@ void Controller::caricaDati() {
             popup* avvisoCarica = new popup("Warning","Attenzione,non sono presenti prodotti.");
             avvisoCarica->exec();
         } else {
-            lista<deepPtr<catalogo>>::iteratore inizioLista = modello->inizioIter();
-            lista<deepPtr<catalogo>>::iteratore fineLista = modello->fineIter();
+            lista<deepPtr<prodotto>>::iteratore inizioLista = modello->inizioIter();
+            lista<deepPtr<prodotto>>::iteratore fineLista = modello->fineIter();
 //            qDebug()<<QString::fromUtf8(inizioLista->get()->getNome().c_str());
             for(;inizioLista!=fineLista;++inizioLista) {
                 catCompleto->getLista()->aggiungiElemento(inizioLista->get());
@@ -84,8 +84,8 @@ void Controller::caricaDatiXML() {
             popup* avvisoCarica = new popup("Warning","Attenzione,non sono presenti prodotti. Prova a caricare un altro file!");
             avvisoCarica->exec();
         } else {
-            lista<deepPtr<catalogo>>::iteratore inizioLista = modello->inizioIter();
-            lista<deepPtr<catalogo>>::iteratore fineLista = modello->fineIter();
+            lista<deepPtr<prodotto>>::iteratore inizioLista = modello->inizioIter();
+            lista<deepPtr<prodotto>>::iteratore fineLista = modello->fineIter();
             for(;inizioLista!=fineLista;++inizioLista) {
                 catCompleto->getLista()->aggiungiElemento(inizioLista->get());
             }
@@ -124,10 +124,10 @@ void Controller::abilita() {
 
 
 }
-bool Controller::controlloDoppione(catalogo* p) const {
+bool Controller::controlloDoppione(prodotto* p) const {
     bool controlloDoppio=false;
-    lista<deepPtr<catalogo>> listaCatalogo = modello->getListaCatalogo();
-    for(lista<deepPtr<catalogo>>::iteratore cit=listaCatalogo.inizio();cit!=listaCatalogo.fine();++cit) {
+    lista<deepPtr<prodotto>> listaCatalogo = modello->getListaCatalogo();
+    for(lista<deepPtr<prodotto>>::iteratore cit=listaCatalogo.inizio();cit!=listaCatalogo.fine();++cit) {
         if(*p==(**cit)) {
             controlloDoppio=true;
             return controlloDoppio;
@@ -146,8 +146,8 @@ void Controller::ricercaProdotti(){
         ricerca->getListaRicerca()->clear();
         return;
     }
-    lista<deepPtr<catalogo>>::iteratore inizio = modello->inizioIter();
-    lista<deepPtr<catalogo>>::iteratore fine = modello->fineIter();
+    lista<deepPtr<prodotto>>::iteratore inizio = modello->inizioIter();
+    lista<deepPtr<prodotto>>::iteratore fine = modello->fineIter();
 
 
     if(ricerca->getTipoProdotto()=="Biscotti"){
@@ -493,7 +493,7 @@ void Controller::vediInfoCatalogo() {
     informazioni->exec();
 }
 void Controller::inserisciNuovoProdotto(){
-    catalogo* daInserire = inserisci->nuovoProdotto();
+    prodotto* daInserire = inserisci->nuovoProdotto();
     if(daInserire==nullptr){
         popup* prodottoNull = new popup("Warning","Prodotto nullo,non puo creare un prodotto nullo!");
         prodottoNull->exec();

@@ -100,7 +100,7 @@ private:
 public:
     Inserisci(QWidget* = nullptr);
     QPushButton* getInserisciBut() const;
-    catalogo* nuovoProdotto();
+    prodotto* nuovoProdotto();
 
     void resetInserisci();
     void resetCambioProdotto();

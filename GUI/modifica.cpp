@@ -487,7 +487,7 @@ Modifica::Modifica(QWidget* p):
       connect(backer,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
       connect(dritto,SIGNAL(stateChanged(int)),this,SLOT(resetDim()));
 }
-void Modifica::setProdotto(catalogo *p){
+void Modifica::setProdotto(prodotto *p){
     prodottoDaModificare=p;
 }
 void Modifica::compilaModifica() {
