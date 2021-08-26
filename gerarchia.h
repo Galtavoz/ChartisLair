@@ -89,7 +89,7 @@ class cioccolata: public consumabile{
 private:
     int  tipoGranella = granella{}; //{fondenza riga 8};
     int  livelloFondenza = fondenza{}; //{fondenza riga 7};
-    bool forma;//True Stecca ; False Pallina
+    bool stecca;//True Stecca ; False Pallina
 public:
     cioccolata(std::string,bool,std::vector<std::string>,double,bool,bool,int,int,bool);
     virtual ~cioccolata() = default;
@@ -161,7 +161,7 @@ public:
 //BONG
 class bong: public nonConsumabile{
 private:
-    bool forma;//True backer, False dritto
+    bool backer;//True backer, False dritto
     int altezza = altezze{};
     double larghezza;
 public:

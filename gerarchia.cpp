@@ -165,7 +165,7 @@ bool biscotti::operator==(const prodotto &p) const {
 
 //CIOCCOLATA
 cioccolata::cioccolata(std::string n,bool cr,std::vector<std::string> ingr,double p,bool erb,bool prod,int tg,int lvf,bool forma):
-    consumabile(n,cr,ingr,p,erb,prod),tipoGranella(tg),livelloFondenza(lvf),forma(forma){}
+    consumabile(n,cr,ingr,p,erb,prod),tipoGranella(tg),livelloFondenza(lvf),stecca(forma){}
 //GET
 int cioccolata::getTipoGranella() const{
     return tipoGranella;
@@ -174,7 +174,7 @@ int cioccolata::getLivelloFondenza() const{
     return livelloFondenza;
 }
 bool cioccolata::getForma() const{
-    return forma;
+    return stecca;
 }
 //SET
 int cioccolata::setTipoGranella(int tg){
@@ -184,7 +184,7 @@ int cioccolata::setLivelloFondenza(int lvf){
     return livelloFondenza=lvf;
 }
 bool cioccolata::setForma(bool frm){
-    return forma=frm;
+    return stecca=frm;
 }
 //METODI
 double cioccolata::prezzo() const{
@@ -236,7 +236,7 @@ std::string  cioccolata::tipoElemento() const{
 //OPERATORI
 bool cioccolata::operator==(const prodotto &p) const {
     const cioccolata* ciocc = dynamic_cast<const cioccolata*>(&p);
-    return consumabile::operator==(p) && tipoGranella==ciocc->tipoGranella && livelloFondenza==ciocc->livelloFondenza && forma==ciocc->forma;
+    return consumabile::operator==(p) && tipoGranella==ciocc->tipoGranella && livelloFondenza==ciocc->livelloFondenza && stecca==ciocc->stecca;
 }
 
 
@@ -351,10 +351,10 @@ bool nonConsumabile::operator==(const prodotto &p) const {
 
 //BONG
 bong::bong(std::string n,bool cr,std::string c,bool frm,int alt,double largh):
-    nonConsumabile(n,cr,c),forma(frm),altezza(alt),larghezza(largh){}
+    nonConsumabile(n,cr,c),backer(frm),altezza(alt),larghezza(largh){}
 //GET
 bool bong::getForma() const{
-    return forma;
+    return backer;
 }
 
 int bong::getAltezza() const{
@@ -367,7 +367,7 @@ double bong::getLarghezza() const{
 
 //SET
 bool bong::setForma(bool frm){
-    return forma=frm;
+    return backer=frm;
 }
 
 int bong::setAltezza(int alt){
@@ -380,7 +380,7 @@ double bong::setLarghezza(double largh){
 //METODI
 double  bong::prezzo() const{
     double prezzo=0;
-    if(forma){
+    if(backer){
        if(altezza == 5) prezzo+=119;
        else if(altezza == 6) prezzo+=139;
     }
@@ -425,7 +425,7 @@ std::string  bong::tipoElemento() const{
 //OPERATORI
 bool bong::operator==(const prodotto &p) const {
     const bong* bon = dynamic_cast<const bong*>(&p);
-    return nonConsumabile::operator==(p) && forma==bon->forma && altezza==bon->altezza && larghezza==bon->larghezza;
+    return nonConsumabile::operator==(p) && backer==bon->backer && altezza==bon->altezza && larghezza==bon->larghezza;
 }
 
 
