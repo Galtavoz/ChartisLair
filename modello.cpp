@@ -12,7 +12,7 @@ std::string Modello::getPath() const {
 
 void Modello::setPath(std::string s) {
     path = s;
-    delete Prodotto;
+//    delete Prodotto;
     salvaModifiche = false;
     Prodotto = new lista<deepPtr<prodotto>>();
 }
@@ -285,7 +285,7 @@ void Modello::Carica() {
                 deepPtr<prodotto>* inserisci = new deepPtr<prodotto>(elementoXml);
 
                 if(inserisci!=nullptr) {
-                    Prodotto->aggiungiCoda(elementoXml);
+                    Prodotto->aggiungiCoda(*inserisci);
                 }
 
 

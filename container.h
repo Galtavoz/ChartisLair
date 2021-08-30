@@ -15,6 +15,7 @@ private:
         nodo *prev,*next;
         nodo();
         nodo(const T& t, nodo* p = nullptr, nodo* n=nullptr);
+        void distruggi();
     };
     nodo *primo, *ultimo;
     static nodo* copiaProfondaRic(nodo* from, nodo* prev, nodo*& last);
@@ -75,6 +76,12 @@ public:
 template  <class T>
 lista<T>::nodo::nodo(const T& i, nodo* p,nodo* n) : info(i),prev(p),next(n) {}
 
+template<class T>
+void lista<T>::nodo::distruggi(){
+    if (next) next->distruggi();
+    delete this;
+}
+
 //LISTA
 template  <class T>
 lista<T>::lista() : primo(nullptr),ultimo(nullptr),size(0){}
@@ -109,7 +116,7 @@ lista<T>& lista<T>::operator=(const lista<T>& list) {
 }
 
 template  <class T>
-lista<T>::~lista(){ eliminaListaRic(primo); }
+lista<T>::~lista(){ if(primo) primo->distruggi();/*eliminaListaRic(primo);*/ }
 
 template<class T>
 void lista<T>::eliminaListaRic(nodo* n){
