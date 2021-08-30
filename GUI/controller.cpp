@@ -63,7 +63,7 @@ void Controller::caricaDati() {
             lista<deepPtr<prodotto>>::iteratore fineLista = modello->fineIter();
 //            qDebug()<<QString::fromUtf8(inizioLista->get()->getNome().c_str());
             for(;inizioLista!=fineLista;++inizioLista) {
-                catCompleto->getLista()->aggiungiElemento(inizioLista->get());
+                catCompleto->getLista()->aggiungiElemento(*inizioLista);
             }
             modello->setSalvaModifiche(true);
         }
@@ -87,7 +87,7 @@ void Controller::caricaDatiXML() {
             lista<deepPtr<prodotto>>::iteratore inizioLista = modello->inizioIter();
             lista<deepPtr<prodotto>>::iteratore fineLista = modello->fineIter();
             for(;inizioLista!=fineLista;++inizioLista) {
-                catCompleto->getLista()->aggiungiElemento(inizioLista->get());
+                catCompleto->getLista()->aggiungiElemento(*inizioLista);
             }
             modello->setSalvaModifiche(true);
         }
@@ -152,98 +152,101 @@ void Controller::ricercaProdotti(){
 
     if(ricerca->getTipoProdotto()=="Biscotti"){
         for(;inizio!=fine;++inizio) {
-           if(dynamic_cast<biscotti*>((*inizio).get()) && (dynamic_cast<biscotti*>((*inizio).get()))->getTipoFarina()==ricerca->getTipoFarina() && (dynamic_cast<biscotti*>((*inizio).get()))->getGocceCioccolata()==ricerca->getTipoGocce()){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           prodotto* bs= *inizio;
+           if(dynamic_cast<biscotti*>(bs) && (dynamic_cast<biscotti*>(bs))->getTipoFarina()==ricerca->getTipoFarina() && (dynamic_cast<biscotti*>(bs))->getGocceCioccolata()==ricerca->getTipoGocce()){
+                (ricerca->getListaRicerca())->aggiungiElemento(bs);
            }
-           else if(dynamic_cast<biscotti*>((*inizio).get()) && ricerca->getTipoFarina()==0 && (dynamic_cast<biscotti*>((*inizio).get()))->getGocceCioccolata()==ricerca->getTipoGocce()){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<biscotti*>(bs) && ricerca->getTipoFarina()==0 && (dynamic_cast<biscotti*>(bs))->getGocceCioccolata()==ricerca->getTipoGocce()){
+                (ricerca->getListaRicerca())->aggiungiElemento(bs);
            }
-           else if(dynamic_cast<biscotti*>((*inizio).get()) && ricerca->getTipoGocce()==0 && (dynamic_cast<biscotti*>((*inizio).get()))->getTipoFarina()==ricerca->getTipoFarina()){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<biscotti*>(bs) && ricerca->getTipoGocce()==0 && (dynamic_cast<biscotti*>(bs))->getTipoFarina()==ricerca->getTipoFarina()){
+                (ricerca->getListaRicerca())->aggiungiElemento(bs);
            }
-           else if(dynamic_cast<biscotti*>((*inizio).get()) && ricerca->getTipoFarina()==0 && ricerca->getTipoGocce()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<biscotti*>(bs) && ricerca->getTipoFarina()==0 && ricerca->getTipoGocce()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(bs);
            }
         }
     }
     if(ricerca->getTipoProdotto()=="Cioccolata"){
         for(;inizio!=fine;++inizio) {
+           prodotto* ciocc= *inizio;
            //TUTTI SELEZIONATI
-           if(dynamic_cast<cioccolata*>((*inizio).get()) && (dynamic_cast<cioccolata*>((*inizio).get()))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==true && ricerca->getFormaC()==1)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && (dynamic_cast<cioccolata*>((*inizio).get()))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==false && ricerca->getFormaC()==2)){
-               (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==false && ricerca->getFormaC()==2)){
+               (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
            //SELEZIONATO GRANELLA, SELEZIONATO FONDENZA
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && (dynamic_cast<cioccolata*>((*inizio).get()))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getFormaC()==0){
-               (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getFormaC()==0){
+               (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && (dynamic_cast<cioccolata*>((*inizio).get()))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getFormaC()==0){
-               (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getFormaC()==0){
+               (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
            //SELEZIONATO GRANELLA, SELEZIONATO FORMA
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getLvFondenza()==0 && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==true && ricerca->getFormaC()==1)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getLvFondenza()==0 && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getLvFondenza()==0 && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==false && ricerca->getFormaC()==2)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getLvFondenza()==0 && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==false && ricerca->getFormaC()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
 
            //SELEZIONATO FONDENZA, SELEZIONATO FORMA
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getTipoGranella()==0 && dynamic_cast<cioccolata*>((*inizio).get())->getLivelloFondenza()==ricerca->getLvFondenza() && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==true && ricerca->getFormaC()==1)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getTipoGranella()==0 && dynamic_cast<cioccolata*>(ciocc)->getLivelloFondenza()==ricerca->getLvFondenza() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getTipoGranella()==0 && dynamic_cast<cioccolata*>((*inizio).get())->getLivelloFondenza()==ricerca->getLvFondenza() && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==false && ricerca->getFormaC()==2)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getTipoGranella()==0 && dynamic_cast<cioccolata*>(ciocc)->getLivelloFondenza()==ricerca->getLvFondenza() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==false && ricerca->getFormaC()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
            //SELEZIONATO SOLO GRANELLA
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && (dynamic_cast<cioccolata*>((*inizio).get()))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getLvFondenza()==0 && ricerca->getFormaC()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ricerca->getLvFondenza()==0 && ricerca->getFormaC()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
            //SELEZIONATO SOLO FONDENZA
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && (dynamic_cast<cioccolata*>((*inizio).get()))->getLivelloFondenza()==ricerca->getLvFondenza() && ricerca->getTipoGranella()==0 && ricerca->getFormaC()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getLivelloFondenza()==ricerca->getLvFondenza() && ricerca->getTipoGranella()==0 && ricerca->getFormaC()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
            //SELEZIONATO SOLO FORMA
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getLvFondenza()==0 && ricerca->getTipoGranella()==0 && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==true && ricerca->getFormaC()==1)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getLvFondenza()==0 && ricerca->getTipoGranella()==0 && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==true && ricerca->getFormaC()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getLvFondenza()==0 && ricerca->getTipoGranella()==0 && ((dynamic_cast<cioccolata*>((*inizio).get()))->getForma()==false && ricerca->getFormaC()==2)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getLvFondenza()==0 && ricerca->getTipoGranella()==0 && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==false && ricerca->getFormaC()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
            //NESSUN SELEZIONATO
-           else if(dynamic_cast<cioccolata*>((*inizio).get()) && ricerca->getTipoGranella()==0 && ricerca->getLvFondenza()==0 && ricerca->getFormaC()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<cioccolata*>(ciocc) && ricerca->getTipoGranella()==0 && ricerca->getLvFondenza()==0 && ricerca->getFormaC()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
            }
         }
     }
 
     if(ricerca->getTipoProdotto()=="Infusi"){
         for(;inizio!=fine;++inizio) {
+            prodotto* infu= *inizio;
             //SELEZIONATO SOLO SFUSO
-            if(dynamic_cast<infusi*>((*inizio).get()) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>((*inizio).get()))->getSfuso()==true && ricerca->getSfuso()==1)){
-                 (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            if(dynamic_cast<infusi*>(infu) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(infu))->getSfuso()==true && ricerca->getSfuso()==1)){
+                 (ricerca->getListaRicerca())->aggiungiElemento(infu);
             }
-            else if(dynamic_cast<infusi*>((*inizio).get()) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>((*inizio).get()))->getSfuso()==false && ricerca->getSfuso()==2)){
-                 (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<infusi*>(infu) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(infu))->getSfuso()==false && ricerca->getSfuso()==2)){
+                 (ricerca->getListaRicerca())->aggiungiElemento(infu);
             }
 
 
            //NESSUN SELEZIONATO
-           else if(dynamic_cast<infusi*>((*inizio).get()) && ricerca->getAroma()[0]=="0" && ricerca->getSfuso()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<infusi*>(infu) && ricerca->getAroma()[0]=="0" && ricerca->getSfuso()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(infu);
            }
             //TUTTI SELEZIONATI
-            else  if(dynamic_cast<infusi*>((*inizio).get()) && ((dynamic_cast<infusi*>((*inizio).get()))->getSfuso()==true && ricerca->getSfuso()==1)){
-                std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>((*inizio).get()))->getAroma());
+            else  if(dynamic_cast<infusi*>(infu) && ((dynamic_cast<infusi*>(infu))->getSfuso()==true && ricerca->getSfuso()==1)){
+                std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(infu))->getAroma());
                 std::vector<std::string> stringRicerca= ricerca->getAroma();
                 if(stringAroma.size()==stringRicerca.size()) {
                     for (unsigned int i=0;i<stringAroma.size();++i) {
                         if(stringRicerca.size()<=1){
                              for (unsigned int j=i;j<stringRicerca.size();++j) {
                                  if(stringAroma[i]==stringRicerca[j]){
-                                     (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+                                     (ricerca->getListaRicerca())->aggiungiElemento(infu);
                                  }
                              }
                          }
@@ -251,21 +254,21 @@ void Controller::ricercaProdotti(){
                             if(stringAroma.size()==stringRicerca.size()){
                                 for (unsigned int j=i;j<stringRicerca.size()-1;++j)
                                      if(stringAroma[i]==stringRicerca[j])
-                                         (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+                                         (ricerca->getListaRicerca())->aggiungiElemento(infu);
                             }
                         }
                     }
                 }
             }
-            else if(dynamic_cast<infusi*>((*inizio).get()) && ((dynamic_cast<infusi*>((*inizio).get()))->getSfuso()==false && ricerca->getSfuso()==2)){
-                std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>((*inizio).get()))->getAroma());
+            else if(dynamic_cast<infusi*>(infu) && ((dynamic_cast<infusi*>(infu))->getSfuso()==false && ricerca->getSfuso()==2)){
+                std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(infu))->getAroma());
                 std::vector<std::string> stringRicerca= ricerca->getAroma();
                 if(stringAroma.size()==stringRicerca.size()) {
                     for (unsigned int i=0;i<stringAroma.size();++i) {
                         if(stringRicerca.size()<=1){
                             for (unsigned int j=i;j<stringRicerca.size();++j) {
                                  if(stringAroma[i]==stringRicerca[j]){
-                                     (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+                                     (ricerca->getListaRicerca())->aggiungiElemento(infu);
                                  }
                              }
                         }
@@ -273,7 +276,7 @@ void Controller::ricercaProdotti(){
                             if(stringAroma.size()==stringRicerca.size()){
                                 for (unsigned int j=i;j<stringRicerca.size()-1;++j)
                                      if(stringAroma[i]==stringRicerca[j])
-                                         (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+                                         (ricerca->getListaRicerca())->aggiungiElemento(infu);
                             }
                         }
                     }
@@ -281,22 +284,22 @@ void Controller::ricercaProdotti(){
 
             }
            //SELEZIONATO PRIMO AROMA, SELEZIONATO SECONDO AROMA
-           else if(dynamic_cast<infusi*>((*inizio).get()) && ricerca->getSfuso()==0){
-               std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>((*inizio).get()))->getAroma());
+           else if(dynamic_cast<infusi*>(infu) && ricerca->getSfuso()==0){
+               std::vector<std::string> stringAroma= ((dynamic_cast<infusi*>(infu))->getAroma());
                std::vector<std::string> stringRicerca= ricerca->getAroma();
                    for (unsigned int i=0;i<stringAroma.size();++i) {
                        if(stringRicerca.size()<=1){
                            if(stringAroma.size()==stringRicerca.size()){
                                for (unsigned int j=i;j<stringRicerca.size();++j)
                                     if(stringAroma[i]==stringRicerca[j])
-                                        (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+                                        (ricerca->getListaRicerca())->aggiungiElemento(infu);
                            }
                        }
                        else{
                            if(stringAroma.size()==stringRicerca.size()){
                                for (unsigned int j=i;j<stringRicerca.size()-1;++j)
                                     if(stringAroma[i]==stringRicerca[j])
-                                        (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+                                        (ricerca->getListaRicerca())->aggiungiElemento(infu);
                            }
                        }
                    }
@@ -306,96 +309,99 @@ void Controller::ricercaProdotti(){
     }
     if(ricerca->getTipoProdotto()=="Bong"){
         for(;inizio!=fine;++inizio) {
+            prodotto* bng= *inizio;
             //SELEZIONATO QUALSIASI
-            if(dynamic_cast<bong*>((*inizio).get()) && ricerca->getFormaB()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            if(dynamic_cast<bong*>(bng) && ricerca->getFormaB()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(bng);
             }
             //SELEZIONATO BACKER E QUALSIASI DIMENSIONE
-            else if(dynamic_cast<bong*>((*inizio).get()) && ((dynamic_cast<bong*>((*inizio).get()))->getForma()==true && ricerca->getFormaB()==1) && ricerca->getAltezza()==0 && ricerca->getLarghezza()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<bong*>(bng) && ((dynamic_cast<bong*>(bng))->getForma()==true && ricerca->getFormaB()==1) && ricerca->getAltezza()==0 && ricerca->getLarghezza()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(bng);
             }
             //SELEZIONATO DRITTO E QUALSIASI DIMENSIONE
-            else if(dynamic_cast<bong*>((*inizio).get()) && ((dynamic_cast<bong*>((*inizio).get()))->getForma()==false && ricerca->getFormaB()==2) && ricerca->getAltezza()==0 && ricerca->getLarghezza()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<bong*>(bng) && ((dynamic_cast<bong*>(bng))->getForma()==false && ricerca->getFormaB()==2) && ricerca->getAltezza()==0 && ricerca->getLarghezza()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(bng);
             }
             //SELEZIONATO BACKER E DIMENSIONE
-            else if(dynamic_cast<bong*>((*inizio).get()) && ((dynamic_cast<bong*>((*inizio).get()))->getForma()==true && ricerca->getFormaB()==1) && (dynamic_cast<bong*>((*inizio).get()))->getAltezza()==ricerca->getAltezza() && ricerca->getAltezza()!=0 && ricerca->getLarghezza()!=0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<bong*>(bng) && ((dynamic_cast<bong*>(bng))->getForma()==true && ricerca->getFormaB()==1) && (dynamic_cast<bong*>(bng))->getAltezza()==ricerca->getAltezza() && ricerca->getAltezza()!=0 && ricerca->getLarghezza()!=0){
+                (ricerca->getListaRicerca())->aggiungiElemento(bng);
             }
 
             //SELEZIONATO DRITTO E DIMENSIONE
-            else if(dynamic_cast<bong*>((*inizio).get()) && ((dynamic_cast<bong*>((*inizio).get()))->getForma()==false && ricerca->getFormaB()==2) && (dynamic_cast<bong*>((*inizio).get()))->getAltezza()==ricerca->getAltezza() && ricerca->getAltezza()!=0 && ricerca->getLarghezza()!=0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<bong*>(bng) && ((dynamic_cast<bong*>(bng))->getForma()==false && ricerca->getFormaB()==2) && (dynamic_cast<bong*>(bng))->getAltezza()==ricerca->getAltezza() && ricerca->getAltezza()!=0 && ricerca->getLarghezza()!=0){
+                (ricerca->getListaRicerca())->aggiungiElemento(bng);
             }
         }
     }
     if(ricerca->getTipoProdotto()=="Vaporizzatore"){
         for(;inizio!=fine;++inizio) {
+            prodotto* vap= *inizio;
             //SE SELEZIONATO SOLO SCHERMO
-            if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==true && ricerca->getSchermo()==1) && ricerca->getCapienza()==0 && ricerca->getVelocita()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==true && ricerca->getSchermo()==1) && ricerca->getCapienza()==0 && ricerca->getVelocita()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==false && ricerca->getSchermo()==2) && ricerca->getCapienza()==0 && ricerca->getVelocita()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==false && ricerca->getSchermo()==2) && ricerca->getCapienza()==0 && ricerca->getVelocita()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //SELEZIONATO SCHERMO E QUANTITA
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==true && ricerca->getSchermo()==1) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getCapienza()==ricerca->getCapienza() && ricerca->getVelocita()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==true && ricerca->getSchermo()==1) && (dynamic_cast<vaporizzatore*>(vap))->getCapienza()==ricerca->getCapienza() && ricerca->getVelocita()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==false && ricerca->getSchermo()==2) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getCapienza()==ricerca->getCapienza() && ricerca->getVelocita()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==false && ricerca->getSchermo()==2) && (dynamic_cast<vaporizzatore*>(vap))->getCapienza()==ricerca->getCapienza() && ricerca->getVelocita()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //SELEZIONATO SCHERMO E VELOCITA
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==true && ricerca->getSchermo()==1) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getVelocitaEvaporazione() && ricerca->getCapienza()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==true && ricerca->getSchermo()==1) && (dynamic_cast<vaporizzatore*>(vap))->getVelocitaEvaporazione() && ricerca->getCapienza()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==false && ricerca->getSchermo()==2) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getVelocitaEvaporazione() && ricerca->getCapienza()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==false && ricerca->getSchermo()==2) && (dynamic_cast<vaporizzatore*>(vap))->getVelocitaEvaporazione() && ricerca->getCapienza()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //SELEZIONATO SOLO QUANTITA
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getCapienza()==ricerca->getCapienza() && ricerca->getSchermo()==0 && ricerca->getVelocita()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && (dynamic_cast<vaporizzatore*>(vap))->getCapienza()==ricerca->getCapienza() && ricerca->getSchermo()==0 && ricerca->getVelocita()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //SELEZIONATO QUANTITA E VELOCITA
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getCapienza()==ricerca->getCapienza() && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getVelocitaEvaporazione()==ricerca->getVelocita() && ricerca->getSchermo()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && (dynamic_cast<vaporizzatore*>(vap))->getCapienza()==ricerca->getCapienza() && (dynamic_cast<vaporizzatore*>(vap))->getVelocitaEvaporazione()==ricerca->getVelocita() && ricerca->getSchermo()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //SELEZIONATO SOLO VELOCITA
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getVelocitaEvaporazione()==ricerca->getVelocita() && ricerca->getSchermo()==0 && ricerca->getCapienza()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && (dynamic_cast<vaporizzatore*>(vap))->getVelocitaEvaporazione()==ricerca->getVelocita() && ricerca->getSchermo()==0 && ricerca->getCapienza()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //SELEZIONATI TUTTI
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==true && ricerca->getSchermo()==1) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getCapienza()==ricerca->getCapienza() && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getVelocitaEvaporazione()==ricerca->getVelocita()){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==true && ricerca->getSchermo()==1) && (dynamic_cast<vaporizzatore*>(vap))->getCapienza()==ricerca->getCapienza() && (dynamic_cast<vaporizzatore*>(vap))->getVelocitaEvaporazione()==ricerca->getVelocita()){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ((dynamic_cast<vaporizzatore*>((*inizio).get()))->getSchermo()==false && ricerca->getSchermo()==2) && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getCapienza()==ricerca->getCapienza() && (dynamic_cast<vaporizzatore*>((*inizio).get()))->getVelocitaEvaporazione()==ricerca->getVelocita()){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==false && ricerca->getSchermo()==2) && (dynamic_cast<vaporizzatore*>(vap))->getCapienza()==ricerca->getCapienza() && (dynamic_cast<vaporizzatore*>(vap))->getVelocitaEvaporazione()==ricerca->getVelocita()){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
             //NESSUN SELEZIONATO
-            else if(dynamic_cast<vaporizzatore*>((*inizio).get()) && ricerca->getVelocita()==0 && ricerca->getSchermo()==0 && ricerca->getCapienza()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            else if(dynamic_cast<vaporizzatore*>(vap) && ricerca->getVelocita()==0 && ricerca->getSchermo()==0 && ricerca->getCapienza()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(vap);
             }
         }
     }
     if(ricerca->getTipoProdotto()=="Grinder"){
         for(;inizio!=fine;++inizio) {
-           if(dynamic_cast<grinder*>((*inizio).get()) && (dynamic_cast<grinder*>((*inizio).get()))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>((*inizio).get()))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+            prodotto* gdr= *inizio;
+           if(dynamic_cast<grinder*>(gdr) && (dynamic_cast<grinder*>(gdr))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>(gdr))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }
-           else if(dynamic_cast<grinder*>((*inizio).get()) && (dynamic_cast<grinder*>((*inizio).get()))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>((*inizio).get()))->getRaccogliPolline()==false && ricerca->getRaccogliP()==2)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<grinder*>(gdr) && (dynamic_cast<grinder*>(gdr))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>(gdr))->getRaccogliPolline()==false && ricerca->getRaccogliP()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }
-           else if(dynamic_cast<grinder*>((*inizio).get()) && ricerca->getNDenti() ==0 && ((dynamic_cast<grinder*>((*inizio).get()))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<grinder*>(gdr) && ricerca->getNDenti() ==0 && ((dynamic_cast<grinder*>(gdr))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
+                (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }
-           else if(dynamic_cast<grinder*>((*inizio).get()) && ricerca->getNDenti() ==0 && ((dynamic_cast<grinder*>((*inizio).get()))->getRaccogliPolline()==false && ricerca->getRaccogliP()==2)){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<grinder*>(gdr) && ricerca->getNDenti() ==0 && ((dynamic_cast<grinder*>(gdr))->getRaccogliPolline()==false && ricerca->getRaccogliP()==2)){
+                (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }
-           else if(dynamic_cast<grinder*>((*inizio).get()) && (dynamic_cast<grinder*>((*inizio).get()))->getNdenti()==ricerca->getNDenti() && ricerca->getRaccogliP()==0){
-               (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<grinder*>(gdr) && (dynamic_cast<grinder*>(gdr))->getNdenti()==ricerca->getNDenti() && ricerca->getRaccogliP()==0){
+               (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }
-           else if(dynamic_cast<grinder*>((*inizio).get()) && ricerca->getRaccogliP() ==0 && ricerca->getNDenti()==0){
-                (ricerca->getListaRicerca())->aggiungiElemento((*inizio).get());
+           else if(dynamic_cast<grinder*>(gdr) && ricerca->getRaccogliP() ==0 && ricerca->getNDenti()==0){
+                (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }
         }
     }

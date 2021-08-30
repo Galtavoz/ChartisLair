@@ -21,8 +21,9 @@ private:
     unsigned int size;
 public:
     lista();
-    lista(const lista<T>& l);
-    lista<T>& operator=(const lista<T>& list);
+    lista(const T&);
+    lista(const lista<T>&);
+    lista<T>& operator=(const lista<T>&);
     ~lista();
     unsigned int getSize() const;
 
@@ -57,7 +58,7 @@ public:
         bool operator==(const iteratoreConst&) const;
         bool operator!=(const iteratoreConst&) const;
     };
-	void eliminaListaRic(nodo*);
+    void eliminaListaRic(nodo*);
     void aggiungiTesta(const T&);
     void aggiungiCoda(const T&);
     bool vuoto();

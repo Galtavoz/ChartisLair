@@ -56,7 +56,7 @@ void Modello::Salva(){
     scrivi.writeStartElement("root");
     auto cit = inizioIter();
     while(cit!=fineIter()) {
-        const prodotto* nuovoCatalogo = (*cit).get();
+        const prodotto* nuovoCatalogo = *cit;
         const QString elementoCatalogo = QString::fromStdString(nuovoCatalogo->tipoElemento());
         scrivi.writeEmptyElement(elementoCatalogo);
         scrivi.writeAttribute("nome",QString::fromStdString(nuovoCatalogo->getNome()));
@@ -139,7 +139,7 @@ void Modello::Salva(){
             scrivi.writeAttribute("raccoglipolline",Grinder->getRaccogliPolline()==true ? "Si" : "No");
         }
 
-        delete (*cit).get();
+        delete *cit;
         ++cit;
     }
     scrivi.writeEndElement();
@@ -285,7 +285,7 @@ void Modello::Carica() {
                 deepPtr<prodotto>* inserisci = new deepPtr<prodotto>(elementoXml);
 
                 if(inserisci!=nullptr) {
-                    Prodotto->aggiungiCoda(*inserisci);
+                    Prodotto->aggiungiCoda(elementoXml);
                 }
 
 
@@ -304,7 +304,7 @@ std::string Modello::toString(char x) {
 }
 
 void Modello::inserisci(prodotto* p) {
-    deepPtr<prodotto>* elemento = new deepPtr<prodotto>(p);
+   deepPtr<prodotto>* elemento = new deepPtr<prodotto>(p);
     Prodotto->aggiungiTesta(*elemento);
 }
 
@@ -320,9 +320,9 @@ int Modello::contaCatalogo() {
 
 int Modello::contaBiscotti() {
     int conta=0;
-    for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
-        //const catalogo* prova = (*it).get();
-        if(dynamic_cast<const biscotti*>((*it).get())) conta++;
+    for(auto it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
+        prodotto* bisc= *it;
+        if(dynamic_cast<biscotti*>(bisc)) conta++;
     }
     return conta;
 }
@@ -330,7 +330,8 @@ int Modello::contaBiscotti() {
 int Modello::contaCioccolata() {
     int conta=0;
     for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
-        if(dynamic_cast<const cioccolata*>((*it).get())) conta++;
+         prodotto* ciocc= *it;
+        if(dynamic_cast<const cioccolata*>(ciocc)) conta++;
     }
     return conta;
 }
@@ -338,15 +339,17 @@ int Modello::contaCioccolata() {
 int Modello::contaInfusi() {
     int conta=0;
     for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
-        if(dynamic_cast<const infusi*>((*it).get())) conta++;
+         prodotto* inf= *it;
+        if(dynamic_cast<const infusi*>(inf)) conta++;
     }
     return conta;
 }
 
 int Modello::contaBong() {
-    int conta=0;
+    int conta=0;  
     for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
-        if(dynamic_cast<const bong*>((*it).get())) conta++;
+        prodotto* bng= *it;
+        if(dynamic_cast<const bong*>(bng)) conta++;
     }
     return conta;
 }
@@ -354,7 +357,8 @@ int Modello::contaBong() {
 int Modello::contaVapo() {
     int conta=0;
     for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
-        if(dynamic_cast<const vaporizzatore*>((*it).get())) conta++;
+        prodotto* vp= *it;
+        if(dynamic_cast<const vaporizzatore*>(vp)) conta++;
     }
     return conta;
 }
@@ -362,7 +366,8 @@ int Modello::contaVapo() {
 int Modello::contaGrinder() {
     int conta=0;
     for(lista<deepPtr<prodotto>>::iteratore it=Prodotto->inizio(); it!=Prodotto->fine();++it) {
-        if(dynamic_cast<const grinder*>((*it).get())) conta++;
+        prodotto* gr= *it;
+        if(dynamic_cast<const grinder*>(gr)) conta++;
     }
     return conta;
 }

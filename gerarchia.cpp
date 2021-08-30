@@ -143,6 +143,9 @@ std::string biscotti::visualizzaInfo() const {
            .append("\n Ricavo: "+Ricavo.str()+("€"));
 
 }
+biscotti *biscotti::clone() const{
+    return new biscotti(*this);
+}
 
 double biscotti::ricavo() const{
     return (prezzo()/100)*30;
@@ -225,6 +228,9 @@ std::string cioccolata::visualizzaInfo() const {
            .append("\n Ricavo: "+Ricavo.str()+("€"));
 
 }
+cioccolata *cioccolata::clone() const{
+    return new cioccolata(*this);
+}
 
 double cioccolata::ricavo() const{
     return (prezzo()/100)*25;
@@ -293,7 +299,9 @@ std::string infusi::visualizzaInfo() const {
            .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
            .append("\n Ricavo: "+Ricavo.str()+("€"));
 }
-
+infusi *infusi::clone() const{
+    return new infusi(*this);
+}
 double infusi::ricavo() const{
     return (prezzo()/100)*20;
 }
@@ -414,7 +422,9 @@ std::string bong::visualizzaInfo() const {
            .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
            .append("\n Ricavo: "+Ricavo.str()+("€"));
 }
-
+bong *bong::clone() const{
+    return new bong(*this);
+}
 double bong::ricavo() const{
     return (prezzo()/100)*18;
 }
@@ -480,7 +490,9 @@ std::string vaporizzatore::visualizzaInfo() const {
             .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
             .append("\n Ricavo: "+Ricavo.str()+("€"));
 }
-
+vaporizzatore *vaporizzatore::clone() const{
+    return new vaporizzatore(*this);
+}
 double vaporizzatore::ricavo() const{
     return (prezzo()/100)*12;
 }
@@ -529,6 +541,9 @@ std::string grinder::visualizzaInfo() const {
             .append("\n Raccogli Polline :").append(getRaccogliPolline() ? "Si" : "No")
             .append("\n Prezzo al pubblico: "+Prezzo.str()+("€"))
             .append("\n Ricavo: "+Ricavo.str()+("€"));
+}
+grinder *grinder::clone() const{
+    return new grinder(*this);
 }
 double grinder::ricavo() const{
     return (prezzo()/100)*15;

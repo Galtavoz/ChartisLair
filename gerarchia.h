@@ -31,7 +31,10 @@ public:
     virtual double ricavo() const = 0;
     virtual std::string  tipoElemento() const =0;
     virtual std::string visualizzaInfo() const;
-    //OPERATORI
+
+
+    virtual prodotto* clone() const =0;
+     //OPERATORI
     virtual bool operator==(const prodotto&) const;
 };
 
@@ -59,6 +62,7 @@ public:
      virtual double ricavo() const = 0;
      virtual std::string  tipoElemento() const =0;
      virtual std::string visualizzaInfo() const;
+     virtual consumabile* clone() const =0;
      //OPERATORI
      virtual bool operator==(const prodotto&) const;
 };
@@ -81,6 +85,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    biscotti* clone() const override;
     //OPERATORI
     virtual bool operator==(const prodotto&) const override;
 };
@@ -107,6 +112,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    cioccolata* clone() const override;
     //OPERATORI
     virtual bool operator==(const prodotto&) const override;
 
@@ -131,6 +137,7 @@ public:
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
     void svuotaAromi();
+    infusi* clone() const override;
     //OPERATORI
     virtual bool operator==(const prodotto&) const override;
 };
@@ -154,6 +161,7 @@ public:
     virtual double ricavo() const = 0;
     virtual std::string  tipoElemento() const =0;
     virtual std::string visualizzaInfo() const;
+    virtual nonConsumabile* clone() const =0;
     //OPERATORI
     virtual bool operator==(const prodotto&) const;
 };
@@ -180,6 +188,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    bong* clone() const override;
     //OPERATORI
     virtual bool operator==(const prodotto&) const override;
 };
@@ -206,6 +215,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
     virtual std::string visualizzaInfo() const override;
+    vaporizzatore* clone() const override;
     //OPERATORI
     virtual bool operator==(const prodotto&) const override;
 };
@@ -229,6 +239,7 @@ public:
     virtual double ricavo() const override;
     virtual std::string  tipoElemento() const override;
      virtual std::string visualizzaInfo() const override;
+    grinder* clone() const override;
     //OPERATORI
     virtual bool operator==(const prodotto&) const override;
 };
