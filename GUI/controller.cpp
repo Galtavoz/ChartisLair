@@ -63,7 +63,7 @@ void Controller::caricaDati() {
             lista<deepPtr<prodotto>>::iteratore fineLista = modello->fineIter();
 //            qDebug()<<QString::fromUtf8(inizioLista->get()->getNome().c_str());
             for(;inizioLista!=fineLista;++inizioLista) {
-                catCompleto->getLista()->aggiungiElemento(*inizioLista);
+                catCompleto->getLista()->aggiungiElemento(&(**inizioLista));
             }
             modello->setSalvaModifiche(true);
         }
@@ -87,7 +87,7 @@ void Controller::caricaDatiXML() {
             lista<deepPtr<prodotto>>::iteratore inizioLista = modello->inizioIter();
             lista<deepPtr<prodotto>>::iteratore fineLista = modello->fineIter();
             for(;inizioLista!=fineLista;++inizioLista) {
-                catCompleto->getLista()->aggiungiElemento(*inizioLista);
+                catCompleto->getLista()->aggiungiElemento(&(**inizioLista));
             }
             modello->setSalvaModifiche(true);
         }
@@ -152,7 +152,7 @@ void Controller::ricercaProdotti(){
 
     if(ricerca->getTipoProdotto()=="Biscotti"){
         for(;inizio!=fine;++inizio) {
-           prodotto* bs= *inizio;
+           prodotto* bs= &(**inizio);
            if(dynamic_cast<biscotti*>(bs) && (dynamic_cast<biscotti*>(bs))->getTipoFarina()==ricerca->getTipoFarina() && (dynamic_cast<biscotti*>(bs))->getGocceCioccolata()==ricerca->getTipoGocce()){
                 (ricerca->getListaRicerca())->aggiungiElemento(bs);
            }
@@ -169,7 +169,7 @@ void Controller::ricercaProdotti(){
     }
     if(ricerca->getTipoProdotto()=="Cioccolata"){
         for(;inizio!=fine;++inizio) {
-           prodotto* ciocc= *inizio;
+           prodotto* ciocc= &(**inizio);
            //TUTTI SELEZIONATI
            if(dynamic_cast<cioccolata*>(ciocc) && (dynamic_cast<cioccolata*>(ciocc))->getLivelloFondenza()==ricerca->getLvFondenza() && (dynamic_cast<cioccolata*>(ciocc))->getTipoGranella()==ricerca->getTipoGranella() && ((dynamic_cast<cioccolata*>(ciocc))->getForma()==true && ricerca->getFormaC()==1)){
                 (ricerca->getListaRicerca())->aggiungiElemento(ciocc);
@@ -223,7 +223,7 @@ void Controller::ricercaProdotti(){
 
     if(ricerca->getTipoProdotto()=="Infusi"){
         for(;inizio!=fine;++inizio) {
-            prodotto* infu= *inizio;
+            prodotto* infu= &(**inizio);
             //SELEZIONATO SOLO SFUSO
             if(dynamic_cast<infusi*>(infu) && ricerca->getAroma()[0]=="0" && ((dynamic_cast<infusi*>(infu))->getSfuso()==true && ricerca->getSfuso()==1)){
                  (ricerca->getListaRicerca())->aggiungiElemento(infu);
@@ -309,7 +309,7 @@ void Controller::ricercaProdotti(){
     }
     if(ricerca->getTipoProdotto()=="Bong"){
         for(;inizio!=fine;++inizio) {
-            prodotto* bng= *inizio;
+            prodotto* bng= &(**inizio);
             //SELEZIONATO QUALSIASI
             if(dynamic_cast<bong*>(bng) && ricerca->getFormaB()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(bng);
@@ -335,7 +335,7 @@ void Controller::ricercaProdotti(){
     }
     if(ricerca->getTipoProdotto()=="Vaporizzatore"){
         for(;inizio!=fine;++inizio) {
-            prodotto* vap= *inizio;
+            prodotto* vap= &(**inizio);
             //SE SELEZIONATO SOLO SCHERMO
             if(dynamic_cast<vaporizzatore*>(vap) && ((dynamic_cast<vaporizzatore*>(vap))->getSchermo()==true && ricerca->getSchermo()==1) && ricerca->getCapienza()==0 && ricerca->getVelocita()==0){
                 (ricerca->getListaRicerca())->aggiungiElemento(vap);
@@ -384,7 +384,7 @@ void Controller::ricercaProdotti(){
     }
     if(ricerca->getTipoProdotto()=="Grinder"){
         for(;inizio!=fine;++inizio) {
-            prodotto* gdr= *inizio;
+            prodotto* gdr= &(**inizio);
            if(dynamic_cast<grinder*>(gdr) && (dynamic_cast<grinder*>(gdr))->getNdenti()==ricerca->getNDenti() && ((dynamic_cast<grinder*>(gdr))->getRaccogliPolline()==true && ricerca->getRaccogliP()==1)){
                 (ricerca->getListaRicerca())->aggiungiElemento(gdr);
            }

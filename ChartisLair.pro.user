@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.0, 2021-08-19T18:31:21. -->
+<!-- Written by QtCreator 4.11.0, 2021-09-02T20:10:37. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -288,9 +288,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">ChartisLair2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/ChartisLair.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/P/Desktop/UNIVERSITA'/Programmazione 2(PASSATO, PROG IN VALUTAZIONE)/Progetto/GitChartis/ChartisLair/ChartisLair.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/P/Desktop/Nuova cartella (2)/ChartisLair/ChartisLair.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/P/Desktop/Nuova cartella (2)/ChartisLair/ChartisLair.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
