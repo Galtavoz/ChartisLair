@@ -22,7 +22,7 @@
     <grinder nome="Gorgoroth" confezioneRegalo="No" colori="Oro" ndenti="30" raccoglipolline="No"/>
     <vaporizzatore nome="Popocatépetl" confezioneRegalo="Si" colori="Verde" velocitaEvaporazione="2" capienza="4" schermo="Si"/>
     <infusi nome="Lovegood" confezioneRegalo="No" ingredienti="foglie di the,hemp,fiori di calendula,fiori di sambuco,fiori di camomilla" peso="0.4" erba="No" produzione="No" aroma="Albicocca" sfuso="No"/>
-    <cioccolata nome="Deku" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.25" erba="Si" produzione="No" tipoGranella="3" livelloFondenza="3" forma="No"/>
+    <cioccolata nome="Deku" confezioneRegalo="Si" ingredienti="cioccolato,burro,zucchero,hemp" peso="0.25" erba="Si" produzione="No" tipoGranella="3" livelloFondenza="3" forma="Si"/>
     <bong nome="Bilbo" confezioneRegalo="Si" colori="Verde" forma="No" altezza="3" larghezza="5.3"/>
     <vaporizzatore nome="Etna" confezioneRegalo="No" colori="Viola" velocitaEvaporazione="3" capienza="3" schermo="Si"/>
     <biscotti nome="Fake Castagnaccio" confezioneRegalo="No" ingredienti="Farina,uova,burro,zucchero,hemp" peso="0.45" erba="No" produzione="No" farina="4" gocceCioccolata="4"/>

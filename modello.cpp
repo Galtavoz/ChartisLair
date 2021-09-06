@@ -3,6 +3,7 @@
 Modello::Modello(std::string p): path(p), Prodotto(new lista<deepPtr<prodotto>>), salvaModifiche(true) {}
 
 Modello::~Modello() {
+    Prodotto->clear();
     delete Prodotto;
 }
 
