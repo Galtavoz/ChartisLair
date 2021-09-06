@@ -19,8 +19,6 @@ public:
 
 
 };
-//GIUSTA....FORSE, la parte sopra
-
 //deepPtr
 template <class T>
 deepPtr<T>::deepPtr(T* ptr) : d_Ptr(ptr) {}//costruttore
