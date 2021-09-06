@@ -14,10 +14,9 @@ public:
     //operatori
     T& operator*();
     T* operator->() const;
+
     bool operator==(const deepPtr&) const;
 //    bool operator!=(const deepPtr&) const;
-
-
 };
 //deepPtr
 template <class T>
@@ -52,14 +51,15 @@ template <class T>
 T* deepPtr<T>::operator->() const{
     return &d_Ptr;
 }
-//template <class T>
-//const T& deepPtr<T>::operator*() const {
-//    return *d_Ptr;
-//}
 
 template <class T>
 bool deepPtr<T>::operator==(const deepPtr& dptr) const {
     //return *d_Ptr==*(dptr.d_Ptr);
     return d_Ptr == dptr.d_Ptr;
 }
-#endif // DEEPPTR_H
+
+//template <class T>
+//bool deepPtr<T>::operator!=(const deepPtr& dptr) const {
+//      return *d_Ptr != *(dptr.d_Ptr);
+//}
+#endif  //DEEPPTR_H
