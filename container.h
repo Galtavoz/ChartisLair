@@ -64,6 +64,7 @@ public:
     void aggiungiCoda(const T&);
     bool vuoto();
     void togliUno(const T&);
+    void clear();
 
     iteratore inizio();
     iteratore fine();
@@ -195,6 +196,14 @@ void lista<T>::togliUno(const T& t) {
                }
            }
        }
+}
+template<class T>
+void lista<T>::clear()
+{
+    if (primo){
+       eliminaListaRic(primo);
+        primo = nullptr;
+    }
 }
 
 //ITERATORE
